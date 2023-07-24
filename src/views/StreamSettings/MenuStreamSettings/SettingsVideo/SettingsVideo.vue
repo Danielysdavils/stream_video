@@ -1,6 +1,6 @@
 <template>
     <div class="containerSettingsVideo">
-        <MenuDisplay />
+        <MenuDisplay v-bind:qtdTabs = "[]" />
     </div>
 </template>
 
@@ -13,14 +13,12 @@
         },
         data(){
             return{
-                tabData: []
+                tabData: ['Video', 'Image']
             }
         },
         methods: {
             setTabData(){
-                const tab = ['Video', 'Image']
-                this.tabData.push(tab)
-                this.$emit('sendData', this.tabData);
+                this.qtdTabs = this.tabData
             }
         }
     }

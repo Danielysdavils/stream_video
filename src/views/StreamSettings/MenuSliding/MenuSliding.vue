@@ -4,8 +4,9 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
     import MenuSlidingLinks from './MenuSlidingLinks.vue';
+    
     export default {
         components: {
             MenuSlidingLinks

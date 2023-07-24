@@ -1,27 +1,37 @@
 <template>
     <div>
-        <b-tabs content-class="containerM" fill>
-            <b-tab title="Video" active>
-                <div class="containerOptions">
-                    <h4>Resolution</h4>
-                    <div></div>
-                </div>
-            </b-tab>
+        <b-tabs v-for="i in tabs" :key="'dyn-tab' + i" :tittle = "'tittle' + i " content-class="container-parent" fill active>
+           
         </b-tabs>
     </div>
 </template>
 
-<script lang="ts">
+<script>
 
 export default{
     data(){
         return{
+            tabs : [],
+            tabCounter : 0,
+            tabsToRender : this.qtdTabs,
+            tittle : ''
         }
     },
     methods:{
+        createATab(){
+            this.tabsToRender.forEach(tab => {
+                this.tabs.push(this.tabCounter++)
+                this.tittle = tab 
+            });
+        },
+
+        reciveData(){
+
+        }
     },
     props:{
-        
+        qtdTabs : []
+  
     }
 }
 
@@ -29,7 +39,7 @@ export default{
 </script>
 
 <style>
-.containerOptions{
+.container-parent{
     background-color: aliceblue;
     width: 100%;
     height: 100%;

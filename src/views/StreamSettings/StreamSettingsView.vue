@@ -7,22 +7,19 @@
         </div>
 
         <div class="displaySettings">
-            <MenuStreamSettings />
             <router-view />
         </div>
     </div>
 </template>
 
 <script>
-    import MenuSliding from '@/views/StreamSettings/MenuSliding/MenuSliding.vue'
-    import MenuStreamSettings from '@/views/StreamSettings/MenuStreamSettings/MenuStreamSettings.vue'
+    import MenuSliding from '../StreamSettings/MenuSliding/MenuSliding.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
 
     export default{
         components: {
             MenuSliding,
-            MenuStreamSettings,
             MenuVideoScrollBar,
             StreamSection
         }
