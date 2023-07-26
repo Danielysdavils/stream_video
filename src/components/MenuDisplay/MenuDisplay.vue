@@ -1,39 +1,37 @@
 <template>
-    <div>
-        <b-tabs v-for="i in tabs" :key="'dyn-tab' + i" :tittle = "'tittle' + i " content-class="container-parent" fill active>
-           
-        </b-tabs>
+    <div class="container-menu-display">    
+        <div v-for="i in items" v-bind:key="i" class="container-parent">
+            <div v-for="n in setD(i)" v-bind:key="n"><h2>{{ n }}</h2></div>
+        </div>
     </div>
 </template>
 
 <script>
 
-export default{
-    data(){
-        return{
-            tabs : [],
-            tabCounter : 0,
-            tabsToRender : this.qtdTabs,
-            tittle : ''
-        }
-    },
-    methods:{
-        createATab(){
-            this.tabsToRender.forEach(tab => {
-                this.tabs.push(this.tabCounter++)
-                this.tittle = tab 
-            });
+    //import ItemMenuDisplay from '@/components/MenuDisplay/ItemMenuDisplay.vue'
+    //<ItemMenuDisplay v-bind:Sendsrc="item.src" v-bind:Sendtext="item.text"  />
+
+    export default{
+        data: () => {
+            return{
+                listItens : this.items
+            } 
         },
 
-        reciveData(){
+        props:['items'],
+       
+        /*
+        components:{
+           ItemMenuDisplay
+        },
+        */
 
+        methods:{
+            setD: () => {
+                return this.items[0].filter((i) => { return this.items[i]})
+            }
         }
-    },
-    props:{
-        qtdTabs : []
-  
     }
-}
 
 </script>
 
@@ -45,4 +43,15 @@ export default{
     display: flex;
     flex-direction: row;
 }
+
+.container-menu-display{
+    display: flex;
+    width: 8%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color2);
+}
+
 </style>

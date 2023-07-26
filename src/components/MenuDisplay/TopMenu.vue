@@ -1,23 +1,73 @@
 <template>
     <div class="container-top-menu"> 
-        <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children">
-            <div class="backgroundImg"><img src="../../assets/videos (1).png" alt="" class="children-img"></div>
+        <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children" >
+            <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img src="../../assets/videos (1).png" alt="" class="children-img"></div>
             <h5 class="children-tittle">Video</h5>
         </router-link>
 
-        <router-link to="/streamconfig/saving" class="conteiner-top-children">
-            <div class="backgroundImg">
+        <router-link to="/streamconfig/audio" class="conteiner-top-children" >
+            <div v-on:click="setDataMenu('update:data-menu-audio')" class="backgroundImg">
                 <img src="../../assets/microfone (1).png" alt="" class="children-img">
             </div>
             <h5 class="children-tittle">Audio</h5>
         </router-link>
         
-        <router-link to="/streamconfig/alarm" class="conteiner-top-children">
-            <div class="backgroundImg"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="children-img"></div>
+        <router-link to="/streamconfig/saida" class="conteiner-top-children" >
+            <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="children-img"></div>
             <h5 class="children-tittle">Saída</h5>
         </router-link>
     </div>
 </template>
+
+<script>
+
+    export default{
+        
+        data : () => {
+            return{
+                dataMenu : []
+            }
+        },
+        
+        methods:{
+            setDataMenu(event){
+              
+                switch(event){
+                    case 'update:data-menu-video':
+                        
+                        var info = [
+                            {id:1, src: '', text: 'resolution'},
+                            {id:2, src: '', text: 'codec'},
+                            {id:3, src: '', text: 'framRate'},
+                            {id:4, src: '', text: 'BitRate'},
+                            {id:5, src: '', text: 'Quantizer'}
+                        ];
+                        this.dataMenu.push(info);
+
+                        this.$emit('setData', this.dataMenu);
+                        break;
+
+                    case 'update:data-menu-audio':
+                        this.dataMenu = [
+                            {id: 1, src: '', text: 'som'},
+                            {id: 2, src: '', text: 'hz'}
+                        ];
+                        this.$emit('setData', this.dataMenu);
+                        break;
+                        
+                    case 'update:data-menu-saida':
+                        this.dataMenu = [
+                            {id: 1, src: '', text: 'IP'},
+                            {id: 2, src: '', text: 'SSS'}
+                        ];
+                        this.$emit('setData', this.dataMenu);
+                        break;
+                }
+            }
+        }
+    }
+
+</script>
 
 <style>
     .container-top-menu{

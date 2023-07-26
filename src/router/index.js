@@ -22,11 +22,11 @@ const routes = [
         component: () => import('@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue')
       },
       {
-        path: 'saving',
+        path: 'audio',
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue')
       },
       {
-        path: 'alarm',
+        path: 'saida',
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue')
       }
     ]

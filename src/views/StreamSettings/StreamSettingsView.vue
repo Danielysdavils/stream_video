@@ -1,11 +1,11 @@
 <template>
     <div class="containerDisplay">
         <div class="displayView">
-            <MenuSliding />
+            <MenuDisplay :items="dataComponent" />
             <router-view />
 
             <div class="displaySettings">
-                <TopMenu />
+                <TopMenu  @setData ="set" />
                 <StreamSection />
                 <MenuVideoScrollBar />
             </div>
@@ -14,17 +14,34 @@
 </template>
 
 <script>
-    import MenuSliding from '../StreamSettings/MenuSliding/MenuSliding.vue'
+    import MenuDisplay from '@/components/MenuDisplay/MenuDisplay.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue'
-
+    
     export default{
+        data: () => {
+            return {
+                dataComponent : []
+            }
+        },
         components: {
-            MenuSliding,
+            MenuDisplay,
             MenuVideoScrollBar,
             StreamSection,
             TopMenu
+        },
+
+        methods: {
+            set(d){
+
+                console.log(d);
+                for (const data in d[0]) {
+                    this.dataComponent.push(d[0][data]);
+                }
+
+                console.log(this.dataComponent);
+            }
         }
     }
 </script>
