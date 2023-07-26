@@ -1,28 +1,22 @@
 <template>
     <div class="bar">
-        <MenuSlidingLinks />
+        <CardStatus />
     </div>
 </template>
 
 <script>
-    import MenuSlidingLinks from './MenuSlidingLinks.vue';
-    
-    export default {
-        components: {
-            MenuSlidingLinks
-        }
-    }
+
 </script>
 
 <style>
 
 .bar{
     display: flex;
-    width: 10%;
+    width: 8%;
     height: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #2B4C7E;
+    background-color: var(--color2);
 }
 </style>

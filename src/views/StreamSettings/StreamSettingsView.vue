@@ -2,13 +2,14 @@
     <div class="containerDisplay">
         <div class="displayView">
             <MenuSliding />
-            <StreamSection />
-            <MenuVideoScrollBar />
-        </div>
-
-        <div class="displaySettings">
             <router-view />
-        </div>
+
+            <div class="displaySettings">
+                <TopMenu />
+                <StreamSection />
+                <MenuVideoScrollBar />
+            </div>
+        </div>        
     </div>
 </template>
 
@@ -16,12 +17,14 @@
     import MenuSliding from '../StreamSettings/MenuSliding/MenuSliding.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
+    import TopMenu from '@/components/MenuDisplay/TopMenu.vue'
 
     export default{
         components: {
             MenuSliding,
             MenuVideoScrollBar,
-            StreamSection
+            StreamSection,
+            TopMenu
         }
     }
 </script>
@@ -32,23 +35,19 @@
         width: 100%;
         height: 100%;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 0.5%;
     }
 
     .displayView{
         display: flex;
         flex-direction: row;
         width: 100%;
+        height: 100%;
     }
 
     .displaySettings{
         width: 100%;
         height: 100%;
         display: flex;
-        margin-top: 0.5%;
-        background-color: black;
-        border-radius: 3%;  
+        flex-direction: column;
     }
 </style>

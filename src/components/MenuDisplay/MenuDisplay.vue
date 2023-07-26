@@ -35,12 +35,11 @@ export default{
     }
 }
 
-
 </script>
 
 <style>
 .container-parent{
-    background-color: aliceblue;
+    background-color: var(--color4);
     width: 100%;
     height: 100%;
     display: flex;

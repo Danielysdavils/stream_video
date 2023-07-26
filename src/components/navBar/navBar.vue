@@ -1,22 +1,20 @@
 <template>
     <nav class="containerNav">
 
-        <router-link to="/" class="linkBar">
-            <i>Home</i><div class="row"></div>
-        </router-link> 
-        <router-link to="/stream" class="linkBar">
-            <i>Stream</i><div class="row"></div>
-        </router-link>
+        <div class="containerOp">
+            <router-link to="/" class="linkBar">Home</router-link>
+            <div class="row"></div>
+        </div> 
+
+        <div class="tittle">
+            <img class="logotype" src="../../assets/fluxo-de-video.png" alt="logotype">
+            <h3 class="logoFont">Stream</h3>
+        </div>
         
-        <div><h1>Stream</h1></div>
-
-        <div class="containerOp"><router-link to="/streamconfig" class="linkBar">
-            <i>Stream Config</i><div class="row"></div>
-        </router-link></div>
-
-        <router-link to="/Others" class="linkBar">
-            <i>Other</i><div class="row"></div>
-        </router-link>
+        <div class="containerOp">
+            <router-link to="/streamconfig" class="linkBar">Stream Config</router-link>
+            <div class="row"></div> 
+        </div>
     
     </nav>
 </template>
@@ -24,31 +22,58 @@
 <style>
     .containerNav{
         display: flex;
+        width: 100%;
+        height: 10%;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-        background-color: #2B4C7E;
-        color: #C8D2E3;
+        background-color: var(--color1);
+        color: var(--color4);
     }
+
+    .logoFont{
+        margin-top: 0cm;
+        margin-bottom: 0cm;
+        margin-left: 5px;
+    }
+
+    .tittle{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .logotype{
+        width: 50px;
+        height: 50px;
+    }
+    
     .linkBar:link{
-        color: #C8D2E3;
+        color: var(--color4);
         text-decoration: none;
     }
     .linkBar:visited{
-        color: #C8D2E3;
+        color: var(--color4);
     }
     .linkBar:hover{
-        color: aqua;
+        color: var(--color3);
     }
     .containerOp{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 25%;
     }
     .row{
-        width: 0.6cm;
+        width: 0.7cm;
         height: 0.1cm;
-        background-color: #C8D2E3;
+        background-color: var(--color4);
         border-radius: 20%;
     }
     

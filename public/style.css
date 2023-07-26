@@ -1,0 +1,14 @@
+html, body{
+    height: 100%;
+
+    --color1: #0f1b2e;
+    --color2: #0d1728;
+    --color3: aqua;
+    --color4: #f4f6f6;
+    --color5: #dfe1e5; 
+}
+
+#app{
+    height: 100%;
+    background-color: var(--color5);
+}
