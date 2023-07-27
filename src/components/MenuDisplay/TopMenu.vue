@@ -31,34 +31,32 @@
         
         methods:{
             setDataMenu(event){
-              
                 switch(event){
                     case 'update:data-menu-video':
-                        
-                        var info = [
-                            {id:1, src: '', text: 'resolution'},
-                            {id:2, src: '', text: 'codec'},
-                            {id:3, src: '', text: 'framRate'},
-                            {id:4, src: '', text: 'BitRate'},
-                            {id:5, src: '', text: 'Quantizer'}
+                        this.dataMenu = [
+                            {id:1, src: require('../../assets/settings.png'), text: 'resolution'},
+                            {id:2, src: require('../../assets/settings.png'), text: 'codec'},
+                            {id:3, src: require('../../assets/settings.png'), text: 'framRate'},
+                            {id:4, src: require('../../assets/settings.png'), text: 'BitRate'},
+                            {id:5, src: require('../../assets/settings.png'), text: 'Quantizer'}
                         ];
-                        this.dataMenu.push(info);
 
                         this.$emit('setData', this.dataMenu);
                         break;
 
                     case 'update:data-menu-audio':
                         this.dataMenu = [
-                            {id: 1, src: '', text: 'som'},
-                            {id: 2, src: '', text: 'hz'}
+                            {id: 1, src: require('../../assets/teste.png'), text: 'som'},
+                            {id: 2, src: require('../../assets/teste.png'), text: 'hz'}
                         ];
+
                         this.$emit('setData', this.dataMenu);
                         break;
                         
                     case 'update:data-menu-saida':
                         this.dataMenu = [
-                            {id: 1, src: '', text: 'IP'},
-                            {id: 2, src: '', text: 'SSS'}
+                            {id: 1, src: require('../../assets/videos.png'), text: 'IP'},
+                            {id: 2, src: require('../../assets/videos.png'), text: 'SSS'}
                         ];
                         this.$emit('setData', this.dataMenu);
                         break;

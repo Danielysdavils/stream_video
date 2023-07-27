@@ -34,13 +34,7 @@
 
         methods: {
             set(d){
-
-                console.log(d);
-                for (const data in d[0]) {
-                    this.dataComponent.push(d[0][data]);
-                }
-
-                console.log(this.dataComponent);
+                this.dataComponent = d 
             }
         }
     }
