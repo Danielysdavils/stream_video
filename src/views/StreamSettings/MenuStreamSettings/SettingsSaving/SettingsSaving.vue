@@ -1,15 +1,17 @@
 <template>
-    <div class="containerSettingsVideo">
-        <MenuDisplay v-bind:tab-options="['Schedule', 'SD Storage']"/>
+    <div>
+        <h2>b</h2>
+        <TabSetting />
     </div>
 </template>
 
-<script lang="ts">
-    import MenuDisplay from '../../../../components/MenuDisplay/MenuDisplay.vue'
+<script>
+    import TabSetting from '../../../../components/Tabs/TabSetting.vue'
 
     export default{
         components : {
-            MenuDisplay
+            TabSetting
         }
     }
+
 </script>

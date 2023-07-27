@@ -1,31 +1,37 @@
 <template>
     <div class="container-top-menu"> 
         <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children" >
-            <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img src="../../assets/videos (1).png" alt="" class="children-img"></div>
+            <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img :src="dataSection[0].LogoTypeVideo" alt="" class="children-img"></div>
             <h5 class="children-tittle">Video</h5>
         </router-link>
 
         <router-link to="/streamconfig/audio" class="conteiner-top-children" >
             <div v-on:click="setDataMenu('update:data-menu-audio')" class="backgroundImg">
-                <img src="../../assets/microfone (1).png" alt="" class="children-img">
+                <img :src="dataSection[1].LogoTypeAudio" alt="" class="children-img">
             </div>
             <h5 class="children-tittle">Audio</h5>
         </router-link>
         
         <router-link to="/streamconfig/saida" class="conteiner-top-children" >
-            <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="children-img"></div>
+            <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img :src="dataSection[2].LogoTypeSaida" alt="" class="children-img"></div>
             <h5 class="children-tittle">Saída</h5>
         </router-link>
     </div>
 </template>
 
 <script>
-
     export default{
-        
         data : () => {
             return{
-                dataMenu : []
+                dataMenu : [],
+                
+                // PRECISA MESMO ISTO??
+                
+                dataSection: [
+                    {tittle: 'video', LogoTypeVideo: require('../../assets/videos (1).png')},
+                    {tittle: 'audio', LogoTypeAudio: require('../../assets/microfone (1).png')},
+                    {tittle: 'saida', LogoTypeSaida: require('../../assets/conexao-de-nuvem (1).png')}
+                ]
             }
         },
         
@@ -41,7 +47,7 @@
                             {id:5, src: require('../../assets/settings.png'), text: 'Quantizer'}
                         ];
 
-                        this.$emit('setData', this.dataMenu);
+                        this.$emit('setData', this.dataMenu, this.dataSection[0]);
                         break;
 
                     case 'update:data-menu-audio':
@@ -50,7 +56,7 @@
                             {id: 2, src: require('../../assets/teste.png'), text: 'hz'}
                         ];
 
-                        this.$emit('setData', this.dataMenu);
+                        this.$emit('setData', this.dataMenu, this.dataSection[1]);
                         break;
                         
                     case 'update:data-menu-saida':
@@ -58,13 +64,12 @@
                             {id: 1, src: require('../../assets/videos.png'), text: 'IP'},
                             {id: 2, src: require('../../assets/videos.png'), text: 'SSS'}
                         ];
-                        this.$emit('setData', this.dataMenu);
+                        this.$emit('setData', this.dataMenu, this.dataSection[2]);
                         break;
                 }
             }
         }
     }
-
 </script>
 
 <style>

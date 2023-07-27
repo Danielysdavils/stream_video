@@ -1,8 +1,11 @@
 <template>
     <div class="container-menu-display">
-        <div class="conteiner-card-selected"></div>
-        <div v-for="i in this.items" v-bind:key="i.id" class="container-item-display">
-            <ItemMenuDisplay v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text"  />
+        <div class="conteiner-section-item">
+            <div v-for="i in this.items" v-bind:key="i.id" >
+                <router-link to="/streamconfig/settingsvideo" class="menu-i-selected">
+                    <ItemMenuDisplay v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text" /> 
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -11,8 +14,7 @@
     import ItemMenuDisplay from '@/components/MenuDisplay/ItemMenuDisplay.vue'
 
     export default{
-
-        props:['items'],
+        props:['items', 'section'],
         
         components:{
            ItemMenuDisplay
@@ -32,7 +34,7 @@
 
 .container-menu-display{
     display: flex;
-    width: 8%;
+    width: 10%;
     height: 100%;
     flex-direction: column;
     justify-content: flex-start;
@@ -45,6 +47,16 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
+.conteiner-section-item{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
 
 </style>

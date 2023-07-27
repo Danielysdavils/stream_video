@@ -7,7 +7,6 @@
     </div>
 </template>
 
-
 <style>
     .displayCont{
         display: flexbox;

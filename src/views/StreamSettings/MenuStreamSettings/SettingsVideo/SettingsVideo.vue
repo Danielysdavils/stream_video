@@ -1,15 +1,16 @@
 <template>
-    <div class="containerSettingsVideo">
-        <MenuDisplay v-bind:qtdTabs = "[]" />
+    <div>
+        <h2>a</h2>
+        <TabSetting />
     </div>
 </template>
 
 <script>
-    import MenuDisplay from '../../../../components/MenuDisplay/MenuDisplay.vue'
+    import TabSetting from '../../../../components/Tabs/TabSetting.vue'
 
     export default{
         components : {
-            MenuDisplay
+            TabSetting
         },
         data(){
             return{

@@ -1,16 +1,19 @@
 <template>
-    <div class="containerSettingsVideo">
-        <MenuDisplay v-bind:tab-options="['Motion Detection', 'Video Blind', 'Alarm']"/>
+    <div>
+        <h2>v</h2>
+        <TabSetting />
     </div>
 </template>
 
-<script lang="ts">
-    import MenuDisplay from '../../../../components/MenuDisplay/MenuDisplay.vue'
-    
+<script>
+    import TabSetting from '../../../../components/Tabs/TabSetting.vue'
 
     export default{
         components : {
-            MenuDisplay
-        }
+            TabSetting
+        }, 
+        props:[]
     }
-</script>
+
+</script>   
+    

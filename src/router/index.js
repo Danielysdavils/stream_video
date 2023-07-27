@@ -19,7 +19,12 @@ const routes = [
     children : [
       {
         path: 'settingsvideo',
-        component: () => import('@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue')
+        component: () => import('@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue'),
+        children: [
+          {
+            path: ''
+          }
+        ]
       },
       {
         path: 'audio',
