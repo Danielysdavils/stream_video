@@ -47,10 +47,3 @@ const router = new VueRouter({
 })
 
 export default router
-//export default new VueRouter({
-//  mode: 'history',
-//  base: process.env.BASE_URL,
-//  routes: [
-    
-//  ]
-//})

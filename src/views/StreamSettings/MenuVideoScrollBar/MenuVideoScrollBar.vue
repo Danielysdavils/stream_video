@@ -14,6 +14,4 @@
         width: 30%;
         height: 100%;
     }
-
-   
 </style>

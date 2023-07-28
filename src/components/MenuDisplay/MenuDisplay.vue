@@ -2,8 +2,11 @@
     <div class="container-menu-display">
         <div class="conteiner-section-item">
             <div v-for="i in this.items" v-bind:key="i.id" >
-                <router-link to="/streamconfig/settingsvideo" class="menu-i-selected">
-                    <ItemMenuDisplay v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text" /> 
+
+                <router-link to="/streamconfig/settingsvideo">
+                    <div v-on:click="setItemClicked(i.text)">
+                        <ItemMenuDisplay v-bind:Clicked="ItemClicked" v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text"  />
+                    </div>
                 </router-link>
             </div>
         </div>
@@ -14,10 +17,25 @@
     import ItemMenuDisplay from '@/components/MenuDisplay/ItemMenuDisplay.vue'
 
     export default{
+        data: () => {
+            return{
+                ItemClicked : {
+                    clicked: false,
+                    name: ''
+                }
+            }
+        },
+
         props:['items', 'section'],
         
         components:{
            ItemMenuDisplay
+        },
+
+        methods: {
+            setItemClicked(element){
+                this.ItemClicked = {clicked: true, name: element}
+            }
         }
     }
 
@@ -34,13 +52,17 @@
 
 .container-menu-display{
     display: flex;
-    width: 10%;
-    height: 100%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    width: 10%;
+    height: 100%;
+    
     background-color: var(--color2);
     color: var(--color4);
+
+    transition: 0.2s ease-in-out;
 }
 
 .container-item-display{
@@ -51,7 +73,7 @@
 }
 
 .conteiner-section-item{
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
