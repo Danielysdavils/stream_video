@@ -35,6 +35,7 @@
         methods: {
             setItemClicked(element){
                 this.ItemClicked = {clicked: true, name: element}
+                this.$emit('openBar')
             }
         }
     }
@@ -58,11 +59,10 @@
 
     width: 10%;
     height: 100%;
-    
+
     background-color: var(--color2);
     color: var(--color4);
 
-    transition: 0.2s ease-in-out;
 }
 
 .container-item-display{

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h2>a</h2>
+    <div class="conteiner-Settings-video">
+        <h2>Video Section</h2>
         <TabSetting />
     </div>
 </template>
@@ -24,3 +24,10 @@
         }
     }
 </script>
+
+<style>
+    .conteiner-Settings-video{
+        width: 97%;
+    }
+
+</style>
