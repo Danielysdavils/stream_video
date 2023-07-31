@@ -75,10 +75,10 @@
 <style>
     .container-top-menu{
         width: 100%;
-        height: 12%;
+        height: 10%;
         display: flex;
         flex-direction: row;
-        background-color: var(--color4);
+        background-color: var(--color2Gradiente);
         padding: 10px;
     }
 

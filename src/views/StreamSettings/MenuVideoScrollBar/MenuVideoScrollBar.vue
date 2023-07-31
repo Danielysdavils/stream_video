@@ -11,7 +11,8 @@
     .displayCont{
         display: flexbox;
         flex-direction: row;
-        width: 30%;
-        height: 100%;
+        width: 100%;
+        height: 30%;
+        background-color: var(--color4);
     }
 </style>

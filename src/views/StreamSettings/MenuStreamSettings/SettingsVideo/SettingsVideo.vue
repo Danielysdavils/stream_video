@@ -1,7 +1,8 @@
 <template>
     <div class="conteiner-Settings-video">
-        <h2>Video Section</h2>
+        <div class="tittle-section"></div>
         <TabSetting />
+        <div class="scrollBar"></div>
     </div>
 </template>
 
@@ -28,6 +29,11 @@
 <style>
     .conteiner-Settings-video{
         width: 97%;
+    }
+
+    .tittle-section{
+        width: 100%;
+        height: 12%;
     }
 
 </style>

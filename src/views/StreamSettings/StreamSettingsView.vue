@@ -3,14 +3,14 @@
         <div class="displayView">
             <MenuDisplay @openBar="openBar" :items="dataComponent" :section="dataSection.LogoTypeVideo" />
             
-            <div v-if="isExpandedOpenBar">
-                <SettingsAlarmVue v-if="dataSection.tittle == 'saida'" />
-                <SettingSaving v-if="dataSection.tittle == 'audio'" />
-                <SettingsVideo v-if="dataSection.tittle == 'video'" />
+            <aside :class="[isExpandedOpenBar && 'is-expanded']">
+                    <SettingsAlarmVue v-if="dataSection.tittle == 'saida'" />
+                    <SettingSaving v-if="dataSection.tittle == 'audio'" />
+                    <SettingsVideo v-if="dataSection.tittle == 'video'" />
                     
-                <div class="HiddenBar"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="img-HiddenBar"></div>
-            </div>
-            
+                    <div class="HiddenBar"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="img-HiddenBar"></div>
+            </aside>
+        
             <div class="displaySettings">
                 <TopMenu  @setData ="set" />
                 <StreamSection />
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+
     import MenuDisplay from '@/components/MenuDisplay/MenuDisplay.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
@@ -34,7 +35,8 @@
             return {
                 dataComponent : [],
                 dataSection: {},
-                isExpandedOpenBar: false
+                isExpandedOpenBar: false,
+                itemClicked : ''
             }
         },
         components: {
@@ -53,28 +55,31 @@
                 this.dataSection = s
             },
 
-            openBar(){
-                this.isExpandedOpenBar = !this.isExpandedOpenBar
-                this.$emit('toggle', this.isExpandedOpenBar)
+            openBar(item){
+                this.isExpandedOpenBar = this.itemClicked != item || this.itemClicked == ''  ? true : !this.isExpandedOpenBar
+                this.itemClicked = item 
             }
         }
     }
 </script>
 
 <style>
-    .tool-bar{
+
+    aside{
         display: flex;
         flex-direction: column;
 
-        width: 40%;
+        background-color: var(--color1Gradiente);
         overflow: hidden;
         min-height: 100vh;
-        padding: 1rem;
+        width: 0%;
 
+        transition: width 0.5s ease;
+        transition-timing-function: linear;
     }
 
-    .openAsideBar-active{
-        transform: translateX(300px);
+    .is-expanded{
+        width: 30%;
     }
 
     .containerDisplay{
@@ -82,6 +87,10 @@
         width: 100%;
         height: 100%;
         flex-direction: column;
+
+        background-image: url(../../assets/fundo7.png);
+        background-size: cover;
+        background-position: center;
     }
 
     .displayView{
@@ -91,16 +100,12 @@
         height: 100%;
     }
 
-    .is-expanded{
-        width: 40%;
-        display: flex;
-    }
-
     .displaySettings{
-        width: 60%;
+        width: 90%;
         height: 100%;
         display: flex;
         flex-direction: column;
+        
     }
 
     .HiddenBar{
@@ -110,18 +115,11 @@
 
         position: relative;
         top: 0;
-        transition: 0.2s ease-in-out;
     }
 
     .img-HiddenBar{
         width: 30px;
         height: 30px;
-
-        transition: 0.2s ease-in-out;
     }
-    .img-HiddenBar {
-        transform: translateX(0.5rem);    
-    }
-
 
 </style>

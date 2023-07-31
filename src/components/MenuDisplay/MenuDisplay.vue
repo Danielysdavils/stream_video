@@ -1,10 +1,9 @@
 <template>
     <div class="container-menu-display">
         <div class="conteiner-section-item">
-            <div v-for="i in this.items" v-bind:key="i.id" >
-
+            <div class="itemDisplay" v-for="i in this.items" v-bind:key="i.id" >
                 <router-link to="/streamconfig/settingsvideo">
-                    <div v-on:click="setItemClicked(i.text)">
+                    <div class="conteiner-itemDisplay" v-on:click="setItemClicked(i.text)">
                         <ItemMenuDisplay v-bind:Clicked="ItemClicked" v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text"  />
                     </div>
                 </router-link>
@@ -20,7 +19,6 @@
         data: () => {
             return{
                 ItemClicked : {
-                    clicked: false,
                     name: ''
                 }
             }
@@ -34,8 +32,8 @@
 
         methods: {
             setItemClicked(element){
-                this.ItemClicked = {clicked: true, name: element}
-                this.$emit('openBar')
+                this.ItemClicked = {name: element}
+                this.$emit('openBar', this.ItemClicked.name)
             }
         }
     }
@@ -60,7 +58,7 @@
     width: 10%;
     height: 100%;
 
-    background-color: var(--color2);
+    background-color: var(--color2Gradiente);
     color: var(--color4);
 
 }
@@ -77,7 +75,14 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+}
 
+.conteiner-itemDisplay{
+    height: 100%;
+}
+
+.itemDisplay{
+    height: 10%;
 }
 
 

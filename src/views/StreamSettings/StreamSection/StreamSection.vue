@@ -9,21 +9,24 @@
 <style>
     .displayContainer{
         width: 100%;
-        height: 80%;
-        padding: 15px;
+        height: 60%;
+        padding: 30px;
     }
 
     .conteiner-border{
-        background-color: var(--color2);
+        background-color: var(--color4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        height: 100%;
+        height: 80%;
         border-radius: 5px;
-        padding: 20px;
+        box-shadow: 1px 1px 20px var(--color3);
     }
 
     .video-rep{
         width: 100%;
-        height: 100%;
+        height: 90%;
         background-color: black;
     }   
 </style>

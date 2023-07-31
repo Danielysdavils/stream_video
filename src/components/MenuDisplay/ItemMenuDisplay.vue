@@ -1,16 +1,18 @@
 <template>
     <div class="conteinerCardMenu">
         <div class="conteinerItemDefault" v-if="Clicked.name != Sendtext">
-            <img :src="Sendsrc" alt="" class="iconeCardMenu">
+            <div class="cont-img"><img :src="Sendsrc" alt="" class="iconeCardMenu"></div>
             <h3 class="textCardMenu">{{ Sendtext }}</h3>  
         </div>
 
-       <div class="conteinerItemSelected" v-if="Clicked.name == Sendtext">
+        <div class="conteinerItemSelected" v-if="Clicked.name == Sendtext">
             <div class="rowSelected"></div>
             <div class="styleBorder">
                 <img :src="Sendsrc" alt="" class="iconeCardMenu">
             </div>
-       </div>
+        </div>
+      
+          
     </div>
 </template>
 
@@ -24,8 +26,9 @@
 
 /* STYLE DEFAULT VALUE */
 
-.conteinerCardMenu{
+.conteinerCardMenu, .conteinerItemDefault{
     width: 100%;
+    height: 100%;
     margin-bottom: 5px;
     display: flex;
     flex-direction: row;
@@ -35,26 +38,40 @@
 }
 
 .conteinerCardMenu:hover{
+    transition: 0.5s ease;
     background-color: var(--color1);
 }
 
-.iconeCardMenu{
-    width: 40%;
-    height: 40%;
-
+.cont-img{
+    width: 100%;
+    height: 60%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* STYLE SELECTED VALUE */
 
-.conteinerItemSelected{
+.conteinerItemSelected{  
     width: 100%;
+    height: 100%;
     display: flex;
+    align-items: center;
     flex-direction: row;
-    background-color: var(--color5);
+    background-color: var(--color4);
+
+    
 }
+
 
 .textCardMenu{
     font-size: 10px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .conteiner-card{
@@ -64,20 +81,24 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-     background-color: var(--color5);
+    background-color: var(--color5);
 }
 
 .styleBorder{
-    width: 90%;
-    height: 100%;
+    width: 95%;
+    height: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 4px solid;
-    border-color: var(--color5);
-    background-color: var(--color4);
-    border-radius: 10px;
+    border: 5px solid;
+    border-top-color: var(--color1);
+    border-bottom-color: var(--color1);
+    border-left-color: var(--color3);
+    border-right-color: var(--color3);
+    background-color: var(--color3);
+    border-radius: 4px;
     padding: 8px;
+    margin: 6px;
 }
 
 .imgCard{
@@ -85,8 +106,8 @@
 }
 
 .rowSelected{
-    width: 5px;
-    height: 3rem;
+    width: 5%;
+    height: 100%;
     border-radius: 2px;
     background-color: var(--color3);
 }
