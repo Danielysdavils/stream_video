@@ -7,9 +7,10 @@ html, body{
     --color4: #cdcfd4;
     --color5: #dfe1e5;
 
-    --color1Gradiente: rgba(10, 18, 31, 0.7);
-    --color2Gradiente: rgba(6, 11, 20, 0.5);
+    --color1Gradiente: rgba(10, 18, 31, 0.8);
+    --color2Gradiente: rgba(6, 11, 20, 0.8);
 }
+
 
 #app{
     height: 100%;

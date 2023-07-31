@@ -21,7 +21,7 @@
         width: 100%;
         height: 80%;
         border-radius: 5px;
-        box-shadow: 1px 1px 20px var(--color3);
+        box-shadow: 1px 1px 15px var(--color3);
     }
 
     .video-rep{

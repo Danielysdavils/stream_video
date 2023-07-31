@@ -1,16 +1,17 @@
 <template>
     <div>
         <h2>b</h2>
-        <TabSetting />
+        <RangeInput />
     </div>
 </template>
 
 <script>
-    import TabSetting from '../../../../components/Tabs/TabSetting.vue'
+
+    import RangeInput from '@/components/Graphics/RangeInput.vue';
 
     export default{
         components : {
-            TabSetting
+            RangeInput        
         }
     }
 

@@ -4,11 +4,9 @@
             <MenuDisplay @openBar="openBar" :items="dataComponent" :section="dataSection.LogoTypeVideo" />
             
             <aside :class="[isExpandedOpenBar && 'is-expanded']">
-                    <SettingsAlarmVue v-if="dataSection.tittle == 'saida'" />
-                    <SettingSaving v-if="dataSection.tittle == 'audio'" />
-                    <SettingsVideo v-if="dataSection.tittle == 'video'" />
-                    
-                    <div class="HiddenBar"><img src="../../assets/conexao-de-nuvem (1).png" alt="" class="img-HiddenBar"></div>
+                    <SettingsAlarmVue :itemSelected="itemClicked" v-if="dataSection.tittle == 'saida'" />
+                    <SettingSaving :itemSelected="itemClicked" v-if="dataSection.tittle == 'audio'" />
+                    <SettingsVideo :itemSelected="itemClicked" v-if="dataSection.tittle == 'video'" />
             </aside>
         
             <div class="displaySettings">
@@ -68,6 +66,7 @@
     aside{
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         background-color: var(--color1Gradiente);
         overflow: hidden;
@@ -76,17 +75,22 @@
 
         transition: width 0.5s ease;
         transition-timing-function: linear;
+
+        overflow-y: scroll;
     }
 
     .is-expanded{
-        width: 30%;
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start; 
     }
 
     .containerDisplay{
         display: flex;
         width: 100%;
         height: 100%;
-        flex-direction: column;
+        flex-direction: row;
 
         background-image: url(../../assets/fundo7.png);
         background-size: cover;
@@ -106,20 +110,6 @@
         display: flex;
         flex-direction: column;
         
-    }
-
-    .HiddenBar{
-        width: 10%;
-        height: 100%;
-        display: flex;
-
-        position: relative;
-        top: 0;
-    }
-
-    .img-HiddenBar{
-        width: 30px;
-        height: 30px;
     }
 
 </style>
