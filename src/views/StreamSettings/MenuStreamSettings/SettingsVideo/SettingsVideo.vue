@@ -1,7 +1,7 @@
 <template>
     <div class="conteiner-Settings-video">
         <h2 id="resolition" class="tittle-section">Resolution</h2>
-        <RangeInput :DataRecive="" :itemSelected="" />
+        <RangeInput />
         <SelectedButton />
 
         <h2 id="codec" class="tittle-section">Codec</h2>
@@ -21,7 +21,6 @@
 <script>
     import RangeInput from '../../../../components/Graphics/RangeInput.vue'
     import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
-    import  VideoModule from '@/store/Modules/VideoModule';
 
     export default{
         components :{

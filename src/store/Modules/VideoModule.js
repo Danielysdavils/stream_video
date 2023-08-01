@@ -1,45 +1,52 @@
-import { PUT_DATA, GET_DATA} from '../Mutations/mutations-type'
-import CrudData from '../Crud-Data/Crud-Data';
-
-export const videoModule = {
+import { PUT_DATA} from '../Mutations/mutations-type'
+import crudApi from '../../api/crudApi.js'
+export default videoModule = {
     state: {
-        resolution : ['width'= 0, 'height'= 0],
-        codec : "",
-        framRate : "",
-        BitRate : "",
-        Quantizer : ""
-    },
-
-    mutations: {
-        
-        //1. Status atual se atualize conforme status video/modules
-
-        //Emitir um evento de popular com cada alteração do usuário
-        //DATA = RESPOSTA DA API => CONFIG - ESPECIFICAÇÕES DA API
-
-        [GET_DATA](state){
-            return state
-        },
-
-        [PUT_DATA](state, data){
-            return state = data
+        data : {
+            //Status inicial -- lista config padrão
+            resolution : {width : 0, height : 0},
+            codec : 0,
+            framRate : 0,
+            BitRate : 0,
+            Quantizer : 0
         }
     },
 
-    //1. Receber as configurações padrão
-    //2. Salvar as alteraçoes do meu usuario
-    //3. Enviar ao servidor as configurações do usuário
+    //2. Quando o usuáro muda as config --> actions [mudança de status]
+    mutations: {
+        
+        // Recebe as alterações do actions e altera o status inicial da app
+
+        [PUT_DATA](state, newState){
+            state.data = newState    
+        }
+    },
 
     actions: {
-        //recebe as infos async de crud
-        async getStatus({ commit }){
-            const state = await CrudData.query();
-            commit(GET_DATA, state);
-        }, 
+        // Aciona as mudanças de status --> Deteta as alterações do user 
+        // RECEBE O CRUD DA API
+        // Manda para o mutation
 
-        async updateData({ commit, status }){
-            const data = await CrudData.query(status);
-            if(data != status) commit( PUT_DATA, data )
+        async getAndPopulateData({ commit }){
+            //Peço pra api os dados
+            const data = await crudApi.getData();
+            const newState = data.video;
+                // ... Tratamento da info
+
+            // Mando pro mutations os dados recebidos da api
+            commit(PUT_DATA, newState)
+        },
+
+        //Recebo as alterações do user
+        async putData({ commit, newUserStatus }){
+
+            const data = newUserStatus //tratamento dos dados
+            
+            //mando pra api atualizar
+            await crudApi.queryData(data);
+
+            // Atualizo o state com os dados do usuário
+            commit(PUT_DATA, newUserStatus)
         }
     }
 }

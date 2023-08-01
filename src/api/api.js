@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create({
+export default Api = axios.create({
 
     baseURL: ''
 
-})
+});
 
-export default api;

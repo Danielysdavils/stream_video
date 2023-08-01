@@ -2,35 +2,45 @@
     <div class="conteiner-graphics">
         <div class="row-separator"></div>
         <label for="range-2" class="text-graphic">Select a value: </label>
-        <b-form-input id="range-2" v-model="value" type="range" min="0" max="10" step="1"></b-form-input>
-        <div class="mt-2">Value: {{ value }}</div>
+        <b-form-input id="range-2" v-model="valueInterface" type="range" min="0" max="10" step="1"></b-form-input>
+        <div class="mt-2">Value: {{ valueInterface }}</div>
     </div>
 </template>
 
 <script>
 
+//Metodo quando a data do servidor mude e quando a data do user mude 
+
+import { mapActions } from 'vuex'
+import store from  '@/store/store.js'
+import { reactive } from 'vue';
+
 export default{
     data: () => {
         return{
-            value: this.DataRecive,
-            clickedItem: ''
+            valueInterface: ''
         }
     },
-
-    props: ['DataRecive', 'itemSelected'],
     
-    computed:{
-        sendData : () => {
-            this.$emit('dataUpdate', this.value)
+    /*
+    watch: {
+        valueInterface(newValue, oldValue){
+            if (newValue != oldValue)  
         }
     },
-
+    */
     methods:{
-        printaData(){
-            console.log(this.value);
+        ...mapActions({
+            sendData : 'store/putData',
+            getData : 'store/getAndPopulateData'
+        }),
+
+        stateChange(data){
+            this.sendData(data).then(err => console.log(err))
+
+            this.getData().then(response => this.$set(this.valueInterface, 'valueServer', response), err => console.log('warning! ' + err))
         }
     }
-    
 }
 
 </script>
