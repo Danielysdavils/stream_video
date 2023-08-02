@@ -1,24 +1,23 @@
 import { PUT_DATA} from '../Mutations/mutations-type'
-import crudApi from '../../api/crudApi.js'
-export default videoModule = {
+import { getData, queryData } from '../../api/crudApi.js'
+import Video from '@/class/Video' 
+
+export default {
+    namespaced: true,
+
     state: {
-        data : {
-            //Status inicial -- lista config padrão
-            resolution : {width : 0, height : 0},
-            codec : 0,
-            framRate : 0,
-            BitRate : 0,
-            Quantizer : 0
-        }
+        videoData : new Video()     
+    },
+
+    getters: {
+        videoData: state => state.videoData
     },
 
     //2. Quando o usuáro muda as config --> actions [mudança de status]
     mutations: {
-        
         // Recebe as alterações do actions e altera o status inicial da app
-
         [PUT_DATA](state, newState){
-            state.data = newState    
+            state.videoData.this.data = newState     
         }
     },
 
@@ -29,8 +28,9 @@ export default videoModule = {
 
         async getAndPopulateData({ commit }){
             //Peço pra api os dados
-            const data = await crudApi.getData();
+            const data = await getData();
             const newState = data.video;
+
                 // ... Tratamento da info
 
             // Mando pro mutations os dados recebidos da api
@@ -43,7 +43,7 @@ export default videoModule = {
             const data = newUserStatus //tratamento dos dados
             
             //mando pra api atualizar
-            await crudApi.queryData(data);
+            await queryData(data);
 
             // Atualizo o state com os dados do usuário
             commit(PUT_DATA, newUserStatus)

@@ -2,15 +2,12 @@
     <nav class="containerNav">
 
         <div class="containerOp">
-            <router-link to="/" class="linkBar">Home</router-link>
+            <router-link to="/home" class="linkBar">Home</router-link>
             <div class="row"></div>
         </div> 
-
-        <div class="tittle">
-            <img class="logotype" src="../../assets/fluxo-de-video.png" alt="logotype">
-            <h3 class="logoFont">Stream</h3>
-        </div>
         
+        <LogoApp />
+
         <div class="containerOp">
             <router-link to="/streamconfig" class="linkBar">Stream Config</router-link>
             <div class="row"></div> 
@@ -18,6 +15,16 @@
     
     </nav>
 </template>
+
+<script>   
+    import LogoApp from '../Logo/LogoApp.vue';
+
+    export default{
+        components: {
+        LogoApp
+}
+    }
+</script>
   
 <style>
     .containerNav{
@@ -28,29 +35,6 @@
         align-items: center;
         background-color: var(--color1);
         color: var(--color4);
-    }
-
-    .logoFont{
-        margin-top: 0cm;
-        margin-bottom: 0cm;
-        margin-left: 5px;
-    }
-
-    .tittle{
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-
-    .logotype{
-        width: 50px;
-        height: 50px;
     }
     
     .linkBar:link{

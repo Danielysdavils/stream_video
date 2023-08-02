@@ -6,12 +6,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name:'home'
+    name:'login',
+    component:() => import('@/views/login/LoginView.vue')
   },
+
   {
-    path:'/stream',
-    name: 'stream'
+    path:'/home',
+    name: 'home',
+    component: () => import('@/views/Home/HomeView.vue') 
   },
+
   {
     path: '/streamconfig',
     name: 'streamconfig',

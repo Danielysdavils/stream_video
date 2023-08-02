@@ -1,3 +1,3 @@
-export default AudioModules = {
-    
+export default {
+    namespace : true
 }

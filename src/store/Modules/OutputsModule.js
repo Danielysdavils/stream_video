@@ -1,3 +1,4 @@
-export default OutputsModules = {
+export default {
+    namespace : true
 
 }

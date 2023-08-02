@@ -1,8 +1,12 @@
 import Api from './Api.js';
+import Vue from 'vue';
 
 export const getData = async () => {
     try{
-        const data = await Api.get()
+        let data = {} 
+        await Vue.axios.get(Api).then((response) => {
+            data = response
+        })
         return data
 
     }catch(erro){

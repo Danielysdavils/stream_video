@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export default Api = axios.create({
+const Api = axios.create({
 
-    baseURL: ''
+    baseURL: 'xcxcxc'
 
 });
+
+export default Api;
 

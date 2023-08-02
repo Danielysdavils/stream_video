@@ -8,12 +8,9 @@
 </template>
 
 <script>
-
 //Metodo quando a data do servidor mude e quando a data do user mude 
 
 import { mapActions } from 'vuex'
-import store from  '@/store/store.js'
-import { reactive } from 'vue';
 
 export default{
     data: () => {
@@ -22,27 +19,40 @@ export default{
         }
     },
     
-    /*
     watch: {
-        valueInterface(newValue, oldValue){
-            if (newValue != oldValue)  
+        valueInterface(newValue){
+            this.updateChange(newValue)
+        },
+
+        getData(newValue){
+            //Atualizo o grafico conforme os dados do servidor
+            this.valueInterface = newValue
         }
     },
-    */
+
     methods:{
         ...mapActions({
             sendData : 'store/putData',
             getData : 'store/getAndPopulateData'
         }),
 
-        stateChange(data){
-            this.sendData(data).then(err => console.log(err))
-
-            this.getData().then(response => this.$set(this.valueInterface, 'valueServer', response), err => console.log('warning! ' + err))
+        //Mando e atualizo
+        async updateChange(data){
+            await this.sendData(data).then(
+                response => console.log(response), 
+                err => console.log(err)
+            )
+        },
+        
+        //recebo e atualizo
+        async getData(){
+            await this.getData().then(    
+                response => this.$set(this.valueInterface, 'valueServer', response), 
+                err => console.log('warning! ' + err)
+            )
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -66,6 +76,7 @@ export default{
     input[type="range"]{
         width: 90%;
         -webkit-appearance: none;
+                appearance: none;
         background-color: var(--color2);
         border: 1px solid;
         border-color: var(--color4);

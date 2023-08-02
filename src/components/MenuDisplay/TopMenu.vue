@@ -1,21 +1,29 @@
 <template>
-    <div class="container-top-menu"> 
-        <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children" >
-            <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img :src="dataSection[0].LogoTypeVideo" alt="" class="children-img"></div>
-            <h5 class="children-tittle">Video</h5>
-        </router-link>
+    <div class="container-top-menu">
+        <div class="container-nav-menu"> 
+            <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children" >
+                <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img :src="dataSection[0].LogoTypeVideo" alt="" class="children-img"></div>
+                <h5 class="children-tittle">Video</h5>
+            </router-link>
 
-        <router-link to="/streamconfig/audio" class="conteiner-top-children" >
-            <div v-on:click="setDataMenu('update:data-menu-audio')" class="backgroundImg">
-                <img :src="dataSection[1].LogoTypeAudio" alt="" class="children-img">
-            </div>
-            <h5 class="children-tittle">Audio</h5>
-        </router-link>
+            <router-link to="/streamconfig/audio" class="conteiner-top-children" >
+                <div v-on:click="setDataMenu('update:data-menu-audio')" class="backgroundImg">
+                    <img :src="dataSection[1].LogoTypeAudio" alt="" class="children-img">
+                </div>
+                <h5 class="children-tittle">Audio</h5>
+            </router-link>
         
-        <router-link to="/streamconfig/saida" class="conteiner-top-children" >
-            <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img :src="dataSection[2].LogoTypeSaida" alt="" class="children-img"></div>
-            <h5 class="children-tittle">Saída</h5>
-        </router-link>
+            <router-link to="/streamconfig/saida" class="conteiner-top-children" >
+                <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img :src="dataSection[2].LogoTypeSaida" alt="" class="children-img"></div>
+                <h5 class="children-tittle">Saída</h5>
+            </router-link>
+        </div>
+
+        <section class="conteiner-section-user">
+            <div class="backgroundImg">
+                <img class="children-img" src="../../assets/user2.png" alt="" >
+            </div>
+        </section>
     </div>
 </template>
 
@@ -73,15 +81,23 @@
 </script>
 
 <style>
-    .container-top-menu{
+    .container-top-menu {
         width: 100%;
         height: 10%;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         background-color: var(--color2Gradiente);
         padding: 10px;
     }
 
+   .container-nav-menu{
+        height: 50%;
+        display: flex;
+        flex-direction: row;
+    }
+    
     .conteiner-top-children{
         height: 100%;
         display: flex;
@@ -110,6 +126,13 @@
         margin-left: 10px;
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+
+    .conteiner-section-user{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 

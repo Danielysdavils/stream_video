@@ -11,8 +11,7 @@
                 <img :src="Sendsrc" alt="" class="iconeCardMenu">
             </div>
         </div>
-      
-          
+  
     </div>
 </template>
 
@@ -29,7 +28,8 @@
 .conteinerCardMenu, .conteinerItemDefault{
     width: 100%;
     height: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,11 +59,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: var(--color4);
-
-    
+    background-color: var(--color2Gradiente);
 }
-
 
 .textCardMenu{
     font-size: 10px;
