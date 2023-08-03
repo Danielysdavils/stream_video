@@ -39,7 +39,7 @@ export default {
         z-index: 10;
         background-color: var(--color4);
         margin-right: 10px;
-        margin-top: 45px;
+        margin-top: 50px;
         position: absolute;
         border-radius: 5px;
         width: 15%;

@@ -9,6 +9,8 @@
     export default {
         name: 'ParticlesJS',
 
+        props: ['colorCircle', 'colorShape', 'colorLine', 'value'],
+
         mounted () {
             this.$nextTick(() => {
                 this.initParticlesJS()
@@ -21,20 +23,20 @@
             particlesJS('particles-js', {
                 'particles': {
                 'number': {
-                    'value': 30,
+                    'value': this.value,
                     'density': {
                     'enable': true,
                     'value_area': 800
                     }
                 },
                 'color': {
-                    'value': '#b68c31'
+                    'value': this.colorCircle
                 },
                 'shape': {
                     'type': 'circle',
                     'stroke': {
                     'width': 0,
-                    'color': '#0f1b2e'
+                    'color': this.colorShape
                     },
                     'polygon': {
                     'nb_sides': 5
@@ -68,7 +70,7 @@
                 'line_linked': {
                     'enable': true,
                     'distance': 300,
-                    'color': '#0f1b2e',
+                    'color': this.colorLine,
                     'opacity': 0.4,
                     'width': 2
                 },
@@ -128,9 +130,9 @@
                 },
                 'retina_detect': true
             })
-            }
         }
     }
+}
 </script>
 
 <style>

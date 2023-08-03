@@ -1,39 +1,37 @@
 <template>
-    <div class="conteiner-Settings-video">
-        <h2 id="resolition" class="tittle-section">Resolution</h2>
-        <RangeInput />
-        <SelectedButton />
-
-        <h2 id="codec" class="tittle-section">Codec</h2>
-        <RangeInput />
-
-        <h2 id="framRate" class="tittle-section">FramRate</h2>
-        <RangeInput />
-
-        <h2 id="bitRate" class="tittle-section">BitRate</h2>
-        <RangeInput />
-
-        <h2 id="quantizer" class="tittle-section">Quantizer</h2>
-        <RangeInput />
+    <div>
+        <Carousel :v-for="tool in tools" :key="tool.id">
+            <CarouselItem>{{ tool }}</CarouselItem>        
+        </Carousel>
     </div>
 </template>
 
 <script>
     import RangeInput from '../../../../components/Graphics/RangeInput.vue'
     import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
+    import Carousel from '@/components/Carousel/Carousel.vue'
+    import CarouselItem from '@/components/Carousel/CarouselItem.vue'
 
     export default{
-        components :{
-            RangeInput,
-            SelectedButton
-        },
-
         props: ['itemSelected'],
 
         data(){
             return{
-                tittleItemSelected : this.itemSelected
+                tools : [ 
+                    {id: 1, tool: resolition},
+                    {id: 2, tool: codec},
+                    {id: 3, tool: framRate},
+                    {id: 4, tool: bitRate},
+                    {id: 5, tool: quantizer}
+                ]
+
             }
+        },
+
+        components: {
+            RangeInput,
+            SelectedButton,
+            Carousel
         }
     }
 </script>

@@ -1,7 +1,6 @@
 <template>
     <div class="containerDisplay">
         <navBar />
-
         <div class="displayView">
             <MenuDisplay @openBar="openBar" :items="dataComponent" :section="dataSection.LogoTypeVideo" />
             
@@ -10,7 +9,7 @@
                     <SettingSaving :itemSelected="itemClicked" v-if="dataSection.tittle == 'audio'" />
                     <SettingsVideo :itemSelected="itemClicked" v-if="dataSection.tittle == 'video'" />
             </aside>
-        
+
             <div class="displaySettings">
                 <TopMenu  @setData ="set" />
                 <StreamSection />
@@ -30,6 +29,7 @@
     import SettingSaving from  '@/views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue'
     import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue' 
     import navBar from '@/components/navBar/navBar.vue'
+    //import Particles from '@/components/Particles/Particles.vue'
 
     export default{
         data: () => {
@@ -37,7 +37,13 @@
                 dataComponent : [],
                 dataSection: {},
                 isExpandedOpenBar: false,
-                itemClicked : ''
+                itemClicked : '',
+                colorParticles: { 
+                    colorCircle: '#0f1b2e',
+                    colorShape: '#0a121f',
+                    colorLine: '#0a121f',
+                    value: 30
+                }
             }
         },
         components: {
@@ -49,6 +55,7 @@
             SettingSaving,
             SettingsVideo,
             navBar
+            //Particles
         },
 
         methods: {

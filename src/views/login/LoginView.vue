@@ -1,7 +1,7 @@
 <template>
     <div class="component-conteiner-form">
         <FormComponent :tittle="this.login"  />
-        <Particles />
+        <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />
 
         <div class="copy-right">
             <h5>Develop by</h5>
@@ -23,7 +23,13 @@
 
         data: () => {
             return{
-                login: 'Login'
+                login: 'Login',
+                colorParticles: { 
+                    colorCircle: '#b68c31',
+                    colorShape: '#0a121f',
+                    colorLine: '#0a121f',
+                    value: 30
+                }
             }
         }
     }

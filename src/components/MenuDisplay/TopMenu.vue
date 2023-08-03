@@ -20,24 +20,23 @@
         </div>
 
         <section class="conteiner-section-user">
-            <div class="backgroundImg">
-                <img class="children-img" src="../../assets/user2.png" alt="" >
-            </div>
-
             <div class="conteiner-options-user">
                 <AppDropDown>
                     <template slot="toggler">
-                        <div class="cont-seta-menu">
-                            <img src="../../assets/seta.png" alt=""  class="children-img">
-                        </div>
+                        <router-link to="#">
+                            <div class="backgroundImg">
+                                <img class="children-img" src="../../assets/user3.png" alt="" >
+                            </div>
+                        </router-link>
                     </template>
-
                     <AppDropDownContent>
                         <AppDropDownItem>
-                            <div class="cont-item-dropDown">
-                                <img class="icone-item-dropDown" src="../../assets/sair.png" alt="">
-                                <h3 class="txt-item-dropdown">Logout</h3>
-                            </div>
+                            <router-link to="/">
+                                <div class="cont-item-dropDown">
+                                    <img class="icone-item-dropDown" src="../../assets/sair.png" alt="">
+                                    <h3 class="txt-item-dropdown">Logout</h3>
+                                </div>
+                            </router-link>
                         </AppDropDownItem>
                         <AppDropDownItem>
                             <div class="cont-item-dropDown">
@@ -53,15 +52,22 @@
 </template>
 
 <script>
+
+
+    //Desacoplar TopMenu!!
+    //Barra de Menu que contem opções e envia as opções selecionadas!!
+    
     import AppDropDown from '@/components/DropDown/AppDropDown.vue'
     import AppDropDownContent from '@/components/DropDown/AppDropDownContent.vue'
     import AppDropDownItem from '@/components/DropDown/AppDropDownItem.vue'
+    import Video from '@/class/Video'
 
     export default{
         data : () => {
             return{
-                dataMenu : [],
-                // PRECISA MESMO ISTO??
+                
+                dataToDisplay : {},
+
                 dataSection: [
                     {tittle: 'video', LogoTypeVideo: require('../../assets/videos.png')},
                     {tittle: 'audio', LogoTypeAudio: require('../../assets/microfone.png')},
