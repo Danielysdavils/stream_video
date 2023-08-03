@@ -1,4 +1,4 @@
-import Api from '@/api/api';
+import Api from '@/api/Api';
 import Vue from 'vue';
 
 export const getData = async () => {

@@ -68,12 +68,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--color2Gradiente);
+        background: var(--color3Gradiente);
         border-radius: 10px;
-        padding: 20px;
+        padding: 10px;
         z-index: 3;
         width: 40%;
-        height: 60%;
+        height: 65%;
     }
 
     form{
@@ -109,10 +109,6 @@
     }
 
     .button-form{
-        margin-top: 10px;
-    }
-
-    .logo-cont{
         margin-top: 10px;
     }
 
