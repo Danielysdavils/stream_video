@@ -1,5 +1,7 @@
 <template>
     <div class="containerDisplay">
+        <navBar />
+
         <div class="displayView">
             <MenuDisplay @openBar="openBar" :items="dataComponent" :section="dataSection.LogoTypeVideo" />
             
@@ -27,6 +29,7 @@
     import SettingsAlarmVue from './MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue'
     import SettingSaving from  '@/views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue'
     import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue' 
+    import navBar from '@/components/navBar/navBar.vue'
 
     export default{
         data: () => {
@@ -44,7 +47,8 @@
             TopMenu,
             SettingsAlarmVue,
             SettingSaving,
-            SettingsVideo
+            SettingsVideo,
+            navBar
         },
 
         methods: {
@@ -90,7 +94,7 @@
         display: flex;
         width: 100%;
         height: 100%;
-        flex-direction: row;
+        flex-direction: column;
 
         background-image: url(../../assets/fundo7.png);
         background-size: cover;

@@ -29,7 +29,7 @@ export default {
     },
 
     methods: {
-        triggerAction(e) {
+        triggerAction() {
             // ! TODO: FIXME: Deletar!!
             // e.preventDefault();
             //

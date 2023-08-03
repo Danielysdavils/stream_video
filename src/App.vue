@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-      <LoginView />
+      <router-view></router-view>
     </div>
   </template>
   
   <script>
-    import LoginView from "@/views/login/LoginView.vue";
+    //import LoginView from "@/views/login/LoginView.vue";
     //import navBar from '@/components/navBar/navBar.vue'
 
     export default{
       components: {
-        LoginView
+        //LoginView,
         //navBar
       }
     }

@@ -35,7 +35,9 @@
         align-items: center;
         background-color: var(--color1);
         color: var(--color4);
-    }
+        z-index: 4;
+        position: relative;
+    }    
     
     .linkBar:link{
         color: var(--color4);

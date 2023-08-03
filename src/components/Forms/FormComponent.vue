@@ -1,6 +1,5 @@
 <template>
     <div class="card-login-conteiner">
-
         <form action="" class="conteiner-form">
             <div class="tittle-containter">
                 <h1 class="tittle-cont">{{ this.tittle }}</h1>
@@ -22,7 +21,6 @@
             
             <div class="logo-cont"><LogoApp /></div>
         </form>
-
     </div>
 </template>
 
@@ -54,7 +52,7 @@
             submitData(){
                 if(this.validateName && this.passwordData === 'admin'){
                     this.dataUser = {userName: this.nameData, userPassword: this.passwordData}
-                    this.$router.push({name: 'home'})
+                    this.$router.push('/home')
                 }
             }
         },
@@ -68,18 +66,20 @@
 <style>
     .card-login-conteiner{
         display: flex;
-        flex-direction: column;
         align-items: center;
-
+        justify-content: center;
+        background: var(--color2Gradiente);
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 3;
         width: 40%;
-
-        border-radius: 4px;
-        background-color: var(--color1);
+        height: 60%;
     }
 
     form{
         display: flex;
         flex-direction: column;
+        align-items: center;
         padding: 30px;
         color: var(--color4);
         width: 100%;
@@ -87,7 +87,7 @@
     }
 
     .cont-obj{
-        width:100%;
+        width:80%;
 
     }
 

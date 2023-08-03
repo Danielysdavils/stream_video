@@ -1,5 +1,5 @@
-import { PUT_DATA} from '../Mutations/mutations-type'
-import { getData, queryData } from '../../api/crudApi.js'
+import { PUT_DATA } from '@/store/mutations/mutations-type'
+import { getData, queryData } from '@/api/crudApi'
 import Video from '@/class/Video' 
 
 export default {

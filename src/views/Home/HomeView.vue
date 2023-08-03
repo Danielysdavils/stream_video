@@ -1,15 +1,17 @@
 <template>
     <div>
         <navBar /> 
-        <router-view></router-view>
+        <Particles />
     </div>
 </template>
 <script>
     import navBar from '@/components/navBar/navBar.vue'
+    import Particles from '@/components/Particles/Particles.vue';
 
     export default {
         components:{
-            navBar
+            navBar,
+            Particles
         }
     }
 </script>
