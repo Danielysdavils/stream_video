@@ -1,24 +1,25 @@
 <template>
     <div class="container-top-menu">
-        <div class="container-nav-menu"> 
-            <router-link to="/streamconfig/settingsvideo" class="conteiner-top-children" >
-                <div v-on:click="setDataMenu('update:data-menu-video')" class="backgroundImg"><img :src="dataSection[0].LogoTypeVideo" alt="" class="children-img"></div>
-                <h5 class="children-tittle">Video</h5>
-            </router-link>
-
-            <router-link to="/streamconfig/audio" class="conteiner-top-children" >
-                <div v-on:click="setDataMenu('update:data-menu-audio')" class="backgroundImg">
-                    <img :src="dataSection[1].LogoTypeAudio" alt="" class="children-img">
-                </div>
-                <h5 class="children-tittle">Audio</h5>
-            </router-link>
-        
-            <router-link  to="/streamconfig/saida" class="conteiner-top-children" >
-                <div v-on:click="setDataMenu('update:data-menu-saida')" class="backgroundImg"><img :src="dataSection[2].LogoTypeSaida" alt="" class="children-img"></div>
-                <h5 class="children-tittle">Saída</h5>
-            </router-link>
+        <div class="conteiner-options-render">
+            <div 
+            class="container-nav-menu" 
+            v-for="option in Options" 
+            :key="option.id"> 
+                <router-link 
+                :to="'/streamconfig/'+ option.data.urlKey" 
+                class="conteiner-top-children" >
+                    <div 
+                    v-on:click="setDataMenu(option.data.name)" 
+                    class="backgroundImg">
+                        <img 
+                            :src="option.data.icone" 
+                            alt="" 
+                            class="children-img">
+                    </div>
+                        <h5 class="children-tittle">{{ option.data.name }}</h5>
+                </router-link>
+            </div>
         </div>
-
         <section class="conteiner-section-user">
             <div class="conteiner-options-user">
                 <AppDropDown>
@@ -52,62 +53,19 @@
 </template>
 
 <script>
-
-
-    //Desacoplar TopMenu!!
-    //Barra de Menu que contem opções e envia as opções selecionadas!!
-    
     import AppDropDown from '@/components/DropDown/AppDropDown.vue'
     import AppDropDownContent from '@/components/DropDown/AppDropDownContent.vue'
     import AppDropDownItem from '@/components/DropDown/AppDropDownItem.vue'
-    import Video from '@/class/Video'
 
     export default{
-        data : () => {
-            return{
-                
-                dataToDisplay : {},
-
-                dataSection: [
-                    {tittle: 'video', LogoTypeVideo: require('../../assets/videos.png')},
-                    {tittle: 'audio', LogoTypeAudio: require('../../assets/microfone.png')},
-                    {tittle: 'saida', LogoTypeSaida: require('../../assets/conexao-de-nuvem.png')}
-                ]
-            }
-        },
+        //Recebe o array de elementos a renderizar
+        props: ['Options'],
         
         methods:{
-            setDataMenu(event){
-                switch(event){
-                    case 'update:data-menu-video':
-                        this.dataMenu = [
-                            {id:1, src: require('../../assets/settings.png'), text: 'resolution'},
-                            {id:2, src: require('../../assets/settings.png'), text: 'codec'},
-                            {id:3, src: require('../../assets/settings.png'), text: 'framRate'},
-                            {id:4, src: require('../../assets/settings.png'), text: 'BitRate'},
-                            {id:5, src: require('../../assets/settings.png'), text: 'Quantizer'}
-                        ];
-
-                        this.$emit('setData', this.dataMenu, this.dataSection[0]);
-                        break;
-
-                    case 'update:data-menu-audio':
-                        this.dataMenu = [
-                            {id: 1, src: require('../../assets/teste.png'), text: 'som'},
-                            {id: 2, src: require('../../assets/teste.png'), text: 'hz'}
-                        ];
-
-                        this.$emit('setData', this.dataMenu, this.dataSection[1]);
-                        break;
-                        
-                    case 'update:data-menu-saida':
-                        this.dataMenu = [
-                            {id: 1, src: require('../../assets/videos.png'), text: 'IP'},
-                            {id: 2, src: require('../../assets/videos.png'), text: 'SSS'}
-                        ];
-                        this.$emit('setData', this.dataMenu, this.dataSection[2]);
-                        break;
-                }
+            //Manda a opção do menu clicada 
+            setDataMenu(optionClicked){
+                console.log(optionClicked);
+                this.$emit('setData', optionClicked)
             }
         },
 
@@ -129,12 +87,19 @@
         align-items: center;
         background-color: var(--color2Gradiente);
         padding: 10px;
+        z-index: 10;
+        position: relative;
     }
 
    .container-nav-menu{
-        height: 50%;
+        width: auto;
         display: flex;
         flex-direction: row;
+    }
+
+    .conteiner-options-render{
+        display: flex;
+        height: 50%;
     }
     
     .conteiner-top-children{

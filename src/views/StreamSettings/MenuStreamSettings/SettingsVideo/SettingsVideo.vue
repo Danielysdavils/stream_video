@@ -1,15 +1,15 @@
 <template>
     <div>
-        <Carousel :v-for="tool in tools" :key="tool.id">
-            <CarouselItem>{{ tool }}</CarouselItem>        
-        </Carousel>
+        <CarouselDisplay>
+            <CarouselItem></CarouselItem>        
+        </CarouselDisplay>
     </div>
 </template>
 
 <script>
-    import RangeInput from '../../../../components/Graphics/RangeInput.vue'
-    import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
-    import Carousel from '@/components/Carousel/Carousel.vue'
+    //import RangeInput from '../../../../components/Graphics/RangeInput.vue'
+    //import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
+    import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
     import CarouselItem from '@/components/Carousel/CarouselItem.vue'
 
     export default{
@@ -17,21 +17,16 @@
 
         data(){
             return{
-                tools : [ 
-                    {id: 1, tool: resolition},
-                    {id: 2, tool: codec},
-                    {id: 3, tool: framRate},
-                    {id: 4, tool: bitRate},
-                    {id: 5, tool: quantizer}
-                ]
+                
 
             }
         },
 
         components: {
-            RangeInput,
-            SelectedButton,
-            Carousel
+            //RangeInput,
+            //SelectedButton,
+            CarouselDisplay,
+            CarouselItem
         }
     }
 </script>

@@ -142,9 +142,9 @@
         height: 100%;
         background-size: cover;
         background-position: 50% 50%;
-        position: fixed;
         top: 0px;
         z-index:1;
+        position: absolute;
     }
 
 </style>

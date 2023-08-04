@@ -2,16 +2,10 @@
     <div class="containerDisplay">
         <navBar />
         <div class="displayView">
-            <MenuDisplay @openBar="openBar" :items="dataComponent" :section="dataSection.LogoTypeVideo" />
-            
-            <aside :class="[isExpandedOpenBar && 'is-expanded']">
-                    <SettingsAlarmVue :itemSelected="itemClicked" v-if="dataSection.tittle == 'saida'" />
-                    <SettingSaving :itemSelected="itemClicked" v-if="dataSection.tittle == 'audio'" />
-                    <SettingsVideo :itemSelected="itemClicked" v-if="dataSection.tittle == 'video'" />
-            </aside>
-
+            <MenuDisplay :optionSelected="dataSelected" />
+           
             <div class="displaySettings">
-                <TopMenu  @setData ="set" />
+                <TopMenu  @setData ="set" :Options="dataSection" />
                 <StreamSection />
                 <MenuVideoScrollBar />
             </div>
@@ -20,30 +14,22 @@
 </template>
 
 <script>
-
     import MenuDisplay from '@/components/MenuDisplay/MenuDisplay.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue'
-    import SettingsAlarmVue from './MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue'
-    import SettingSaving from  '@/views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue'
-    import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue' 
     import navBar from '@/components/navBar/navBar.vue'
-    //import Particles from '@/components/Particles/Particles.vue'
+
+    //Clases
+    import VideoService from '@/class/Video/VideoService'
+    import OutputService from '@/class/Output/OutputService'
+    import AudioService from '@/class/Audio/AudioService'
 
     export default{
         data: () => {
             return {
-                dataComponent : [],
-                dataSection: {},
-                isExpandedOpenBar: false,
-                itemClicked : '',
-                colorParticles: { 
-                    colorCircle: '#0f1b2e',
-                    colorShape: '#0a121f',
-                    colorLine: '#0a121f',
-                    value: 30
-                }
+                dataSection: [{data: new VideoService(), id: 1}, {data: new OutputService(), id: 2}, {data: new AudioService(), id: 3}],
+                dataSelected : ''
             }
         },
         components: {
@@ -51,52 +37,18 @@
             MenuVideoScrollBar,
             StreamSection,
             TopMenu,
-            SettingsAlarmVue,
-            SettingSaving,
-            SettingsVideo,
             navBar
-            //Particles
         },
 
         methods: {
-            set(d, s){
-                this.dataComponent = d;
-                this.dataSection = s
-            },
-
-            openBar(item){
-                this.isExpandedOpenBar = this.itemClicked != item || this.itemClicked == ''  ? true : !this.isExpandedOpenBar
-                this.itemClicked = item 
+            set(s){
+                this.dataSelected = s
             }
         }
     }
 </script>
 
 <style>
-
-    aside{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        background-color: var(--color1Gradiente);
-        overflow: hidden;
-        min-height: 100vh;
-        width: 0%;
-
-        transition: width 0.5s ease;
-        transition-timing-function: linear;
-
-        overflow-y: scroll;
-    }
-
-    .is-expanded{
-        width: 40%;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start; 
-    }
-
     .containerDisplay{
         display: flex;
         width: 100%;

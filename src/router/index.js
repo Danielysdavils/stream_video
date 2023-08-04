@@ -22,20 +22,15 @@ const routes = [
     component: () => import('@/views/StreamSettings/StreamSettingsView.vue'),
     children : [
       {
-        path: 'settingsvideo',
-        component: () => import('@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue'),
-        children: [
-          {
-            path: ''
-          }
-        ]
+        path: 'video',
+        component: () => import('@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue')
       },
       {
         path: 'audio',
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue')
       },
       {
-        path: 'saida',
+        path: 'output',
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue')
       }
     ]

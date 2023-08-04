@@ -1,13 +1,13 @@
 import { PUT_DATA } from '@/store/Mutations/mutations-type'
 import { getData, queryData } from '@/api/crudApi'
-import Video from '@/class/Video' 
+//import Video from '@/class/Video' 
 
 export default {
     namespaced: true,
 
     state: {
         
-        videoData : new Video()     
+        //videoData : new Video()     
     },
 
     getters: {

@@ -1,39 +1,96 @@
 <template>
-    <div class="container-menu-display">
-        <div class="conteiner-section-item">
-            <div class="itemDisplay" v-for="i in this.items" v-bind:key="i.id" >
-                <router-link to="/streamconfig/settingsvideo">
-                    <div class="conteiner-itemDisplay" v-on:click="setItemClicked(i.text)">
-                        <ItemMenuDisplay v-bind:Clicked="ItemClicked" v-bind:Sendsrc="i.src" v-bind:Sendtext="i.text"  />
+        <div  class="">
+            <div class="conteiner-section-item">
+                <div class="itemDisplay" v-for="tool in setToolsToRender" v-bind:key="tool.id" >
+                    <div 
+                        class="conteiner-itemDisplay" 
+                        v-on:click="setItemClicked(tool.name)">
+                        <router-link to="#" class="item-link">
+                            <ItemMenuDisplay 
+                            :Clicked="itemClicked" 
+                            :Sendsrc="tool.style.icone" 
+                            :Sendtext="tool.name"/>
+                        </router-link>
                     </div>
-                </router-link>
+                </div>
             </div>
+
+            <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" :width="dinamicWidth" />
         </div>
-    </div>
 </template>
 
 <script>
     import ItemMenuDisplay from '@/components/MenuDisplay/ItemMenuDisplay.vue'
+    import AsideMenuDisplay from '@/components/MenuDisplay/AsideMenuDisplay.vue'
+
+    //CLASS
+    import VideoTools from '@/class/Video/VideoTools'
+    import AudioTools from '@/class/Audio/AudioTools'
+    import OutputTools from '@/class/Output/OutputTools'
 
     export default{
         data: () => {
             return{
-                ItemClicked : {
-                    name: ''
+                tools : {
+                    videoTools: new VideoTools(),
+                    audioTools: new AudioTools(),
+                    outputTools: new OutputTools()
+                },
+
+                section : '',
+                itemClick : '',
+                itemClicked:'',
+                isExpandedAside: false
+            }
+        },
+        props:['optionSelected'],
+        
+        components:{
+           ItemMenuDisplay,
+           AsideMenuDisplay
+        },
+
+        computed: {
+            setToolsToRender(){
+                let data = []
+                switch(this.optionSelected){
+                    case 'Video' : 
+                        data = this.tools.videoTools.tools;
+                        break;
+                    case 'Audio':
+                        data = this.tools.audioTools.tools;
+                        break;
+                    case 'Output':
+                        data = this.tools.outputTools.tools;
+                        break;
+                }
+                return data;
+            },
+
+            reajustAside(){
+                if(isExpandedAside){
+                    return {
+                        "--widthComponen" : "50%"
+                    }
+
+                }else{
+                    return{
+                        "--widthComponen" : "10%"
+                    }
                 }
             }
         },
 
-        props:['items', 'section'],
-        
-        components:{
-           ItemMenuDisplay
-        },
-
         methods: {
             setItemClicked(element){
-                this.ItemClicked = {name: element}
-                this.$emit('openBar', this.ItemClicked.name)
+                this.itemClick = element
+
+                this.openAside();
+            },
+
+            openAside(){
+                this.isExpandedAside = this.itemClicked != this.itemClick || this.itemClicked == ''  ? true : !this.isExpandedOpenBar
+                this.itemClicked = this.itemClick; 
             }
         }
     }
@@ -49,18 +106,13 @@
     flex-direction: row;
 }
 
-.container-menu-display{
+.conteiner-menuDisplay{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-
-    width: 10%;
     height: 100%;
-
-    background-color: var(--color2Gradiente);
     color: var(--color4);
-
 }
 
 .container-item-display{
@@ -68,13 +120,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .conteiner-section-item{
     height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--color2Gradiente);
 }
 
 .conteiner-itemDisplay{
@@ -83,6 +136,12 @@
 
 .itemDisplay{
     height: 10%;
+    margin-top: 15px;
+}
+
+.item-link:link, .item-link:visited{
+    text-decoration: none;
+    color: var(--color4);
 }
 
 </style>
