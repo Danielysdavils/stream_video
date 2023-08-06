@@ -11,9 +11,10 @@ html, body{
     --color2Gradiente: rgba(6, 11, 20, 0.7);
     --color3Gradiente: rgba(6, 11, 20, 0.9);
 
-    --widthComponent: 10%,
-    --widthMenu: 100%,
-    --widthAside: 0% 
+    --WidthConteiner: 0;
+    --widthMenu: 0;
+    --widthAsideInit: 0;
+    --widthAsideEnd: 0; 
 }
 
 

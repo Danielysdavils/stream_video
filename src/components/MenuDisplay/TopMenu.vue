@@ -87,7 +87,7 @@
         align-items: center;
         background-color: var(--color2Gradiente);
         padding: 10px;
-        z-index: 10;
+        z-index: 15;
         position: relative;
     }
 

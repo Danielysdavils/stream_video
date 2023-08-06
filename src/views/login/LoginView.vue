@@ -4,7 +4,7 @@
 
         <div class="copy-right">
             <h5>Develop by</h5>
-            <h2>My Tech Ware</h2>
+            <h2>MTW</h2>
         </div>
 
         <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />

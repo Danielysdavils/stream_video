@@ -4,7 +4,7 @@ export default class AudioTools{
             id: 1,
             name: 'Sound',
             style : {
-                icone: require('@/assets/config.png')
+                icone: require('@/assets/settings.png')
             }
         }
     ]    

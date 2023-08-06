@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="conteiner-home">
         <navBar />
-        <TopMenu /> 
+        <TopMenu />
+        <StreamSection /> 
         <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />
     </div>
 </template>
@@ -9,6 +10,7 @@
     import navBar from '@/components/navBar/navBar.vue';
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
+    import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
 
     export default {
 
@@ -26,7 +28,19 @@
         components:{
             navBar,
             Particles,
-            TopMenu
+            TopMenu,
+            StreamSection
         }
     }
 </script>
+
+<style>
+    .conteiner-home{
+        display: flex;
+        flex-direction: column;
+        
+        height: 100%;
+        width: 100%;
+    }
+
+</style>

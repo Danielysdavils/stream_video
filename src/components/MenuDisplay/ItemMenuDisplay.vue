@@ -92,7 +92,7 @@
     border-bottom-color: var(--color1);
     border-left-color: var(--color3);
     border-right-color: var(--color3);
-    background-color: var(--color3);
+    background-color: var(--color1);
     border-radius: 4px;
     padding: 8px;
     margin: 6px;

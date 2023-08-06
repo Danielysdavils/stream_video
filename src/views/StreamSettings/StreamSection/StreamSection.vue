@@ -10,7 +10,14 @@
     .displayContainer{
         width: 100%;
         height: 60%;
+
+        display: flex;
+        justify-content: center;
+
         padding: 30px;
+
+        position: relative;
+        z-index: 10;
     }
 
     .conteiner-border{
@@ -18,7 +25,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        width: 90%;
         height: 80%;
         border-radius: 5px;
         box-shadow: 1px 1px 10px var(--color3);

@@ -4,14 +4,14 @@ export default class OutpuTools{
             id: 1,
             name: 'IP',
             style : {
-                icone: require('@/assets/config.png')
+                icone: require('@/assets/settings.png')
             }
         },
         {
             id: 2,
             name: 'SS',
             style : {
-                icone: require('@/assets/config.png')
+                icone: require('@/assets/settings.png')
             }
         }
     ]    

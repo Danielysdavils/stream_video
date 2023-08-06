@@ -1,6 +1,6 @@
 <template>
-        <div  class="">
-            <div class="conteiner-section-item">
+        <div class="conteiner-menuDisplay" :style="reajustConteiner">
+            <div class="conteiner-section-item" :style="reajustSection">   
                 <div class="itemDisplay" v-for="tool in setToolsToRender" v-bind:key="tool.id" >
                     <div 
                         class="conteiner-itemDisplay" 
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" :width="dinamicWidth" />
+            <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" />
         </div>
 </template>
 
@@ -66,30 +66,25 @@
                 }
                 return data;
             },
+            reajustConteiner(){
+                if(this.isExpandedAside) return {"--WidthConteiner" : "50%"}    
+                else return {"--WidthConteiner" : "10%"}
+            },
 
-            reajustAside(){
-                if(isExpandedAside){
-                    return {
-                        "--widthComponen" : "50%"
-                    }
-
-                }else{
-                    return{
-                        "--widthComponen" : "10%"
-                    }
-                }
+            reajustSection(){
+                if(this.isExpandedAside) return {"--widthMenu" : "30%"}    
+                else return {"--widthMenu" : "100%"}
             }
         },
 
         methods: {
             setItemClicked(element){
                 this.itemClick = element
-
                 this.openAside();
             },
 
             openAside(){
-                this.isExpandedAside = this.itemClicked != this.itemClick || this.itemClicked == ''  ? true : !this.isExpandedOpenBar
+                this.isExpandedAside = this.itemClicked != this.itemClick || this.itemClicked == ''  ? true : !this.isExpandedAside;
                 this.itemClicked = this.itemClick; 
             }
         }
@@ -112,7 +107,11 @@
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    width: var(--WidthConteiner);
     color: var(--color4);
+
+    transition: width 1s ease;
+    transition-timing-function: linear;
 }
 
 .container-item-display{
@@ -120,14 +119,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .conteiner-section-item{
     height: 100%;
+    width: var(--widthMenu);
     display: flex;
     flex-direction: column;
     background-color: var(--color2Gradiente);
+
+    transition: width 0.5s ease;
+    transition-timing-function: linear;
 }
 
 .conteiner-itemDisplay{
