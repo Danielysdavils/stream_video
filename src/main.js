@@ -2,9 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import Vuex from 'vuex'
-import store from './store/store.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
+//modules
+import userModule from './store/Modules/UserModule'
 
 import { BootstrapVue, IconsPlugin } from  'bootstrap-vue'
 import  'bootstrap/dist/css/bootstrap.css' 
@@ -19,6 +21,6 @@ Vue.use(VueAxios, axios)
 
 new Vue({
   render: h => h(App),
-  router,
-  store: store
+  userModule,
+  router
 }).$mount('#app')

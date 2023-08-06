@@ -51,9 +51,15 @@
         methods: {
             submitData(){
                 if(this.validateName && this.passwordData === 'admin'){
-                    this.dataUser = {userName: this.nameData, userPassword: this.passwordData}
+                    this.dataUser = {name: this.nameData, password: this.passwordData}
+                    
+                    this.sendData();
                     this.$router.push('/home')
                 }
+            },
+
+            sendData(){
+                this.$emit('sendData', this.dataUser)
             }
         },
 
@@ -73,7 +79,9 @@
         padding: 10px;
         z-index: 3;
         width: 40%;
-        height: 65%;
+
+        min-width: 400px;
+        max-width: 500px;
     }
 
     form{

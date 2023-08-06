@@ -39,7 +39,7 @@
             TopMenu,
             navBar
         },
-
+        //Envia a opção que foi clicada
         methods: {
             set(s){
                 this.dataSelected = s

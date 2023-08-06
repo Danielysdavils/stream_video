@@ -24,10 +24,11 @@
             <div class="conteiner-options-user">
                 <AppDropDown>
                     <template slot="toggler">
-                        <router-link to="#">
+                        <router-link to="#" class="user-and-name">
                             <div class="backgroundImg">
                                 <img class="children-img" src="../../assets/user3.png" alt="" >
                             </div>
+                            <h3 class="section-user-name">{{ this.userName }}</h3>
                         </router-link>
                     </template>
                     <AppDropDownContent>
@@ -56,10 +57,17 @@
     import AppDropDown from '@/components/DropDown/AppDropDown.vue'
     import AppDropDownContent from '@/components/DropDown/AppDropDownContent.vue'
     import AppDropDownItem from '@/components/DropDown/AppDropDownItem.vue'
+    import userModule from '@/store/Modules/UserModule'
 
     export default{
         //Recebe o array de elementos a renderizar
         props: ['Options'],
+
+        data: () => {
+            return{
+                userName: userModule.getters.user
+            }
+        },
         
         methods:{
             //Manda a opção do menu clicada 
@@ -100,6 +108,7 @@
     .conteiner-options-render{
         display: flex;
         height: 50%;
+        margin-left: 70px;
     }
     
     .conteiner-top-children{
@@ -113,6 +122,12 @@
     .conteiner-top-children:link, .conteiner-top-children:visited{
         color: var(--color4);
         text-decoration: none;
+    }
+
+    .user-and-name:link, .user-and-name:visited{
+        display: flex;
+        text-decoration: none;
+        color: var(--color4);
     }
 
     .backgroundImg{
@@ -148,6 +163,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-right: 100px;
     }
 
     .cont-item-dropDown{
@@ -163,5 +179,22 @@
 
     .txt-item-dropdown{
         font-size: 15px;
+    }
+
+    .section-user-name{
+        margin-left: 6px;
+        background-color: var(--color4Gradiente);
+        border-radius: 36px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        color: var(--color1);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 90px;
+        text-align: center;
+        font-size: 20px;
     }
 </style>

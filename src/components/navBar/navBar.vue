@@ -30,7 +30,7 @@
     .containerNav{
         display: flex;
         width: 100%;
-        height: 10%;
+        height: 7%;
         flex-direction: row;
         align-items: center;
         background-color: var(--color1);
@@ -47,6 +47,7 @@
         color: var(--color4);
     }
     .linkBar:hover{
+        transition: 1s ease;
         color: var(--color3);
     }
     .containerOp{
@@ -62,6 +63,11 @@
         background-color: var(--color4);
         border-radius: 20%;
     }
-    
+
+    .row:hover {
+        transition: 1s ease;
+        background-color: var(--color3);
+    }
+
 </style>
   
