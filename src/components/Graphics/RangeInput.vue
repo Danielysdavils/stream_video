@@ -15,7 +15,9 @@
 </template>
 
 <script>
+
 //Metodo quando a data do servidor mude e quando a data do user mude 
+// Desacoplar metodos de chamada de Store do componente??
 
 import { mapActions } from 'vuex'
 

@@ -96,11 +96,10 @@
 
     .cont-obj{
         width:80%;
-
     }
 
     .cont-button{
-        width: 100%;
+        width: 40%;
         margin-top: 10px;
         display: flex;
         align-items: center;

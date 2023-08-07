@@ -33,7 +33,7 @@
                     </template>
                     <AppDropDownContent>
                         <AppDropDownItem>
-                            <router-link to="/">
+                            <router-link to="/" class="link-dropdown">
                                 <div class="cont-item-dropDown">
                                     <img class="icone-item-dropDown" src="../../assets/sair.png" alt="">
                                     <h3 class="txt-item-dropdown">Logout</h3>
@@ -174,6 +174,11 @@
         width: 30px;
         height: 30px;
         margin-right: 10px;
+    }
+
+    .link-dropdown:visited, .link-dropdown:link{
+        text-decoration: none;
+        color: var(--color2);
     }
 
     .txt-item-dropdown{

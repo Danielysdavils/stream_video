@@ -1,16 +1,18 @@
 import { PUT_DATA } from '@/store/Mutations/mutations-type'
 import { getData, queryData } from '@/api/crudApi'
+import Video from '@/class/Video/Video'
 
-export default {
+const VideoModule = {
     namespaced: true,
 
     state: {
-        
-        //videoData : new Video()     
+        videoData : new Video()     
     },
 
     getters: {
-        videoData: state => state.videoData
+        videoData: (state) => {
+            return state.videoData
+        }
     },
 
     //2. Quando o usuáro muda as config --> actions [mudança de status]
@@ -50,3 +52,5 @@ export default {
         }
     }
 }
+
+export default VideoModule;
