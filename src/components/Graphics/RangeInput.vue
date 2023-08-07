@@ -1,9 +1,16 @@
 <template>
     <div class="conteiner-graphics">
         <div class="row-separator"></div>
-        <label for="range-2" class="text-graphic">Select a value: </label>
-        <b-form-input id="range-2" v-model="valueInterface" type="range" min="0" max="10" step="1"></b-form-input>
-        <div class="mt-2">Value: {{ valueInterface }}</div>
+
+        <div class="graphics-component">
+            <label for="range-2" class="text-graphic">Select a value: </label>
+            <div class="graphic-item">
+                <b-form-input id="range-2" v-model="valueInterface" type="range" min="0" max="10" step="1"></b-form-input>
+                <div class="mt-2">
+                    <h2 class="value-graphics">{{ valueInterface }}</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -66,9 +73,9 @@ export default{
     }
 
     .row-separator{
-        width: 90%;
-        height: 1px;
-        background-color: var(--color4);
+        width: 100%;
+        height: 0.5px;
+        background-color: var( --color4Gradiente);
         border-radius: 5px;
         margin-bottom: 20px;
     }
@@ -77,14 +84,58 @@ export default{
         width: 90%;
         -webkit-appearance: none;
                 appearance: none;
-        background-color: var(--color2);
+    
+        background-color: var(--color3Gradiente);
         border: 1px solid;
         border-color: var(--color4);
         border-radius: 10px;
-        margin-bottom: 5px;
+    }
+
+    input[type="range"]::-ms-thumb{
+        background-color: var(--color2);
     }
 
     label{
         margin-bottom: 5px;
+    }
+
+    .graphics-component{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .graphic-item{
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        background-color: var(--color3Gradiente);
+        border-radius: 40px;
+        padding: 5px;
+    }
+
+    .mt-2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 15%;
+        margin-top: 0px !important;
+    }
+
+    .value-graphics{
+        width: 70%;
+        background-color: var(--color4Gradiente);
+        color: var(--color4);
+        border-radius: 50%;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 20px;
     }
 </style>

@@ -1,32 +1,60 @@
 <template>
-    <div>
-        <CarouselDisplay>
-            <CarouselItem></CarouselItem>        
-        </CarouselDisplay>
-    </div>
+    <CarouselDisplay>
+        <rl-carousel-slide>
+            <div class="graphics-section">
+                <h1 class="name-tool">Resolution</h1>
+                <RangeInput />
+                <SelectedButton />
+            </div>
+        </rl-carousel-slide>
+            
+        <rl-carousel-slide>
+            <div class="graphics-section">
+                <h1 class="name-tool">Codec</h1>
+                <RangeInput />
+                <SelectedButton />
+            </div>
+        </rl-carousel-slide>
+
+        <rl-carousel-slide>
+            <div class="graphics-section">
+                <h1 class="name-tool">FramRate</h1>
+                <RangeInput />
+                <SelectedButton />
+            </div>
+        </rl-carousel-slide>
+
+        <rl-carousel-slide>
+            <div class="graphics-section">
+                <h1 class="name-tool">BitRate</h1>
+                <RangeInput />
+                <SelectedButton />
+            </div>
+        </rl-carousel-slide>
+
+        <rl-carousel-slide>
+            <div class="graphics-section">
+                <h1 class="name-tool">Quantizer</h1>
+                <RangeInput />
+                <SelectedButton />
+            </div>
+        </rl-carousel-slide>
+    </CarouselDisplay>
 </template>
 
 <script>
-    //import RangeInput from '../../../../components/Graphics/RangeInput.vue'
-    //import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
+    import RangeInput from '../../../../components/Graphics/RangeInput.vue'
+    import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
-    import CarouselItem from '@/components/Carousel/CarouselItem.vue'
+
+    import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
-        props: ['itemSelected'],
-
-        data(){
-            return{
-                
-
-            }
-        },
-
         components: {
-            //RangeInput,
-            //SelectedButton,
+            RangeInput,
+            SelectedButton,
             CarouselDisplay,
-            CarouselItem
+            RlCarouselSlide
         }
     }
 </script>
@@ -47,5 +75,13 @@
         margin-top: 20px;
         margin-left: 20px;
     }
+
+    .graphics-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
 
 </style>

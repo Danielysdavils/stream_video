@@ -6,7 +6,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 //modules
-import userModule from './store/Modules/UserModule'
+import store from '@/store/store'
 
 import { BootstrapVue, IconsPlugin } from  'bootstrap-vue'
 import  'bootstrap/dist/css/bootstrap.css' 
@@ -21,6 +21,6 @@ Vue.use(VueAxios, axios)
 
 new Vue({
   render: h => h(App),
-  userModule,
+  store: store,
   router
 }).$mount('#app')

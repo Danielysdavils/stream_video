@@ -16,7 +16,7 @@
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
     import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
-    import userModule from '@/store/Modules/UserModule';
+    import store from '@/store/store'
 
     export default {
 
@@ -31,7 +31,7 @@
 
                 dataMenu : [{id: 1, data: {name: 'Settings', icone: require('@/assets/settings.png')}}],
 
-                nameUser : userModule.getters.user
+                nameUser : store.getters.user
             }
         },
         

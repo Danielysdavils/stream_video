@@ -1,7 +1,7 @@
 <template>
     <div class="component-conteiner-form">
         <FormComponent :tittle="this.login"  @sendData="reciveData" />
-        <LogoMTW :flexDirection="'row'"/>
+        <LogoMTW :flexDirection="'row'" :margin-children="'10px'"/>
         <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />
     </div>
 </template>
@@ -10,8 +10,7 @@
     import FormComponent from '@/components/Forms/FormComponent.vue'
     import LogoMTW from '@/components/Logo/LogoMTW.vue'
     import Particles from '@/components/Particles/Particles.vue'
-    import userModule from '@/store/Modules/UserModule'
-
+    import store from '@/store/store'
 
     export default{
         components:{
@@ -35,8 +34,7 @@
         methods: {
 
             reciveData(d){
-                console.log(d);
-                userModule.dispatch('saveUser', d);
+                store.dispatch('saveUser', d)
             }
         }
     

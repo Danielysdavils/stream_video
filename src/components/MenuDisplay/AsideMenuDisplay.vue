@@ -36,8 +36,6 @@
 
         transition: width 0.5s ease;
         transition-timing-function: linear;
-
-        overflow-y: scroll;
     }
 
     .is-expanded{

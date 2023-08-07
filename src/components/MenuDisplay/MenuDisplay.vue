@@ -5,7 +5,7 @@
                 <div class="itemDisplay" v-for="tool in setToolsToRender" v-bind:key="tool.id" >
                     <div 
                         class="conteiner-itemDisplay" 
-                        v-on:click="setItemClicked(tool.name)">
+                        v-on:click="setItemClicked(tool.name, tool.id)">
                         <router-link to="#" class="item-link">
                             <ItemMenuDisplay 
                             :Clicked="itemClicked" 
@@ -16,7 +16,9 @@
                 </div>
             </div>    
             
-            <div class="cont-logo-mtw"><LogoMTW :flexDirection="'column'" /></div>
+            <div class="cont-logo-mtw">
+                <LogoMTW :flexDirection="'column'" :margin-children="'0px'" />
+            </div>
         </div>
 
         <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" />
@@ -32,6 +34,8 @@
     import VideoTools from '@/class/Video/VideoTools'
     import AudioTools from '@/class/Audio/AudioTools'
     import OutputTools from '@/class/Output/OutputTools'
+    
+    import store from '@/store/store'
 
     export default{
         data: () => {
@@ -42,7 +46,6 @@
                     outputTools: new OutputTools()
                 },
 
-                section : '',
                 itemClick : '',
                 itemClicked:'',
                 isExpandedAside: false
@@ -84,13 +87,17 @@
         },
 
         methods: {
-            setItemClicked(element){
-                this.itemClick = element
+            setItemClicked(element, id){
+                this.itemClick = element;
+
+                store.dispatch('setIdSlide', id);
+                
                 this.openAside();
             },
 
             openAside(){
                 this.isExpandedAside = this.itemClicked != this.itemClick || this.itemClicked == ''  ? true : !this.isExpandedAside;
+
                 this.itemClicked = this.itemClick; 
             }
         }

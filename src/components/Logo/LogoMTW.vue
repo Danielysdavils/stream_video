@@ -1,18 +1,21 @@
 <template>
     <div class="copy-right" :style="setStyleConteiner">
-        <h5 class="copy-right-tittle">Develop by</h5>
+        <h5 class="copy-right-tittle" :style="setMargin">Develop by</h5>
         <h2 class="mtwLogo" >MTW</h2>
     </div> 
 </template>
 
 <script>
-    // styleConfig : { conteiner: {}, elementChildren: {} }
     export default{
-        props: ['flexDirection'],
+        props: ['flexDirection', 'marginChildren'],
 
         computed: {
             setStyleConteiner(){
                 return {"flex-direction" : this.flexDirection}
+            },
+
+            setMargin(){
+                return {"margin-right": this.marginChildren}
             }
         }
     }
@@ -33,7 +36,6 @@
 
     .copy-right-tittle{
         font-size: 15px;
-        margin-right: 10px;
     }
 
 </style>

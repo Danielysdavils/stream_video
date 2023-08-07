@@ -57,7 +57,7 @@
     import AppDropDown from '@/components/DropDown/AppDropDown.vue'
     import AppDropDownContent from '@/components/DropDown/AppDropDownContent.vue'
     import AppDropDownItem from '@/components/DropDown/AppDropDownItem.vue'
-    import userModule from '@/store/Modules/UserModule'
+    import store from '@/store/store'
 
     export default{
         //Recebe o array de elementos a renderizar
@@ -65,14 +65,13 @@
 
         data: () => {
             return{
-                userName: userModule.getters.user
+                userName: store.getters.user
             }
         },
         
         methods:{
             //Manda a opção do menu clicada 
             setDataMenu(optionClicked){
-                console.log(optionClicked);
                 this.$emit('setData', optionClicked)
             }
         },

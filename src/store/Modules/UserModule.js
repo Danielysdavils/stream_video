@@ -1,11 +1,7 @@
 import User from "@/class/User/User"
-import { ADD_DATA } from "../mutations/mutations-type";
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { ADD_DATA } from "@/store/Mutations/mutations-type";
 
-Vue.use(Vuex)
-
-const userModule = new Vuex.Store({
+const userModule = {
     namespace: true,
 
     state: {
@@ -30,6 +26,6 @@ const userModule = new Vuex.Store({
             commit(ADD_DATA, data);
         }
     }
-})
+}
 
 export default userModule;
