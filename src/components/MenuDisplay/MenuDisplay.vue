@@ -1,6 +1,7 @@
 <template>
-        <div class="conteiner-menuDisplay" :style="reajustConteiner">
-            <div class="conteiner-section-item" :style="reajustSection">   
+    <div class="conteiner-menuDisplay" :style="reajustConteiner">
+        <div class="conteiner-section-item" :style="reajustSection">   
+            <div class="separation-item-menu">
                 <div class="itemDisplay" v-for="tool in setToolsToRender" v-bind:key="tool.id" >
                     <div 
                         class="conteiner-itemDisplay" 
@@ -13,15 +14,19 @@
                         </router-link>
                     </div>
                 </div>
-            </div>
-
-            <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" />
+            </div>    
+            
+            <div class="cont-logo-mtw"><LogoMTW :flexDirection="'column'" /></div>
         </div>
+
+        <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" />
+    </div>
 </template>
 
 <script>
     import ItemMenuDisplay from '@/components/MenuDisplay/ItemMenuDisplay.vue'
     import AsideMenuDisplay from '@/components/MenuDisplay/AsideMenuDisplay.vue'
+    import LogoMTW from '../Logo/LogoMTW.vue'
 
     //CLASS
     import VideoTools from '@/class/Video/VideoTools'
@@ -47,7 +52,8 @@
         
         components:{
            ItemMenuDisplay,
-           AsideMenuDisplay
+           AsideMenuDisplay,
+           LogoMTW
         },
 
         computed: {
@@ -114,6 +120,15 @@
     transition-timing-function: linear;
 }
 
+.separation-item-menu{
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    overflow-y: hidden;
+}
+
 .container-item-display{
     width: 100%;
     display: flex;
@@ -137,13 +152,18 @@
 }
 
 .itemDisplay{
-    height: 10%;
+    height: 15%;
     margin-top: 15px;
 }
 
 .item-link:link, .item-link:visited{
     text-decoration: none;
     color: var(--color4);
+}
+
+.cont-logo-mtw{
+    width: 100%;
+    height: 25%;
 }
 
 </style>

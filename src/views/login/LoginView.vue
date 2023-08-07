@@ -1,24 +1,22 @@
 <template>
     <div class="component-conteiner-form">
         <FormComponent :tittle="this.login"  @sendData="reciveData" />
-
-        <div class="copy-right">
-            <h5 class="copy-right-tittle">Develop by</h5>
-            <h2 class="mtwLogo">MTW</h2>
-        </div>
-
+        <LogoMTW :flexDirection="'row'"/>
         <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />
     </div>
 </template>
 
 <script>
     import FormComponent from '@/components/Forms/FormComponent.vue'
+    import LogoMTW from '@/components/Logo/LogoMTW.vue'
     import Particles from '@/components/Particles/Particles.vue'
     import userModule from '@/store/Modules/UserModule'
+
 
     export default{
         components:{
             FormComponent,
+            LogoMTW,
             Particles
         },
 
@@ -55,22 +53,5 @@
         align-items: center;
         justify-content: center;
     }
-
-    .copy-right{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        z-index: 4;
-        width: 40%;
-
-        margin-top: 40px;
-    }
-
-    .copy-right-tittle{
-        font-size: 15px;
-        margin-right: 10px;
-    }
-
 </style>
 

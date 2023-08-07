@@ -196,5 +196,12 @@
         width: 90px;
         text-align: center;
         font-size: 20px;
+
+        transition: 1s ease;
+    }
+
+    .section-user-name:hover{
+        background-color: var(--color1Gradiente);
+        color: var(--color4);
     }
 </style>

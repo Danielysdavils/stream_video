@@ -1,14 +1,14 @@
 <template>
     <div class="conteinerCardMenu">
         <div class="conteinerItemDefault" v-if="Clicked != Sendtext">
-            <div class="cont-img"><img :src="Sendsrc" alt="" class="iconeCardMenu"></div>
+            <div class="cont-img"><img :src="Sendsrc.white" alt="" class="iconeCardMenu"></div>
             <h3 class="textCardMenu">{{ Sendtext }}</h3>  
         </div>
 
         <div class="conteinerItemSelected" v-if="Clicked == Sendtext">
             <div class="rowSelected"></div>
             <div class="styleBorder">
-                <img :src="Sendsrc" alt="" class="iconeCardMenu">
+                <img :src="Sendsrc.yellow" alt="" class="iconeCardMenu">
             </div>
         </div>
   
