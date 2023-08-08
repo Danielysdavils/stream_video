@@ -58,9 +58,7 @@
         height: 100%;
         flex-direction: column;
 
-        background-image: url(../../assets/fundo7.png);
-        background-size: cover;
-        background-position: center;
+        background-color: var(--colorteste);
     }
 
     .displayView{
@@ -77,4 +75,17 @@
         flex-direction: column;
     }
 
+    @media(min-width: 300px) and (max-width: 600px){
+        .displayView{
+            height: 85%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .conteiner-menuDisplay{
+            width: 100%;
+            height: 8%;
+            flex-direction: column;
+        }
+    }
 </style>

@@ -30,7 +30,7 @@
         data: () => {
             return{
                 colorParticles: { 
-                    colorCircle: '#0f1b2e',
+                    colorCircle: '#cdcfd4',
                     colorShape: '#0a121f',
                     colorLine: '#0a121f',
                     value: 20

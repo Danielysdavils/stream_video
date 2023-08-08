@@ -6,7 +6,7 @@
             <div class="row"></div>
         </div> 
         
-        <LogoApp />
+        <LogoApp class="conteiner-logo"/>
 
         <div class="containerOp">
             <router-link to="/streamconfig" class="linkBar">Stream Config</router-link>
@@ -72,5 +72,24 @@
         background-color: var(--color3);
     }
 
+    @media (min-width: 300px) and (max-width: 600px){
+        
+        .containerNav{
+            height: 15%;
+        } 
+
+        .conteiner-logo{
+            display: none;
+        }
+
+        .containerOp{
+            width: 50%;
+        }
+        
+        .row{
+            display: none;
+        }
+      
+    }
 </style>
   

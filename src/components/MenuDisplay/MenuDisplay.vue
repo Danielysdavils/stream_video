@@ -173,4 +173,16 @@
     height: 30%;
 }
 
+@media (min-width: 300px) and (max-width: 600){
+    .separation-item-menu{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .conteiner-section-item{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 </style>
