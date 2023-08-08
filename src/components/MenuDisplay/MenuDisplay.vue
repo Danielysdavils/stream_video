@@ -128,7 +128,7 @@
 }
 
 .separation-item-menu{
-    height: 75%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -159,8 +159,8 @@
 }
 
 .itemDisplay{
-    height: 15%;
-    margin-top: 15px;
+    height: 18%;
+    margin-top: 5px;
 }
 
 .item-link:link, .item-link:visited{
@@ -170,7 +170,7 @@
 
 .cont-logo-mtw{
     width: 100%;
-    height: 25%;
+    height: 30%;
 }
 
 </style>

@@ -30,13 +30,16 @@
     .containerNav{
         display: flex;
         width: 100%;
-        height: 7%;
+        height: 10%;
         flex-direction: row;
         align-items: center;
         background-color: var(--color1);
         color: var(--color4);
         z-index: 4;
         position: relative;
+
+        font-family: var(--FontLabel);
+        font-weight: 400;
     }    
     
     .linkBar:link{

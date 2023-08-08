@@ -68,6 +68,7 @@ export default{
     .conteiner-graphics{
         width: 100%;
         display: flex;
+        align-items: center;
         flex-direction: column;
         color: var(--color4);
         padding: 20px;
@@ -75,7 +76,7 @@ export default{
     }
 
     .row-separator{
-        width: 100%;
+        width: 50%;
         height: 0.5px;
         background-color: var( --color4Gradiente);
         border-radius: 5px;
@@ -117,6 +118,11 @@ export default{
         padding: 5px;
     }
 
+    .text-graphic{
+        font-family: var(--fontLabel);
+        font-size: 15px;
+    }
+
     .mt-2{
         display: flex;
         align-items: center;
@@ -127,17 +133,21 @@ export default{
     }
 
     .value-graphics{
-        width: 70%;
+        width: 100%;
         background-color: var(--color4Gradiente);
         color: var(--color4);
         border-radius: 50%;
+
         margin-bottom: 0px !important;
         margin-top: 0px !important;
+        margin-left: 6px;
+        margin-right: 6px;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
         font-size: 20px;
+        font-family: var(--fontLabel);
     }
 </style>

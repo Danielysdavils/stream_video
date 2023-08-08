@@ -23,7 +23,7 @@
             return{
                 login: 'Login',
                 colorParticles: { 
-                    colorCircle: '#b68c31',
+                    colorCircle: '#2c313a',
                     colorShape: '#0a121f',
                     colorLine: '#0a121f',
                     value: 30

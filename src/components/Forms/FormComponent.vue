@@ -92,6 +92,7 @@
         color: var(--color4);
         width: 100%;
         height: 100%;
+
     }
 
     .cont-obj{
@@ -113,18 +114,28 @@
     .label-form{
         margin-top: 10px;
         margin-bottom: 10px;
+        font-family: var(--FontLabel);
+        font-weight: 400;
     }
 
     .button-form{
         margin-top: 10px;
+        font-family: var(--FontLabel);
+        font-weight: 400;
     }
 
     b-form-input{
         background-color: var(--color2);
+        font-family: var(--FontLabel);
     }
 
     .tittle-containter{
         margin-bottom: 20px;
+
+    }
+
+    .tittle-cont{
+        font-family: var(--FontTittle);
     }
 
 </style>

@@ -51,6 +51,10 @@
     justify-content: center;
 }
 
+.iconeCardMenu{
+    width: 40%;
+}
+
 /* STYLE SELECTED VALUE */
 
 .conteinerItemSelected{  
@@ -63,7 +67,10 @@
 }
 
 .textCardMenu{
-    font-size: 10px;
+    font-size: 12px;
+    font-family: var(--FontOther);
+    font-weight: 400;
+
     width: 100%;
     height: 50%;
     display: flex;

@@ -6,7 +6,10 @@
            
             <div class="displaySettings">
                 <TopMenu  @setData ="set" :Options="dataSection" />
-                <StreamSection />
+                <StreamSection 
+                    :BorderColor="'var(--color4)'" 
+                    :BoxShadow="'1px 1px 10px var(--color2)'"/>
+
                 <MenuVideoScrollBar />
             </div>
         </div>        

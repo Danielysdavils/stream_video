@@ -1,7 +1,7 @@
 <template>
     <div class="copy-right" :style="setStyleConteiner">
         <h5 class="copy-right-tittle" :style="setMargin">Develop by</h5>
-        <h2 class="mtwLogo" >MTW</h2>
+        <img src="../../assets/icones-logoType/bg3.png" class="logoType-img"/>
     </div> 
 </template>
 
@@ -31,11 +31,19 @@
         z-index: 4;
         width: 100%;
 
-        margin-top: 40px;
+        margin-top: 25px;
     }
 
     .copy-right-tittle{
         font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-family: var(--FontOther);
+    }
+
+    .logoType-img{
+        width: 70px;
+        height: 70px;
     }
 
 </style>

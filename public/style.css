@@ -12,12 +12,17 @@ html, body{
     --color3Gradiente: rgba(6, 11, 20, 0.9);
     --color4Gradiente: rgba(205, 207, 212, 0.3);
 
+    --linearGradient: linear-gradient(90deg, #1a2e4d, #112138, #0f1b2e)
+
     --WidthConteiner: 0;
     --widthMenu: 0;
     --widthAsideInit: 0;
     --widthAsideEnd: 0; 
 
-    --linearGradient: linear-gradient(90deg, #1a2e4d, #112138, #0f1b2e)
+    --FontLabel: 'Plus Jakarta Sans', sans-serif;
+    --FontTittle: 'Poiret One', cursive;
+    --FontNavBar: 'Rajdhani', sans-serif;
+    --FontOther: 'Sawarabi Gothic', sans-serif;
 }
 
 
@@ -25,5 +30,5 @@ html, body{
     height: 100%;
     width: 100%;
     position: fixed;
-    background-color: var(--color5);
+    background-color: var(--color4);
 }

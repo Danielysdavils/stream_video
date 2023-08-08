@@ -7,8 +7,15 @@
             <h2 class="tittle-welcome-section">Welcome again, {{ this.nameUser }}!</h2>
         </div>
 
-        <StreamSection /> 
-        <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />
+        <StreamSection 
+            :BorderColor="'var(--color1)'" 
+            :BoxShadow="'1px 1px 10px var(--color1)'" />
+
+        <Particles 
+            :colorCircle="this.colorParticles.colorCircle" 
+            :colorShape="this.colorParticles.colorShape" 
+            :colorLine="this.colorParticles.colorLine" 
+            :value="this.colorParticles.value" />
     </div>
 </template>
 <script>
@@ -62,7 +69,8 @@
 
     .welcome-section{
         width: 100%;
-        padding: 30px;
+        margin-top: 20px;
+        margin-left: 30px;
 
         display: flex;
         justify-content: center;

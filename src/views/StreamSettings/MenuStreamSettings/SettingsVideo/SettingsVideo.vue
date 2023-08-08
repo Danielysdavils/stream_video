@@ -84,4 +84,8 @@
 
         margin-bottom: 280px;
     }
+
+    .name-tool{
+        font-family: var(--fontOther);
+    }
 </style>

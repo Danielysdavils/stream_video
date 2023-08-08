@@ -1,10 +1,28 @@
 <template>
     <div class="displayContainer">
-        <div class="conteiner-border">
+        <div class="conteiner-border" :style="setBorderColor">
             <div class="video-rep"></div>
         </div>
     </div>
 </template>
+
+<script>
+    export default{
+        props: ['BorderColor', 'BoxShadow'],
+
+        computed:{
+            setBorderColor(){
+                return {
+                        "background-color": this.BorderColor,
+                        "box-shadow": this.BoxShadow
+                        }
+            },
+
+            
+        }
+    }
+
+</script>
 
 <style>
     .displayContainer{
@@ -21,14 +39,12 @@
     }
 
     .conteiner-border{
-        background-color: var(--color4);
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 90%;
-        height: 80%;
+        width: 80%;
+        height: 100%;
         border-radius: 5px;
-        box-shadow: 1px 1px 10px var(--color3);
     }
 
     .video-rep{
