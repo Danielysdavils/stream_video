@@ -44,4 +44,17 @@
         flex-direction: row;
         align-items: flex-start; 
     }
+
+    @media (min-width: 300px) and (max-width: 600px){
+        aside{
+            min-height: 70vh;
+            background-color: rgba(10, 18, 31, 0.9);
+        }
+        
+        .is-expanded{
+            width: 100%;
+            z-index: 20;
+        }
+    }
+
 </style>

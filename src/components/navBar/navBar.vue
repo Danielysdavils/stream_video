@@ -75,7 +75,7 @@
     @media (min-width: 300px) and (max-width: 600px){
         
         .containerNav{
-            height: 15%;
+            height: 8%;
         } 
 
         .conteiner-logo{

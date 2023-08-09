@@ -10,7 +10,7 @@
                     :BorderColor="'var(--color4)'" 
                     :BoxShadow="'1px 1px 10px var(--color2)'"/>
 
-                <MenuVideoScrollBar />
+                <MenuVideoScrollBar class="carousel-video"/>
             </div>
         </div>        
     </div>
@@ -58,7 +58,9 @@
         height: 100%;
         flex-direction: column;
 
-        background-color: var(--colorteste);
+        background-image: url(../../assets/fundo7.png);
+        background-size: cover;
+        background-position: center;
     }
 
     .displayView{
@@ -77,15 +79,19 @@
 
     @media(min-width: 300px) and (max-width: 600px){
         .displayView{
-            height: 85%;
+            height: 92%;
             display: flex;
             flex-direction: column;
         }
-        
-        .conteiner-menuDisplay{
+
+        .displaySettings{
             width: 100%;
-            height: 8%;
-            flex-direction: column;
+            flex-direction: column-reverse;
+        }
+
+        .carousel-video{
+            display: none;
+            height: 0%;
         }
     }
 </style>

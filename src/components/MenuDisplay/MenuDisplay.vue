@@ -17,11 +17,16 @@
             </div>    
             
             <div class="cont-logo-mtw">
-                <LogoMTW :flexDirection="'column'" :margin-children="'0px'" />
+                <LogoMTW 
+                    :flexDirection="'column'" 
+                    :margin-children="'0px'" />
             </div>
         </div>
 
-        <AsideMenuDisplay :sectionSelected="optionSelected" :dataSelected="itemClicked" :isExpandedAside="isExpandedAside" />
+        <AsideMenuDisplay 
+            :sectionSelected="optionSelected" 
+            :dataSelected="itemClicked" 
+            :isExpandedAside="isExpandedAside" />
     </div>
 </template>
 
@@ -173,15 +178,35 @@
     height: 30%;
 }
 
-@media (min-width: 300px) and (max-width: 600){
+@media (min-width: 300px) and (max-width: 600px){
+    .conteiner-menuDisplay{
+        height: 12%;
+        width: 100%;
+        flex-direction: column;
+    }
+
     .separation-item-menu{
+        width: 100%;
+        height: 100%;
         display: flex;
+        align-items: center;
         flex-direction: row;
     }
 
     .conteiner-section-item{
         display: flex;
         flex-direction: row;
+        width: 100%;
+    
+    }
+
+    .itemDisplay{
+        height: 100%;
+    }
+
+    .cont-logo-mtw{
+        width: 0%;
+        display: none;
     }
 }
 

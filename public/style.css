@@ -26,9 +26,7 @@ html, body{
     --FontNavBar: 'Rajdhani', sans-serif;
     --FontOther: 'Sawarabi Gothic', sans-serif;
 
-    --backgraund-image: url(../../assets/fundo7.png);
-    background-size: cover;
-    background-position: center;
+
 }
 
 

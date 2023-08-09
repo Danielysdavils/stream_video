@@ -1,5 +1,7 @@
 <template>
-    <rl-carousel v-model="slide" vertical>
+    <rl-carousel v-model="slide" 
+        :vertical="setCarousel">
+
         <div slot-scope="{wrapperStyles}" class="w-full overflow-hidden">
             <div v-bind="wrapperStyles" class="flex flex-col w-full">
                 <slot></slot>
@@ -14,9 +16,35 @@
     import store from '@/store/store'
 
     export default{
+
+        data: () => {
+            return{
+                windowWidth: window.innerWidth
+            }
+        },
+
+        mounted(){
+            this.$nextTick(() => {window.addEventListener('resize', this.onResize)})
+        },
+
+        beforeDestroy(){
+            window.removeEventListener('resize', this.onResize); 
+        },
+
+        methods: {
+            onResize() {
+                this.windowWidth = window.innerWidth
+            }
+        },
+
         computed:{
             slide(){
                 return store.getters.getId
+            },
+
+            setCarousel(){
+                if(this.windowWidth <= 600) return false;
+                else return true;
             }
         },
 
@@ -27,11 +55,16 @@
 </script>
 
 <style>
-
     .flex, .flex-col, .w-full{
         width: 100%;
         display: flex;
         flex-direction: column; 
         flex-wrap: nowrap;
+    }
+
+    @media(min-width: 300px) and (max-width: 600px){
+        .flex, .flex-col, .w-full{
+            flex-direction: row;
+        }
     }
 </style>

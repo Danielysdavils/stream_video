@@ -52,5 +52,14 @@
         width: 100%;
         height: 90%;
         background-color: black;
-    }   
+    }
+    
+    @media (min-width: 300px) and (max-width: 600px){
+        .displayContainer{
+            height: 85%;    
+        }    
+        .conteiner-border{
+            width: 100%;
+        }
+    }
 </style>

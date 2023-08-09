@@ -208,4 +208,18 @@
         background-color: var(--color1Gradiente);
         color: var(--color4);
     }
+
+    @media (min-width: 300px) and (max-width: 600px){
+        .container-top-menu{
+            height: 15%;
+        }
+        
+        .conteiner-options-render{
+            margin-left: 0px;
+        }    
+
+        .conteiner-section-user{
+            margin-right: 0px;
+        }
+    }
 </style>
