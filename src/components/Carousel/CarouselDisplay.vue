@@ -43,7 +43,7 @@
             },
 
             setCarousel(){
-                if(this.windowWidth <= 600) return false;
+                if(this.windowWidth <= 800) return false;
                 else return true;
             }
         },
@@ -62,7 +62,7 @@
         flex-wrap: nowrap;
     }
 
-    @media(min-width: 300px) and (max-width: 600px){
+    @media(min-width: 0px) and (max-width: 800px){
         .flex, .flex-col, .w-full{
             flex-direction: row;
         }

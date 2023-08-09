@@ -77,7 +77,7 @@
         flex-direction: column;
     }
 
-    @media(min-width: 300px) and (max-width: 600px){
+    @media(min-width: 0px) and (max-width: 800px){
         .displayView{
             height: 92%;
             display: flex;

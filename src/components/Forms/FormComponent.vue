@@ -138,4 +138,15 @@
         font-family: var(--FontTittle);
     }
 
+    @media (min-width: 0px) and (max-width:500px){
+        .card-login-conteiner{
+            width: 90%;
+            min-width: 0px;
+        }
+
+        .cont-obj{
+            width: 100%;
+        }
+    }
+
 </style>

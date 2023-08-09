@@ -131,7 +131,7 @@
     }
 }
 
-@media (min-width: 300px) and (max-width: 600px){
+@media (min-width: 0px) and (max-width: 800px){
     .conteinerCardMenu{
         margin-top: 0px;
         margin-bottom: 0px;

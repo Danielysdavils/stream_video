@@ -72,7 +72,7 @@
         background-color: var(--color3);
     }
 
-    @media (min-width: 300px) and (max-width: 600px){
+    @media (min-width: 0px) and (max-width: 800px){
         
         .containerNav{
             height: 8%;

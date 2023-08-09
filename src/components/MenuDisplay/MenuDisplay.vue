@@ -176,9 +176,13 @@
 .cont-logo-mtw{
     width: 100%;
     height: 30%;
+
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 100px;
 }
 
-@media (min-width: 300px) and (max-width: 600px){
+@media (min-width: 0px) and (max-width: 800px){
     .conteiner-menuDisplay{
         height: 12%;
         width: 100%;

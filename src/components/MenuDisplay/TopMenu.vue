@@ -209,17 +209,33 @@
         color: var(--color4);
     }
 
-    @media (min-width: 300px) and (max-width: 600px){
+    @media (min-width: 0px) and (max-width: 800px){
         .container-top-menu{
-            height: 15%;
+            height: 10%;
         }
-        
+
         .conteiner-options-render{
             margin-left: 0px;
         }    
 
         .conteiner-section-user{
             margin-right: 0px;
+        }
+    }
+
+    @media (min-width: 801px) and (max-width: 1120px){
+        .conteiner-options-render{
+            margin-left: 0px;
+            
+        }
+        .conteiner-section-user{
+            margin-right: 0px;
+        }
+    }
+
+    @media(min-width: 0px) and (max-width: 470px){
+        .section-user-name{
+            display: none;
         }
     }
 </style>

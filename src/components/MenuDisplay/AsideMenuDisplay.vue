@@ -45,7 +45,7 @@
         align-items: flex-start; 
     }
 
-    @media (min-width: 300px) and (max-width: 600px){
+    @media (min-width: 0px) and (max-width: 800px){
         aside{
             min-height: 70vh;
             background-color: rgba(10, 18, 31, 0.9);

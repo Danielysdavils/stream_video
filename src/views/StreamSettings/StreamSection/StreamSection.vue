@@ -27,7 +27,7 @@
 <style>
     .displayContainer{
         width: 100%;
-        height: 60%;
+        height: 70%;
 
         display: flex;
         justify-content: center;
@@ -54,12 +54,17 @@
         background-color: black;
     }
     
-    @media (min-width: 300px) and (max-width: 600px){
+    @media (min-width: 0px) and (max-width: 800px){
         .displayContainer{
             height: 85%;    
+            padding: 0px;
         }    
         .conteiner-border{
-            width: 100%;
+            width: 90%;
+            height: 90%;
+        }
+        .video-rep{
+            height: 95%;
         }
     }
 </style>

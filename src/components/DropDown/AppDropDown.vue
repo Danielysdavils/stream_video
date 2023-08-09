@@ -43,5 +43,12 @@
         display: flex;
         flex-direction: row-reverse; 
     }
+
+    @media (min-width: 0px) and (max-width: 800px){
+        .relative{
+            flex-direction: column-reverse;
+        }
+    }
+
 </style>
   

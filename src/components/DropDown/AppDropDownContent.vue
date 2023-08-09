@@ -39,11 +39,34 @@ export default {
         z-index: 10;
         background-color: var(--color4);
         margin-right: 10px;
-        margin-top: 50px;
+        margin-top: 60px;
         position: absolute;
         border-radius: 5px;
         width: 15%;
     }
+    @media (min-width: 0px) and (max-width: 800px){
+        .content-menu{
+            margin-bottom: 60px;
+            width: 28%;
+        }
+    }
+
+    @media (min-width: 0px) and (max-width: 477px){
+        .content-menu{
+            position: relative;
+            margin-bottom: 200px;
+            z-index: 20;
+        }
+    }
+
+    @media (min-width: 801px) and (max-width: 1120px){
+        .content-menu{
+            width: 20%;
+            margin-right: 20px;
+        }
+    }
+
+
 
 </style>
   

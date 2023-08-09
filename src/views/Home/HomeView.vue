@@ -1,21 +1,25 @@
 <template>
     <div class="conteiner-home">
         <navBar />
-        <TopMenu @setData="set" :Options="dataMenu" />
 
-        <div class="welcome-section">
-            <h2 class="tittle-welcome-section">Welcome again, {{ this.nameUser }}!</h2>
+        <div class="conteiner-homeDisplay">
+            <TopMenu @setData="set" :Options="dataMenu" />
+
+            <div class="video-sec">
+                <div class="welcome-section">
+                    <h2 class="tittle-welcome-section">Welcome again, {{ this.nameUser }}!</h2>
+                    </div>
+                <StreamSection 
+                    :BorderColor="'var(--color1)'" 
+                    :BoxShadow="'1px 1px 10px var(--color1)'" />
+
+                <Particles 
+                    :colorCircle="this.colorParticles.colorCircle" 
+                    :colorShape="this.colorParticles.colorShape" 
+                    :colorLine="this.colorParticles.colorLine" 
+                    :value="this.colorParticles.value" />
+            </div>
         </div>
-
-        <StreamSection 
-            :BorderColor="'var(--color1)'" 
-            :BoxShadow="'1px 1px 10px var(--color1)'" />
-
-        <Particles 
-            :colorCircle="this.colorParticles.colorCircle" 
-            :colorShape="this.colorParticles.colorShape" 
-            :colorLine="this.colorParticles.colorLine" 
-            :value="this.colorParticles.value" />
     </div>
 </template>
 <script>
@@ -60,11 +64,22 @@
 
 <style>
     .conteiner-home{
+        height: 100%;
+        width: 100%;
+    }
+
+    .conteiner-homeDisplay{
         display: flex;
         flex-direction: column;
         
-        height: 100%;
+        height: 90%;
         width: 100%;
+    }
+
+    .video-sec{
+        display: flex;
+        flex-direction: column;
+        height: 90%;
     }
 
     .welcome-section{
@@ -79,6 +94,13 @@
     .tittle-welcome-section{
         width: 90%;
         color: var(--color2);
+    }
+
+    @media (min-width: 0px) and (max-width: 800px){
+        .conteiner-homeDisplay{
+            flex-direction: column-reverse;
+            height: 92%;
+        }   
     }
 
 </style>
