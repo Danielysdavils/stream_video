@@ -56,13 +56,14 @@ export default {
             position: relative;
             margin-bottom: 200px;
             z-index: 20;
+            width: 90%;
         }
     }
 
     @media (min-width: 801px) and (max-width: 1120px){
         .content-menu{
-            width: 20%;
-            margin-right: 20px;
+            width: 22%;
+            margin-right: 30px;
         }
     }
 

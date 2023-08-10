@@ -6,7 +6,7 @@
                     <div 
                         class="conteiner-itemDisplay" 
                         v-on:click="setItemClicked(tool.name, tool.id)">
-                        <router-link to="#" class="item-link">
+                        <router-link to="/streamconfig" class="item-link">
                             <ItemMenuDisplay 
                             :Clicked="itemClicked" 
                             :Sendsrc="tool.style.icone" 
@@ -137,6 +137,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
 
     overflow-y: hidden;
 }
@@ -166,6 +167,8 @@
 .itemDisplay{
     height: 18%;
     margin-top: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .item-link:link, .item-link:visited{

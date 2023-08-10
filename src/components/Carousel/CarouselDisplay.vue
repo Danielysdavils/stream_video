@@ -8,7 +8,6 @@
             </div>
         </div>
   </rl-carousel>
-    
 </template>
 
 <script>

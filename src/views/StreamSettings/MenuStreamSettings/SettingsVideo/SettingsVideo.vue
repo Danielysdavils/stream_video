@@ -1,6 +1,6 @@
 <template>
     <CarouselDisplay>
-        <rl-carousel-slide>
+        <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">Resolution</h1>
                 <RangeInput />
@@ -8,7 +8,7 @@
             </div>
         </rl-carousel-slide>
             
-        <rl-carousel-slide>
+        <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">Codec</h1>
                 <RangeInput />
@@ -16,7 +16,7 @@
             </div>
         </rl-carousel-slide>
 
-        <rl-carousel-slide>
+        <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">FramRate</h1>
                 <RangeInput />
@@ -24,7 +24,7 @@
             </div>
         </rl-carousel-slide>
 
-        <rl-carousel-slide>
+        <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">BitRate</h1>
                 <RangeInput />
@@ -32,7 +32,7 @@
             </div>
         </rl-carousel-slide>
 
-        <rl-carousel-slide>
+        <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">Quantizer</h1>
                 <RangeInput />
@@ -88,4 +88,9 @@
     .name-tool{
         font-family: var(--fontOther);
     }
+
+    .itemToRender-carousel{
+        width: 100%;
+    }
+
 </style>

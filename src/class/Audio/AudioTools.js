@@ -1,7 +1,7 @@
 export default class AudioTools{
     tools = [
         {
-            id: 1,
+            id: 0,
             name: 'Sound',
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
@@ -15,14 +15,14 @@ export default class AudioTools{
             }
         },
         {
-            id: 1,
+            id: 2,
             name: 'B',
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
         },
         {
-            id: 1,
+            id: 3,
             name: 'C',
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}

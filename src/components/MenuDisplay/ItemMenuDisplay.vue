@@ -31,7 +31,7 @@
 
 /* STYLE DEFAULT VALUE */
 
-.conteinerCardMenu, .conteinerItemDefault{
+.conteinerCardMenu{
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
@@ -43,9 +43,15 @@
     flex-direction: column;
 }
 
-.conteinerCardMenu:hover{
-    transition: 0.5s ease;
+.conteinerItemDefault{
+    width: 100%;
+}
+
+.conteinerItemDefault:hover{
+    padding: 2px;
+    transition: 0.4s ease;
     background-color: var(--color1);
+    border-radius: 10px;
 }
 
 .cont-img{
@@ -106,7 +112,7 @@
     border-left-color: var(--color3);
     border-right-color: var(--color3);
     background-color: var(--color1);
-    border-radius: 4px;
+    border-radius: 7px;
     padding: 8px;
     margin: 6px;
 }
@@ -117,7 +123,7 @@
 
 .rowSelected{
     width: 5%;
-    height: 100%;
+    height: 90%;
     border-radius: 2px;
     background-color: var(--color3);
 }
@@ -150,7 +156,7 @@
     }
 
     .rowSelected{
-        width: 100%;
+        width: 90%;
         height: 5px;
         animation: none !important;
         margin-top: 3px;

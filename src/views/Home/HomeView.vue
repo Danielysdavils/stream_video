@@ -28,6 +28,7 @@
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
     import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
     import store from '@/store/store'
+    import CarouselCameras from '@/components/Carousel/CarouselCameras.vue';
 
     export default {
 
@@ -57,7 +58,8 @@
             navBar,
             Particles,
             TopMenu,
-            StreamSection
+            StreamSection,
+            CarouselCameras
         }
     }
 </script>
