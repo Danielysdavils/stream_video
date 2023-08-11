@@ -162,10 +162,12 @@
 
 .conteiner-itemDisplay{
     height: 100%;
+    width: 100%;
 }
 
 .itemDisplay{
     height: 18%;
+    width: 100%;
     margin-top: 5px;
     display: flex;
     align-items: center;

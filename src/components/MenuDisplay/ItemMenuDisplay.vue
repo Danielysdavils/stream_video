@@ -64,7 +64,8 @@
 }
 
 .iconeCardMenu{
-    width: 40%;
+    width: 30px;
+    height: 30px;
 }
 
 /* STYLE SELECTED VALUE */
@@ -106,7 +107,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid;
+    border: 1px solid;
     border-top-color: var(--color1);
     border-bottom-color: var(--color1);
     border-left-color: var(--color3);
@@ -117,12 +118,8 @@
     margin: 6px;
 }
 
-.imgCard{
-    width: 50%;
-}
-
 .rowSelected{
-    width: 5%;
+    width: 1%;
     height: 90%;
     border-radius: 2px;
     background-color: var(--color3);
@@ -160,6 +157,15 @@
         height: 5px;
         animation: none !important;
         margin-top: 3px;
+    }
+
+    .iconeCardMenu{
+        width: 20px;
+        height: 20px;
+    }
+
+    .textCardMenu{
+        height: 20%;
     }
 }
 

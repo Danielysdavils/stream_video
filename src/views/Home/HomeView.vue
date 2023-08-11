@@ -13,6 +13,8 @@
                     :BorderColor="'var(--color1)'" 
                     :BoxShadow="'1px 1px 10px var(--color1)'" />
 
+                <CarouselCameras />
+
                 <Particles 
                     :colorCircle="this.colorParticles.colorCircle" 
                     :colorShape="this.colorParticles.colorShape" 
@@ -41,7 +43,17 @@
                     value: 20
                 },
 
-                dataMenu : [{id: 1, data: {name: 'Settings', icone: require('@/assets/settings.png')}}],
+                dataMenu : [
+                    {
+                        id: 1, 
+                        data: {name: 'Settings', icone: require('@/assets/settings.png')}
+                    },
+
+                    {
+                        id: 2, 
+                        data: {name: 'Lenguajes', icone: require('@/assets/icones-tool/intercambio-de-idiomas.png')}
+                    }
+                ],
 
                 nameUser : store.getters.user
             }

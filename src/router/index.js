@@ -13,7 +13,13 @@ const routes = [
   {
     path:'/home',
     name: 'home',
-    component: () => import('@/views/Home/HomeView.vue') 
+    component: () => import('@/views/Home/HomeView.vue') ,
+    children: [
+      {
+        path: 'setting',
+        component: () => import('@/components/MenuDisplay/ToolBarSimples.vue')
+      }
+    ]
   },
 
   {
@@ -34,10 +40,6 @@ const routes = [
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue')
       }
     ]
-  },
-  {
-    path:'/Other',
-    name: 'other'
   }
 ]
 

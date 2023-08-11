@@ -31,6 +31,8 @@
                             <h3 class="section-user-name">{{ this.userName }}</h3>
                         </router-link>
                     </template>
+
+
                     <AppDropDownContent>
                         <AppDropDownItem>
                             <router-link to="/" class="link-dropdown">
@@ -66,14 +68,16 @@
         data: () => {
             return{
                 userName: store.getters.user
+           
             }
         },
         
         methods:{
-            //Manda a opção do menu clicada 
+      
             setDataMenu(optionClicked){
-                this.$emit('setData', optionClicked)
-            }
+          
+                this.$emit('setData', optionClicked);
+            } 
         },
 
         components: {
@@ -132,7 +136,7 @@
     .backgroundImg{
         background-color: var(--color1);
         border-radius: 50%;
-        padding: 10px;
+        padding: 6px;
         display: flex;
         align-content: center;
         justify-content: center;
@@ -146,8 +150,8 @@
     }
 
     .children-img{
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
     }
 
     .children-tittle{
