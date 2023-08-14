@@ -4,7 +4,7 @@
             <router-link to="/home" class="linkBar">
                 <h2 class="linkBar" 
                 v-on:mouseover="divRow = true" 
-                v-on:mouseleave="divRow = false">Home</h2>
+                v-on:mouseleave="divRow = false">{{$t('home')}}</h2>
             </router-link>
             
             <div class="row" v-show="this.divRow"></div>
@@ -16,7 +16,7 @@
                 <router-link to="/streamconfig" class="linkBar">
                     <h2 class="linkBar" 
                     v-on:mouseover="divRow = true" 
-                    v-on:mouseleave="divRow = false">Stream Config</h2>
+                    v-on:mouseleave="divRow = false">{{ $t('streamingConfig') }}</h2>
                 </router-link>
 
                 <div class="row" v-show="this.divRow"></div> 
@@ -55,10 +55,15 @@
         position: relative; 
     }    
 
+    .conteiner-logo{
+        width:50%;
+    }
+
     .linkBar{
         font-family: var(--FontLabel);
         font-weight: 400;
         font-size: 15px;
+        text-align: center;
     }
     
     .linkBar:link{

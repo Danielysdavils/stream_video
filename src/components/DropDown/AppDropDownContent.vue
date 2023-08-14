@@ -37,7 +37,7 @@ export default {
         display: flex;
         flex-direction: column;
         z-index: 10;
-        background-color: var(--color4);
+        background-color: var(--color1);
         margin-right: 10px;
         margin-top: 60px;
         position: absolute;

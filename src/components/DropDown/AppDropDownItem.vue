@@ -19,13 +19,13 @@
     }
 
     .item-conteiner:link, .item-conteiner:visited{
-        color: var(--color2);
+        color: var(--color4);
         text-decoration: none;
     }
 
     .item-conteiner:hover{
         transition: 4s ease;
-        background-color: var(--color1);
+        background-color: var(--color4);
     }
 
 

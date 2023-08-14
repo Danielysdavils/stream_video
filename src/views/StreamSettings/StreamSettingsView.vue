@@ -5,7 +5,9 @@
             <MenuDisplay :optionSelected="dataSelected" />
            
             <div class="displaySettings">
-                <TopMenu  @setData ="set" :Options="dataSection" />
+                <TopMenu  @setData ="set" 
+                :OptionsLeft="dataMenuLeft" 
+                :OptionRigth="dataMenuRight"/>
                 <StreamSection 
                     :BorderColor="'var(--color4)'" 
                     :BoxShadow="'1px 1px 10px var(--color2)'"/>
@@ -27,11 +29,24 @@
     import VideoService from '@/class/Video/VideoService'
     import OutputService from '@/class/Output/OutputService'
     import AudioService from '@/class/Audio/AudioService'
+    import UserService from '@/class/User/UserService'
+
+    //Tools
+    import UserTools from '@/class/User/UserTools'
 
     export default{
         data: () => {
             return {
-                dataSection: [{data: new VideoService(), id: 1}, {data: new OutputService(), id: 2}, {data: new AudioService(), id: 3}],
+                dataMenuLeft: [
+                    {data: new VideoService(), section: 'streamconfig' , id: 1, tools: null}, 
+                    {data: new OutputService(), section: 'streamconfig', id: 2, tools: null}, 
+                    {data: new AudioService(), section: 'streamconfig', id: 3, tools: null}
+                ],
+                
+                dataMenuRight: [
+                    {data: new UserService(), section:'streamconfig', id:4, tools: new  UserTools()}
+                ],
+
                 dataSelected : ''
             }
         },

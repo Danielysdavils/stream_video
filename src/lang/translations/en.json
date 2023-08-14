@@ -572,8 +572,10 @@
     "InRange": "In range",
     "OutRange": "Out of range",
     "betweenInRangeValues": "between %{lowValue} and %{highValue}",
-    "betweenOutRangeValues": "less than %{lowValue} and greater than %{highValue}"
+    "betweenOutRangeValues": "less than %{lowValue} and greater than %{highValue}",
 
-
+    "home": "Home",
+    "welcome": "Welcome again",
+    "streamingConfig": "Streaming Configurations"
 }
 

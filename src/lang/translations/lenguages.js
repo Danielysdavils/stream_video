@@ -1,9 +1,12 @@
 import en from '@/lang/translations/br.json'
 import br from '@/lang/translations/en.json'
+import es from '@/lang/translations/es.json'
 
-export const defaultConst = en;
-
-export default lenguages = {
+const lenguages = {
     en: en,
-    br: br
+    br: br,
+    es: es
 }
+
+export default lenguages;
+

@@ -4,7 +4,7 @@ import router from './router/index'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { VueI18n } from 'vue-i18n'
+import VueI18n from 'vue-i18n'
 
 //modules
 import store from '@/store/store'

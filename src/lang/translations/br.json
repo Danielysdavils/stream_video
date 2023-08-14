@@ -576,6 +576,9 @@
     "InRange": "Dentro do intervalo",
     "OutRange": "Fora do intervalo",
     "betweenInRangeValues": "entre %{lowValue} e %{highValue}",
-    "betweenOutRangeValues": "menor que %{lowValue} e maior que %{highValue}"
+    "betweenOutRangeValues": "menor que %{lowValue} e maior que %{highValue}",
 
+    "home": "Inicio",
+    "welcome": "Bem-vindo(a) de novo",
+    "streamingConfig": "Configurações de Streaming"
 }

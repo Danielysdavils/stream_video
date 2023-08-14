@@ -3,12 +3,17 @@
         <navBar />
 
         <div class="conteiner-homeDisplay">
-            <TopMenu @setData="set" :Options="dataMenu" />
+            <TopMenu 
+                @setData="set" @setDataDropDown="setDropDown"
+                :OptionsLeft="dataMenuLeft" 
+                :OptionRigth="dataMenuRight"/>
 
             <div class="video-sec">
                 <div class="welcome-section">
-                    <h2 class="tittle-welcome-section">Welcome again, {{ this.nameUser }}!</h2>
-                    </div>
+                    <div class="row-Welcome"></div>
+                    <h2 class="tittle-welcome-section">{{$t('welcome')}},</h2>
+                    <h2 class="tittle-welcome-section">{{ this.nameUser}}!</h2>
+                </div>
                 <StreamSection 
                     :BorderColor="'var(--color1)'" 
                     :BoxShadow="'1px 1px 10px var(--color1)'" />
@@ -25,12 +30,23 @@
     </div>
 </template>
 <script>
+
     import navBar from '@/components/navBar/navBar.vue';
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
     import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
     import store from '@/store/store'
     import CarouselCameras from '@/components/Carousel/CarouselCameras.vue';
+
+    //Icone
+    import UserService from '@/class/User/UserService'
+    import LenguagesService from '@/class/Lenguages/LenguagesService'
+    import ConfigService from '@/class/Config/ConfigService' 
+
+    //Tools
+    import ConfigTools from '@/class/Config/ConfigTools'
+    import UserTools from '@/class/User/UserTools'
+    import LenguagesTools from '@/class/Lenguages/LenguagesTools'
 
     export default {
 
@@ -43,26 +59,36 @@
                     value: 20
                 },
 
-                dataMenu : [
-                    {
-                        id: 1, 
-                        data: {name: 'Settings', icone: require('@/assets/settings.png')}
-                    },
+                dataMenuLeft : [
+                    {id: 1, section: 'home', data: new ConfigService(), tools: new ConfigTools()},
+                    {id: 2, section: 'home', data: new LenguagesService(), tools: new LenguagesTools()}
+                ],
 
-                    {
-                        id: 2, 
-                        data: {name: 'Lenguajes', icone: require('@/assets/icones-tool/intercambio-de-idiomas.png')}
-                    }
+                dataMenuRight: [ 
+                    {id: 1, section: 'home', data: new UserService(), tools: new UserTools()}
                 ],
 
                 nameUser : store.getters.user
             }
         },
         
-        //Implementar barra inferior de opciones!
         methods: {
             set(d){
-                return console.log(d);
+                console.log(d);
+            },
+
+            setDropDown(d){
+                switch (d){
+                    case 'English':
+                        this.$i18n.locale = 'br';
+                        break;
+                    case 'Portugues':
+                        this.$i18n.locale = 'en';
+                        break;
+                    case 'Spanish':
+                        this.$i18n.locale = 'es';
+                        break;
+                }
             }
         },
 
@@ -102,12 +128,22 @@
         margin-left: 30px;
 
         display: flex;
-        justify-content: center;
+
+        justify-content: flex-start;
+        font-family: var(--FontLabel);
     }
 
     .tittle-welcome-section{
-        width: 90%;
+        margin-right: 10px;
         color: var(--color2);
+    }
+
+    .row-Welcome{
+        width: 2px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: var(--color2);
+        margin-right: 10px;
     }
 
     @media (min-width: 0px) and (max-width: 800px){
