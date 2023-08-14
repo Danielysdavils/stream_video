@@ -78,6 +78,7 @@
             },
 
             setDropDown(d){
+                console.log(d);
                 switch (d){
                     case 'English':
                         this.$i18n.locale = 'br';
@@ -88,6 +89,10 @@
                     case 'Spanish':
                         this.$i18n.locale = 'es';
                         break;
+
+                    case 'Full Screen':
+                    
+                        break;  
                 }
             }
         },

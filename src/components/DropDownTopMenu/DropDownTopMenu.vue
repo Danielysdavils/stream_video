@@ -3,7 +3,7 @@
         <AppDropDownContent>
             <section v-for="tool in Tools" :key="tool.id">
                 <AppDropDownItem>
-                    <router-link to="#" class="link-dropdown">
+                    <router-link :to="tool.url" class="link-dropdown">
                         <div class="cont-item-dropDown" v-on:click="itemClicked(tool.name)">
                             <div class="secton-background">
                                 <img class="icone-item-dropDown" :src="tool.style.icone" alt="">

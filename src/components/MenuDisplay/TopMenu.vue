@@ -77,7 +77,6 @@
 
         methods:{
             setDataMenu(optionClicked){
-           
                 this.$emit('setData', optionClicked);
             },
             
@@ -116,7 +115,8 @@
     .conteiner-options-render{
         display: flex;
         height: 50%;
-        margin-left: 70px;
+        width: 50%;
+
     }
     
     .conteiner-top-children{
@@ -192,10 +192,11 @@
 
     .conteiner-section-user{
         height: 100%;
+        width: 50%;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-right: 100px;
+        justify-content: flex-end;
+        margin-right: 50px;  
     }
 
     @media (min-width: 0px) and (max-width: 800px){

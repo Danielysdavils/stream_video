@@ -12,7 +12,7 @@
             
             <div class="cont-obj">
                 <label for="input-valid" class="label-form">Enter your password:</label>
-                <b-form-input class="input-valid" :state="validatePassword" placeholder="Enter your password" v-model="passwordData"></b-form-input>
+                <b-form-input class="input-valid" type="password" :state="validatePassword" placeholder="Enter your password" v-model="passwordData"></b-form-input>
             </div>
            
             <div class="cont-button">

@@ -36,12 +36,17 @@ export default {
     .content-menu{
         display: flex;
         flex-direction: column;
-        z-index: 10;
+        
+
         background-color: var(--color1);
+        border: 1px solid var(--color2);
+        border-radius: 5px;
+
         margin-right: 10px;
         margin-top: 60px;
         position: absolute;
-        border-radius: 5px;
+        z-index: 10;
+        
         width: 15%;
     }
     @media (min-width: 0px) and (max-width: 800px){
