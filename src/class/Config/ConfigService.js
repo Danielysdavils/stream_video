@@ -1,6 +1,6 @@
 export default class ConfigService{
     constructor(){
-        this.name = 'Configurations'
+        this.name = 'settings'
         this.url = '#'
         this.icone = require('@/assets/settings.png')
     }

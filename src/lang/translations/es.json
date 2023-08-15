@@ -1,5 +1,17 @@
 {
     "home": "Inicio",
     "welcome":"Bienvenido(a) de nuevo",
-    "streamingConfig": "Configuraciones de Streaming"
+    "streamingConfig": "Configuraciones de Streaming",
+    "settings": "Configuraciones",
+    "user": "Usuário",
+    "lenguages": "Idioma",
+    "english": "Inglés",
+    "portuguese": "Portugues",
+    "spanish": "Español",
+    "fullScreen": "Pantalla Completa",
+    "logout": "Salir",
+    "DevelopBy": "Desenvolvido por",
+    "enterName": "Escriba su nombre",
+    "enterPassword": "Escriba su contraseña",
+    "login": "Entrar"
 }

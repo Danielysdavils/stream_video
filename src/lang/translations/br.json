@@ -1,6 +1,7 @@
 {
     "english": "Inglês",
     "portuguese": "Português",
+    "spanish": "Espanhol",
     "equipment": "Equipamento",
     "equipments": "Equipamentos",
     "equipament": "Equipamento",
@@ -580,5 +581,12 @@
 
     "home": "Inicio",
     "welcome": "Bem-vindo(a) de novo",
-    "streamingConfig": "Configurações de Streaming"
+    "streamingConfig": "Configurações de Streaming",
+    "settings": "Configurações",
+    "lenguages": "Idiomas",
+    "fullScreen": "Tela Cheia",
+    "logout": "Deslogar",
+    "DevelopBy": "Desenvolvido por",
+    "enterName": "Escreva seu nome",
+    "enterPassword": "Escreva sua senha"
 }

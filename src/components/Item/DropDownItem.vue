@@ -9,7 +9,7 @@
                                 <img class="icone-item-dropDown" :src="tool.style.icone" alt="">
                             </div>
                             
-                            <h3 class="txt-item-dropdown">{{ tool.name }}</h3>
+                            <h3 class="txt-item-dropdown">{{ $t(tool.name) }}</h3>
                         </div>
                     </router-link>
                 </AppDropDownItem>

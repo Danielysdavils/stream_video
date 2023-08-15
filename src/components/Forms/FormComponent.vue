@@ -6,17 +6,29 @@
             </div>
           
             <div class="cont-obj">
-                <label for="input-valid" class="label-form">Enter your user name:</label>
-                <b-form-input class="input-valid" :state="validateName" placeholder="Enter your name" v-model="nameData"></b-form-input>
+                <label for="input-valid" class="label-form">{{$t('enterName')}}</label>
+                <b-form-input class="input-valid" :state="validateName" :placeholder="$t('enterName')" v-model="nameData"></b-form-input>
             </div>
             
             <div class="cont-obj">
-                <label for="input-valid" class="label-form">Enter your password:</label>
-                <b-form-input class="input-valid" type="password" :state="validatePassword" placeholder="Enter your password" v-model="passwordData"></b-form-input>
+                <label for="input-valid" class="label-form">{{$t('enterPassword')}}</label>
+                <b-form-input class="input-valid" type="password" :state="validatePassword" :placeholder="$t('enterPassword')" v-model="passwordData"></b-form-input>
             </div>
            
             <div class="cont-button">
-                <b-button v-on:click="submitData()" class="button-form" variant="outline-light">Login</b-button> 
+                <b-button v-on:click="submitData()" class="button-form" variant="outline-light">{{$t('login')}}</b-button> 
+
+                <div class="cont-idioma">
+                    <ItemToDisplay 
+                        :section="'#'" 
+                        :dataUrl="'#'" 
+                        :dataName="'idiomas'"
+                        :dataIcone="require('@/assets/icones-tool/intercambio-de-idiomas.png')"
+                        :toolToDisplay="idiomasTools.tools" 
+                        
+                        @setData="itemClicado" @setDataDropDown="itemClidadoDropDown"/>
+                </div>
+                
             </div>    
             
             <div class="logo-cont"><LogoApp /></div>
@@ -26,18 +38,24 @@
 
 <script>
     import LogoApp from '../../components/Logo/LogoApp.vue'
+    import ItemToDisplay from '../Item/ItemToDisplay.vue'
+    import LenguagesTools from '@/class/Lenguages/LenguagesTools'
+    import Lenguages from '@/class/Lenguages/Lenguages'
 
     export default{
         data: () => {
             return{
                 passwordData : '',
                 nameData : '',
-                dataUser : {} 
+                dataUser : {},
+
+                idiomasTools: new LenguagesTools()
             }
         },
 
         computed: {
             validateName(){
+                
                 return this.nameData == '' ? false : true 
             },
 
@@ -60,11 +78,21 @@
 
             sendData(){
                 this.$emit('sendData', this.dataUser)
+            },
+
+            itemClicado(){
+                console.log(this.idiomasTools);
+            },
+
+            itemClidadoDropDown(item){
+                const lenguages = new Lenguages(item);
+                lenguages.setLenguages();
             }
         },
 
         components:{
-            LogoApp
+            LogoApp,
+            ItemToDisplay
         }
     }
 </script>

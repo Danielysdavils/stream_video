@@ -1,6 +1,7 @@
 {
     "english": "English",
     "portuguese": "Portuguese",
+    "spanish": "Spanish",
     "equipment": "Equipment",
     "equipments": "Equipments",
     "equipament": "Equipament",
@@ -576,6 +577,13 @@
 
     "home": "Home",
     "welcome": "Welcome again",
-    "streamingConfig": "Streaming Configurations"
+    "streamingConfig": "Streaming Configurations",
+    "settings": "Settings",
+    "lenguages": "Lenguages",
+    "fullScreen": "Full Screen",
+    "logout": "Logout",
+    "DevelopBy": "Develop by",
+    "enterPassword": "Enter your password",
+    "enterName":"Enter your name"
 }
 

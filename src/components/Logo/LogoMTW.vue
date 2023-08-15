@@ -1,6 +1,6 @@
 <template>
     <div class="copy-right" :style="setStyleConteiner">
-        <h5 class="copy-right-tittle" :style="setMargin">Develop by</h5>
+        <h5 class="copy-right-tittle" :style="setMargin">{{$t('DevelopBy')}}</h5>
         <img src="../../assets/icones-logoType/bg3.png" class="logoType-img"/>
     </div> 
 </template>

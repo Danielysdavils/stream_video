@@ -3,91 +3,65 @@
             <div class="conteiner-options-render">
                 <div 
                 class="container-nav-menu" 
-                v-for="option in OptionsLeft" 
-                :key="option.id"> 
-                    <AppDropDown>
-                        <template slot="toggler">
-                            <router-link 
-                                :to="'/' + option.section + '/' + option.data.url" 
-                                class="conteiner-top-children" >
-                                <div 
-                                    v-on:click="setDataMenu(option.data.name)" 
-                                    class="backgroundImg">
-                                    <img 
-                                        :src="option.data.icone" 
-                                        alt="" 
-                                        class="children-img">
-                                </div>
-                                    <h5 class="children-tittle">{{ option.data.name }}</h5>
-                            </router-link>
-                        </template>
-
-                        <div v-if="option.tools != null">
-                            <DropDownTopMenu :Tools="option.tools.tools" @itemCliked="setDataDropDown" />
-                        </div>
-                    </AppDropDown>
+                v-for="data in OptionsLeft" 
+                :key="data.id"> 
+                    <ItemToDisplay 
+                        :section="data.section" 
+                        :dataUrl="data.data.url" 
+                        :dataName="data.data.name"
+                        :dataIcone="data.data.icone"
+                        :toolToDisplay="data.tools != null ? data.tools.tools : null" 
+                        
+                        @setData="itemClicado" @setDataDropDown="itemClidadoDropDown"/>
                 </div>
             </div> 
 
             <section class="conteiner-section-user">
                 <div 
                 class="section-option-rigth"
-                v-for="option in OptionRigth"
-                :key="option.id">
-                    <AppDropDown>
-                        <template slot="toggler">
-                            <router-link 
-                                :to="'/' + option.section + '/' + option.data.url"
-                                class="container-nav-menu">
-                                <div 
-                                    v-on:click="setDataMenu(option.data.name)" 
-                                    class="backgroundImg">
-                                        <img 
-                                            :src="option.data.icone" 
-                                            alt="" 
-                                            class="children-img">
-                                </div>
-                                    <h5 class="children-tittle">{{ option.data.name }}</h5>    
-                            </router-link>
-                        </template>
+                v-for="data in OptionRigth"
+                :key="data.id">
+                    <ItemToDisplay 
+                        :section="data.section" 
+                        :dataUrl="data.data.url" 
+                        :dataName="data.data.name"
+                        :dataIcone="data.data.icone"
+                        :toolToDisplay="data.tools != null ? data.tools.tools : null" 
                         
-                        <div v-if="option.tools != null">
-                            <DropDownTopMenu :Tools="option.tools.tools" @itemCliked="setDataDropDown" />
-                        </div>
-                    </AppDropDown>
+                        @setData="itemClicado" @setDataDropDown="itemClidadoDropDown"/>
                 </div>
             </section>
     </div>
 </template>
 
 <script>
-    import AppDropDown from '@/components/DropDown/AppDropDown.vue'
-    import DropDownTopMenu from '../DropDownTopMenu/DropDownTopMenu.vue';
+
+    import ItemToDisplay from '@/components/Item/ItemToDisplay.vue'
 
     export default{
 
-        data: () =>{
+        data: () => {
             return{
-                buttonName: ''
+                dataSelected: ''
             }
         },
         
         //Recebe o array de elementos a renderizar
         props: ['OptionsLeft', 'OptionRigth'],
 
-        methods:{
-            setDataMenu(optionClicked){
-                this.$emit('setData', optionClicked);
-            },
-            
-            setDataDropDown(data){
-                this.$emit('setDataDropDown', data);
-            }
+        components:{
+            ItemToDisplay
         },
 
-        components:{
-            AppDropDown,
-            DropDownTopMenu
+        methods:{
+            itemClicado(item){
+                this.dataSelected = item;
+            },
+
+            itemClidadoDropDown(item){
+              
+                this.$emit('itemClicado', this.dataSelected, item);
+            }
         }
     }
 </script>
@@ -119,77 +93,6 @@
 
     }
     
-    .conteiner-top-children{
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-right: 15px;
-    }
-
-    .backgroundImg{
-        background-color: var(--color1);
-        border-radius: 50%;
-        padding: 6px;
-        display: flex;
-        align-content: center;
-        justify-content: center;
-
-        transition: 1s easy;
-    }
-
-    .backgroundImg:hover{
-        transition: 5s ease;
-        background-color: var(--color4);
-    }
-
-    .user-and-name:link, .user-and-name:visited{
-        display: flex;
-        text-decoration: none;
-        color: var(--color4);
-    }
-
-    .section-user-name{
-        margin-left: 6px;
-        background-color: var(--color4Gradiente);
-        border-radius: 36px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        color: var(--color1);
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        width: 90px;
-        text-align: center;
-        font-size: 20px;
-
-        transition: 1s ease;
-    }
-
-    .section-user-name:hover{
-        background-color: var(--color1Gradiente);
-        color: var(--color4);
-    }
-
-    .children-img{
-        width: 20px;
-        height: 20px;
-    }
-
-    .conteiner-top-children:link, .conteiner-top-children:visited{
-        color: var(--color4);
-        text-decoration: none;
-    }
-    
-    .children-tittle{
-        font-size: 12px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
     .conteiner-section-user{
         height: 100%;
         width: 50%;

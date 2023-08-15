@@ -2,7 +2,7 @@ export default class LenguagesTools{
     tools = [
         {
             id: 0,
-            name: 'English',
+            name: 'english',
             url: '#',
             style : {
                 icone: require('@/assets/icones-tool/reino-unido.png')
@@ -10,7 +10,7 @@ export default class LenguagesTools{
         },
         {
             id: 1,
-            name: 'Portugues',
+            name: 'portuguese',
             url: '#',
             style : {
                 icone: require('@/assets/icones-tool/brasil.png')
@@ -18,7 +18,7 @@ export default class LenguagesTools{
         },
         {
             id: 2,
-            name: 'Spanish',
+            name: 'spanish',
             url: '#',
             style : {
                 icone: require('@/assets/icones-tool/espanha.png')

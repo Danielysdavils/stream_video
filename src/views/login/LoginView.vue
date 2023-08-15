@@ -1,5 +1,6 @@
 <template>
     <div class="component-conteiner-form">
+
         <FormComponent :tittle="this.login"  @sendData="reciveData" />
         <LogoMTW :flexDirection="'row'" :margin-children="'10px'"/>
         <Particles :colorCircle="this.colorParticles.colorCircle" :colorShape="this.colorParticles.colorShape" :colorLine="this.colorParticles.colorLine" :value="this.colorParticles.value" />

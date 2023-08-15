@@ -4,7 +4,8 @@
 
         <div class="conteiner-homeDisplay">
             <TopMenu 
-                @setData="set" @setDataDropDown="setDropDown"
+                @itemClicado="setTopMenu" 
+                
                 :OptionsLeft="dataMenuLeft" 
                 :OptionRigth="dataMenuRight"/>
 
@@ -30,7 +31,6 @@
     </div>
 </template>
 <script>
-
     import navBar from '@/components/navBar/navBar.vue';
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
@@ -48,10 +48,15 @@
     import UserTools from '@/class/User/UserTools'
     import LenguagesTools from '@/class/Lenguages/LenguagesTools'
 
+    //
+    import Lenguages from '@/class/Lenguages/Lenguages'
+
     export default {
 
         data: () => {
+
             return{
+
                 colorParticles: { 
                     colorCircle: '#cdcfd4',
                     colorShape: '#0a121f',
@@ -73,26 +78,16 @@
         },
         
         methods: {
-            set(d){
-                console.log(d);
-            },
+            setTopMenu(item, dropdown){
+                const lenguages = new Lenguages(dropdown);
 
-            setDropDown(d){
-                console.log(d);
-                switch (d){
-                    case 'English':
-                        this.$i18n.locale = 'br';
-                        break;
-                    case 'Portugues':
-                        this.$i18n.locale = 'en';
-                        break;
-                    case 'Spanish':
-                        this.$i18n.locale = 'es';
-                        break;
+                switch(item){
+                    case 'settings':
 
-                    case 'Full Screen':
-                    
-                        break;  
+                        break;
+                    case 'lenguages':
+                        lenguages.setLenguages();
+                        break;
                 }
             }
         },
