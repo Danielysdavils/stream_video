@@ -1,7 +1,7 @@
 <template>
     <div class="conteiner-options-user">
         <AppDropDownContent>
-            <section v-for="tool in Tools" :key="tool.id">
+            <section class="cont-item-display" v-for="tool in Tools" :key="tool.id">
                 <AppDropDownItem>
                     <router-link :to="tool.url" class="link-dropdown">
                         <div class="cont-item-dropDown" v-on:click="itemClicked(tool.name)">
@@ -36,24 +36,24 @@
             }
         }
     }
-
 </script>
 
 <style>
     .conteiner-options-user{
-        margin-right: 100px;
+        margin-right: 20px;
     }
 
     .cont-item-dropDown{
         width:100%;
         display:flex;
         align-items: center;
-        margin-left:20px;
+        margin-left:10px;
+        margin-right: 10px;
     }
 
     .icone-item-dropDown{
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
 
     .link-dropdown:visited, .link-dropdown:link{
@@ -70,10 +70,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--color2Gradiente);
+        background-color: var(--color4Gradiente);
         border-radius: 50%;
         padding: 6px;
         margin-right: 5px;
+    }
+
+    .cont-item-display{
+        border-radius: 15px;
+    }
+
+    .cont-item-display:hover{
+        transition: background-color 1s ease;
+        background-color: var(--color2);
     }
 
 </style>

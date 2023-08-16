@@ -5,7 +5,7 @@ export default class UserTools{
             name: 'logout',
             url: '/',
             style : {
-                icone: require('@/assets/icones-tool/reino-unido.png')
+                icone: require('@/assets/icones-tool/power-off.png')
             }
         }
     ]

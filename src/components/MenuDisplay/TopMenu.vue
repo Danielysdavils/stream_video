@@ -6,12 +6,13 @@
                 v-for="data in OptionsLeft" 
                 :key="data.id"> 
                     <ItemToDisplay 
+                        class="item-left"
                         :section="data.section" 
                         :dataUrl="data.data.url" 
                         :dataName="data.data.name"
                         :dataIcone="data.data.icone"
                         :toolToDisplay="data.tools != null ? data.tools.tools : null" 
-                        
+    
                         @setData="itemClicado" @setDataDropDown="itemClidadoDropDown"/>
                 </div>
             </div> 
@@ -22,6 +23,7 @@
                 v-for="data in OptionRigth"
                 :key="data.id">
                     <ItemToDisplay 
+                        class="item-right"
                         :section="data.section" 
                         :dataUrl="data.data.url" 
                         :dataName="data.data.name"
@@ -56,10 +58,12 @@
         methods:{
             itemClicado(item){
                 this.dataSelected = item;
+
+                this.$emit('itemClicadoWithoutDropDown', item);
             },
 
             itemClidadoDropDown(item){
-              
+                
                 this.$emit('itemClicado', this.dataSelected, item);
             }
         }
@@ -100,6 +104,10 @@
         align-items: center;
         justify-content: flex-end;
         margin-right: 50px;  
+    }
+
+    .item-right{
+        margin-right: 10px !important; 
     }
 
     @media (min-width: 0px) and (max-width: 800px){

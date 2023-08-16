@@ -1,32 +1,19 @@
 <template>
-    <AppDropDown>
-        <template slot="toggler">
-            <router-link 
-                :to="'/' + section + '/' + dataUrl" 
-                class="conteiner-top-children" >
-                <div class="cont-item" v-on:click="setDataMenu(dataName)">
-                    <div class="backgroundImg">
-                            <img 
-                                :src="dataIcone" 
-                                alt="" 
-                                class="children-img">
-                    </div>
+    <div class="conteiner-top-children">
+        <div class="cont-item" v-on:click="setDataMenu(dataName)">
+            <div class="backgroundImg">
+                <img 
+                    :src="dataIcone" 
+                    alt="" 
+                    class="children-img">
+                </div>
                     
-                    <h5 class="children-tittle">{{ $t(dataName) }}</h5>
-                </div> 
-                </router-link>
-        </template>
-
-        <div v-if="toolToDisplay != null">
-            <DropDownItem :Tools="toolToDisplay" @itemCliked="setDataDropDown" />
-        </div>
-    </AppDropDown>
+            <h5 class="children-tittle">{{ $t(dataName) }}</h5>
+        </div> 
+    </div>    
 </template>
 
 <script>
-    import AppDropDown from '@/components/DropDown/AppDropDown.vue'
-    import DropDownItem from '@/components/Item/DropDownItem.vue';
-    
     export default{
 
         props: [
@@ -38,7 +25,6 @@
         ],
 
         methods:{
-            
             //Icone Clicado
             setDataMenu(optionClicked){
                 this.$emit('setData', optionClicked);
@@ -48,11 +34,6 @@
             setDataDropDown(data){
                 this.$emit('setDataDropDown', data);
             }
-        },
-
-        components:{
-            AppDropDown,
-            DropDownItem
         }
     }
 </script>

@@ -80,6 +80,7 @@
                 }
                 return data;
             },
+            
             reajustConteiner(){
                 if(this.isExpandedAside) return {"--WidthConteiner" : "50%"}    
                 else return {"--WidthConteiner" : "10%"}
@@ -184,7 +185,7 @@
 
     display: flex;
     align-items: flex-end;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 @media (min-width: 0px) and (max-width: 800px){

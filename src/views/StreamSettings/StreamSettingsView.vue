@@ -5,14 +5,17 @@
             <MenuDisplay :optionSelected="dataSelected" />
            
             <div class="displaySettings">
-                <TopMenu  @setData ="set" 
-                :OptionsLeft="dataMenuLeft" 
-                :OptionRigth="dataMenuRight"/>
+                <TopMenu  
+                    @itemClicadoWithoutDropDown ="set" 
+                    :OptionsLeft="dataMenuLeft" 
+                    :OptionRigth="dataMenuRight"/>
+
                 <StreamSection 
                     :BorderColor="'var(--color4)'" 
                     :BoxShadow="'1px 1px 10px var(--color2)'"/>
 
-                <MenuVideoScrollBar class="carousel-video"/>
+                <MenuVideoScrollBar 
+                    v-if="setOpenDevice" class="carousel-video"/>
             </div>
         </div>        
     </div>
@@ -30,6 +33,7 @@
     import OutputService from '@/class/Output/OutputService'
     import AudioService from '@/class/Audio/AudioService'
     import UserService from '@/class/User/UserService'
+    import DeviceDisplayService from '@/class/DeviceDisplay/DeviceDisplayService'
 
     //Tools
     import UserTools from '@/class/User/UserTools'
@@ -44,7 +48,8 @@
                 ],
                 
                 dataMenuRight: [
-                    {data: new UserService(), section:'streamconfig', id:4, tools: new  UserTools()}
+                    {data: new DeviceDisplayService(), section: 'streamconfig', id:4, tools: null},
+                    {data: new UserService(), section:'streamconfig', id:5, tools: new  UserTools()}
                 ],
 
                 dataSelected : ''
@@ -57,10 +62,17 @@
             TopMenu,
             navBar
         },
+
         //Envia a opção que foi clicada
         methods: {
-            set(s){
+            set(s){        
                 this.dataSelected = s
+            }
+        },
+
+        computed:{
+            setOpenDevice(){
+                return this.dataSelected == 'device' ? true : false
             }
         }
     }

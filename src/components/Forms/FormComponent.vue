@@ -106,7 +106,7 @@
         border-radius: 10px;
         padding: 10px;
         z-index: 3;
-        width: 40%;
+        width: 30%;
 
         min-width: 400px;
         max-width: 500px;
@@ -120,7 +120,6 @@
         color: var(--color4);
         width: 100%;
         height: 100%;
-
     }
 
     .cont-obj{
@@ -128,8 +127,7 @@
     }
 
     .cont-button{
-        width: 40%;
-        margin-top: 10px;
+        margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -147,7 +145,6 @@
     }
 
     .button-form{
-        margin-top: 10px;
         font-family: var(--FontLabel);
         font-weight: 400;
     }

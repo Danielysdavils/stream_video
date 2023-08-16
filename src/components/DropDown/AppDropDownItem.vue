@@ -22,12 +22,5 @@
         color: var(--color4);
         text-decoration: none;
     }
-
-    .item-conteiner:hover{
-        transition: 4s ease;
-        background-color: var(--color4);
-    }
-
-
 </style>
   

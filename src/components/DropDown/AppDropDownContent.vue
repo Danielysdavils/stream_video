@@ -35,19 +35,17 @@ export default {
 
     .content-menu{
         display: flex;
-        flex-direction: column;
         
-
-        background-color: var(--color1);
+        background-color: var(--color3Gradiente);
         border: 1px solid var(--color2);
         border-radius: 5px;
-
+        padding: 5px;
         margin-right: 10px;
         margin-top: 60px;
         position: absolute;
         z-index: 10;
-        
-        width: 15%;
+
+        width: auto !important;
     }
     @media (min-width: 0px) and (max-width: 800px){
         .content-menu{

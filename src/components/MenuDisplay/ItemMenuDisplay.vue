@@ -8,10 +8,9 @@
         <div class="conteinerItemSelected" v-if="Clicked == Sendtext">
             <div class="rowSelected" :style="setRow"></div>
             <div class="styleBorder">
-                <img :src="Sendsrc.yellow" alt="" class="iconeCardMenu">
+                <img :style="backgroundImage" :src="Sendsrc.yellow" alt="" class="iconeCardMenu">
             </div>
         </div>
-  
     </div>
 </template>
 
@@ -22,6 +21,9 @@
         computed:{
             setRow(){
                 return {"animation" : "moveToUp 0.3s ease-in-out"}
+            },
+            backgroundImage(){
+                return {"background-color": "var(--color2)"}
             }
         }
     }
@@ -66,6 +68,10 @@
 .iconeCardMenu{
     width: 30px;
     height: 30px;
+
+    border-radius: 10px;
+    padding: 2px;
+    background-color: var(--color1);
 }
 
 /* STYLE SELECTED VALUE */
