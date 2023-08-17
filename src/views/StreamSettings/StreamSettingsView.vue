@@ -12,10 +12,12 @@
 
                 <StreamSection 
                     :BorderColor="'var(--color4)'" 
-                    :BoxShadow="'1px 1px 10px var(--color2)'"/>
+                    :BoxShadow="'1px 1px 10px var(--color2)'"
+                    :Height="heightToStream" />
 
                 <MenuVideoScrollBar 
-                    v-if="setOpenDevice" class="carousel-video"/>
+                    class="carousel-video"
+                    @activeDisplay="setHeightScreen" />
             </div>
         </div>        
     </div>
@@ -33,26 +35,28 @@
     import OutputService from '@/class/Output/OutputService'
     import AudioService from '@/class/Audio/AudioService'
     import UserService from '@/class/User/UserService'
-    import DeviceDisplayService from '@/class/DeviceDisplay/DeviceDisplayService'
-
+    
     //Tools
     import UserTools from '@/class/User/UserTools'
 
     export default{
         data: () => {
             return {
+
+                //Configura as ferramentas do menu superior do lado esquerdo
                 dataMenuLeft: [
                     {data: new VideoService(), section: 'streamconfig' , id: 1, tools: null}, 
                     {data: new OutputService(), section: 'streamconfig', id: 2, tools: null}, 
                     {data: new AudioService(), section: 'streamconfig', id: 3, tools: null}
                 ],
-                
+
+                //Configura as ferramentas do superior menu do lado direito
                 dataMenuRight: [
-                    {data: new DeviceDisplayService(), section: 'streamconfig', id:4, tools: null},
                     {data: new UserService(), section:'streamconfig', id:5, tools: new  UserTools()}
                 ],
 
-                dataSelected : ''
+                dataSelected : '',
+                heightToStream: '74%'
             }
         },
         components: {
@@ -63,16 +67,14 @@
             navBar
         },
 
-        //Envia a opção que foi clicada
         methods: {
+            //Envia a opção q foi clicada
             set(s){        
                 this.dataSelected = s
-            }
-        },
-
-        computed:{
-            setOpenDevice(){
-                return this.dataSelected == 'device' ? true : false
+            },
+            //Muda o comprimento do video strimando 
+            setHeightScreen(isActive){
+                this.heightToStream = isActive ? '60%' : '74%'
             }
         }
     }

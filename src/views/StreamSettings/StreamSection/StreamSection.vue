@@ -1,5 +1,5 @@
 <template>
-    <div class="displayContainer">
+    <div class="displayContainer" :style="SetHeight">
         <div class="conteiner-border" :style="setBorderColor">
             <div class="video-rep"></div>
         </div>
@@ -8,7 +8,7 @@
 
 <script>
     export default{
-        props: ['BorderColor', 'BoxShadow'],
+        props: ['BorderColor', 'BoxShadow', 'Height'],
 
         computed:{
             setBorderColor(){
@@ -17,8 +17,9 @@
                         "box-shadow": this.BoxShadow
                         }
             },
-
-            
+            SetHeight(){
+                return {"height" : this.Height}
+            }
         }
     }
 
@@ -27,8 +28,6 @@
 <style>
     .displayContainer{
         width: 100%;
-        height: 70%;
-
         display: flex;
         justify-content: center;
         border-radius: 20px;

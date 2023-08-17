@@ -15,10 +15,12 @@
                     <h2 class="tittle-welcome-section">{{$t('welcome')}},</h2>
                     <h2 class="tittle-welcome-section">{{ this.nameUser}}!</h2>
                 </div>
+                
                 <StreamSection 
                     :BorderColor="'var(--color1)'" 
-                    :BoxShadow="'1px 1px 10px var(--color1)'" />
-
+                    :BoxShadow="'1px 1px 10px var(--color1)'"
+                    :Height="'80%'" />
+                
                 <CarouselCameras />
 
                 <Particles 
@@ -38,25 +40,22 @@
     import store from '@/store/store'
     import CarouselCameras from '@/components/Carousel/CarouselCameras.vue';
 
-    //Icone
+    //Classes das configurações visuais dos Icones do menu superior
     import UserService from '@/class/User/UserService'
     import LenguagesService from '@/class/Lenguages/LenguagesService'
     import ConfigService from '@/class/Config/ConfigService' 
 
-    //Tools
+    //Classes das ferramentas do menu superior [nomes, icones, rotas]
     import ConfigTools from '@/class/Config/ConfigTools'
     import UserTools from '@/class/User/UserTools'
     import LenguagesTools from '@/class/Lenguages/LenguagesTools'
 
-    //
+    //Classe para enviar as configurações da linguagem 
     import Lenguages from '@/class/Lenguages/Lenguages'
 
     export default {
-
         data: () => {
-
             return{
-
                 colorParticles: { 
                     colorCircle: '#cdcfd4',
                     colorShape: '#0a121f',
@@ -83,8 +82,9 @@
 
                 switch(item){
                     case 'settings':
-
+                        //Adicionar tela completa opção config
                         break;
+
                     case 'lenguages':
                         lenguages.setLenguages();
                         break;

@@ -7,7 +7,6 @@
                     alt="" 
                     class="children-img">
                 </div>
-                    
             <h5 class="children-tittle">{{ $t(dataName) }}</h5>
         </div> 
     </div>    
@@ -28,11 +27,6 @@
             //Icone Clicado
             setDataMenu(optionClicked){
                 this.$emit('setData', optionClicked);
-            },
-
-            //Icone dropdown clicado
-            setDataDropDown(data){
-                this.$emit('setDataDropDown', data);
             }
         }
     }
