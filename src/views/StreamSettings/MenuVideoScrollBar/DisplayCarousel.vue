@@ -3,7 +3,7 @@
         <CarouselDisplay>
             <rl-carousel-slide class="itemToRender-carousel">
                 <div class="graphics-section">
-                    <h1 class="name-tool">Resolution</h1>
+                    <h1 class="name-tool">Slide1</h1>
                     <RangeInput />
                     <SelectedButton />
                 </div>
@@ -28,10 +28,7 @@
 <style>
     .conteiner-displayCarousel{
         width:100%;
-        height: 30%;
+        height: 100%;
         background-color: var(--color1);
-
-        transition: height 1s ease-in-out;
-        transition-timing-function: linear;
     }
 </style>

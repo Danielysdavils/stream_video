@@ -16,7 +16,7 @@
                     :Height="heightToStream" />
 
                 <MenuVideoScrollBar 
-                    class="carousel-video"
+                    :colorBackground="'var(--color1)'"
                     @activeDisplay="setHeightScreen" />
             </div>
         </div>        
@@ -56,7 +56,8 @@
                 ],
 
                 dataSelected : '',
-                heightToStream: '74%'
+
+                heightToStream: '80%'
             }
         },
         components: {
@@ -74,7 +75,7 @@
             },
             //Muda o comprimento do video strimando 
             setHeightScreen(isActive){
-                this.heightToStream = isActive ? '60%' : '74%'
+                this.heightToStream = isActive ? '60%' : '80%'
             }
         }
     }
@@ -87,7 +88,7 @@
         height: 100%;
         flex-direction: column;
 
-        background-image: url(../../assets/fundo7.png);
+        background-image: url(../../assets/fondo9.png);
         background-size: cover;
         background-position: center;
     }
@@ -96,7 +97,7 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 100%;
+        height: 90%;
     }
 
     .displaySettings{

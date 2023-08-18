@@ -5,9 +5,9 @@
         <div class="graphics-component">
             <label for="range-2" class="text-graphic">Select a value: </label>
             <div class="graphic-item">
-                <b-form-input id="range-2" v-model="valueInterface" type="range" min="0" max="10" step="1"></b-form-input>
+                <b-form-input id="range-2" v-model="this.valueDisplay" type="range" min="0" max="10" step="1"></b-form-input>
                 <div class="mt-2">
-                    <h2 class="value-graphics">{{ valueInterface }}</h2>
+                    <h2 class="value-graphics">{{ this.valueDisplay }}</h2>
                 </div>
             </div>
         </div>
@@ -15,19 +15,41 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 
 //Metodo quando a data do servidor mude e quando a data do user mude 
 // Desacoplar metodos de chamada de Store do componente??
 
-import { mapActions } from 'vuex'
-
 export default{
+    props: ['value', 'name'],
+
     data: () => {
         return{
-            valueInterface: ''
+           valueDisplay: ref(0)
         }
     },
-    
+
+    watch:{
+        valueDisplay(valueDisplay){
+            console.log('fui mudado');
+            console.log(valueDisplay);
+
+            this.sendData(valueDisplay); 
+        }
+    },
+
+    methods:{
+        sendData(data){
+
+            console.log(data);
+            //this.$emit('dataGraphic', {name: this.name, data: data});
+        }
+    }
+}
+
+/*  
+    import { mapActions } from 'vuex'
+
     watch: {
         valueInterface(newValue){
             this.updateChange(newValue)
@@ -61,7 +83,8 @@ export default{
             )
         }
     }
-}
+*/
+
 </script>
 
 <style scoped lang="scss">

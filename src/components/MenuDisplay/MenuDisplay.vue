@@ -134,7 +134,7 @@
 }
 
 .separation-item-menu{
-    height: 70%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -155,6 +155,7 @@
     width: var(--widthMenu);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: var(--color2Gradiente);
 
     transition: width 0.5s ease;
@@ -181,11 +182,11 @@
 
 .cont-logo-mtw{
     width: 100%;
-    height: 30%;
+    height: 20%;
 
     display: flex;
     align-items: flex-end;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
 }
 
 @media (min-width: 0px) and (max-width: 800px){

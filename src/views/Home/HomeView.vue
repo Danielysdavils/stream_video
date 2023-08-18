@@ -19,9 +19,11 @@
                 <StreamSection 
                     :BorderColor="'var(--color1)'" 
                     :BoxShadow="'1px 1px 10px var(--color1)'"
-                    :Height="'80%'" />
+                    :Height="this.heightToStream" />
                 
-                <CarouselCameras />
+                <MenuVideoScrollBar 
+                    :colorBackground="'var(--color1Gradiente)'"
+                    @activeDisplay="setHeightScreen" />
 
                 <Particles 
                     :colorCircle="this.colorParticles.colorCircle" 
@@ -38,7 +40,8 @@
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
     import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
     import store from '@/store/store'
-    import CarouselCameras from '@/components/Carousel/CarouselCameras.vue';
+    import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
+    
 
     //Classes das configurações visuais dos Icones do menu superior
     import UserService from '@/class/User/UserService'
@@ -72,6 +75,8 @@
                     {id: 1, section: 'home', data: new UserService(), tools: new UserTools()}
                 ],
 
+                heightToStream: '80%',
+
                 nameUser : store.getters.user
             }
         },
@@ -89,6 +94,10 @@
                         lenguages.setLenguages();
                         break;
                 }
+            },
+
+            setHeightScreen(isActive){
+                this.heightToStream = isActive ? '60%' : '80%'
             }
         },
 
@@ -97,7 +106,7 @@
             Particles,
             TopMenu,
             StreamSection,
-            CarouselCameras
+            MenuVideoScrollBar
         }
     }
 </script>

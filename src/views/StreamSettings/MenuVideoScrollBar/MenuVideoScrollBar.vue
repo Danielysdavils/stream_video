@@ -1,9 +1,9 @@
 <template>
-    <div class="displayCont">
+    <div class="displayCont" :style="setHeight">
         <section class="navigation-options-section">
             <div 
                 v-if="isOpenDeviceStream" 
-                class="cont-options">
+                class="cont-options" :style="setStyle">
                 <img
                     v-on:click="setDeviceStream" 
                     src="@/assets/seta.png" 
@@ -13,7 +13,7 @@
 
             <div 
                 v-else
-                class="cont-options">
+                class="cont-options" :style="setStyle">
                 <img 
                     v-on:click="setDeviceStream"
                     src="@/assets/icones-tool/arrowhead-up.png" 
@@ -34,9 +34,11 @@
     export default{
         data: ()=> {
             return{
-                isOpenDeviceStream : true
+                isOpenDeviceStream : false
             }
         },
+
+        props: ['colorBackground'],
 
         methods:{
             setDeviceStream(){
@@ -45,17 +47,37 @@
             }
         },
 
+        computed:{
+            setHeight(){
+                return this.isOpenDeviceStream ? 
+                { 
+                    "height" : "30%"
+                } : 
+                {
+                    "height" : "10%",
+                    "transition" : "height 1s ease" 
+                }
+            },
+
+            setStyle(){
+                return {"background-color": this.colorBackground}
+            }
+        },
+
         components:{
             DisplayCarouselVue
         }
     }
+
 </script>
 
 <style>
     .displayCont{
-        display: flexbox;
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
         width: 100%;
+        position: relative;
+        z-index: 15;
     }
 
     .icone-close{
@@ -65,6 +87,7 @@
         border-radius: 50%;
         padding: 5px;
         margin-left: 5px;
+        cursor: pointer;
     }
 
     .icone-close:hover{
@@ -77,13 +100,14 @@
     /* tamanho do componente carousel */
     .navigation-options-section{
         width: 100%;
+        height: 100%;
     }
 
     .cont-options{
         width: 100%;
-        height: auto;
-        background-color: var(--color1);
-        padding: 6px;
+        height: 100%;
+        padding: 10px;
+        border-radius: 15px 15px 0px 0px;
     }
 
     .contDropDawn{

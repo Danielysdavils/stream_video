@@ -3,7 +3,10 @@
         <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">Resolution</h1>
-                <RangeInput />
+                <RangeInput 
+                :value="this.resolutionData" 
+                :name="resolution"
+                @sendData="getData" />
                 <SelectedButton />
             </div>
         </rl-carousel-slide>
@@ -11,7 +14,10 @@
         <rl-carousel-slide class="itemToRender-carousel">
             <div class="graphics-section">
                 <h1 class="name-tool">Codec</h1>
-                <RangeInput />
+                <RangeInput
+                :value="this.codecData"
+                :name="codec" 
+                @sendData="getData"/>
                 <SelectedButton />
             </div>
         </rl-carousel-slide>
@@ -47,9 +53,39 @@
     import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
 
+    import store from '@/store/store'
+
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
+
+        data: () => {
+            return{
+                resolutionData: store.getters.getResolution,
+                codecData: store.getters.getCodec
+            }
+        },
+
+        methods:{
+            //store.dispatch('putResolution', data)
+            //Data dp usuário
+
+            getData(data){  
+                switch (data.name) {
+                    case 'codec':
+                        console.log(data.name);
+                        store.dispatch('putCodec', data.data)
+                        break;
+                }    
+            }
+        },
+        /*
+        watch:{
+            resolutionData(resolutionData){
+
+            }
+        },*/
+
         components: {
             RangeInput,
             SelectedButton,
@@ -82,6 +118,7 @@
         justify-content: center;
         align-items: center;
 
+        margin-top: 30px;
         margin-bottom: 280px;
     }
 
