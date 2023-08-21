@@ -1,56 +1,94 @@
+import Video from "@/class/Video/Video"
+import { PUT_DATA } from "@/store/Mutations/mutations-type";
+
+const videoModule = {
+    namespace: true,
+
+    state: {
+        videoData : new Video() 
+    },
+
+    getters: {
+        getResolution: (state) => {
+            return state.videoData.Resolution;
+        },
+
+        getCodec : (state) => {
+            return state.videoData.Codec;
+        },
+
+        getFramRate: (state) => {
+            return state.videoData.FramRate;
+        },
+
+        getBitRate: (state) => {
+            return state.videoData.BitRate;
+        },
+
+        getQuantizer: (state) => {
+            return state.videoData.Quantizer;
+        },
+    },
+
+    mutations:{
+        [PUT_DATA](state, data){
+            state.videoData.Codec = data;
+        }
+    },
+
+    actions: {
+        putCodec({commit}, data){
+            commit(PUT_DATA, data);
+        },
+
+        putResolution({commit}, data){
+            commit(PUT_DATA, data);
+        },
+
+        putFramRate({commit}, data){
+            commit(PUT_DATA, data);
+        },
+
+        putBitRate({commit}, data){
+            commit(PUT_DATA, data);
+        },
+
+        putQuantizer({commit}, data){
+            commit(PUT_DATA, data);
+        },
+    }
+}
+
+export default videoModule;
+
+/*import Video from '@/class/Video/Video'
 import { PUT_DATA } from '@/store/Mutations/mutations-type'
 //import { getData } from '@/api/crudApi'
-//import Video from '@/class/Video/Video'
 
 const VideoModule = {
     namespaced: true,
 
     state: {
-        //videoData : new Video()  
-        Resolution : 5,
-        Codec : 4,
-        FramRate : 3,
-        BitRate : 2,
-        Quantizer : 1
+        videoData : new Video()     
     },
 
     getters: {
-        //Status atual de todas as ferramentas
-        videoData: (state) => {
-            return state.videoData
-        },
-        getResolution: (state) => {
-            return state.Resolution
-        },
         getCodec: (state) => {
-            return state.Codec
-        },
-        getFramRate: (state) => {
-            return state.FramRate
-        },
-        getBitRate: (state) => {
-            return state.BitRate
-        },
-        getQuantizer: (state) => {
-            return state.Quantizer
+            return state.videoData.Codec;
         }
     },
-    //2. Quando o usuáro muda as config --> actions [mudança de status]
+
     mutations: {
-        // Recebe as alterações do actions e altera o status inicial da app
         [PUT_DATA](state, newState){
-            state.Codec = newState;
+            state.videoData.Codec = newState;
         }
     },
 
     actions: {
-        // Aciona as mudanças de status --> Deteta as alterações do user 
-        // RECEBE O CRUD DA API
-        // Manda para o mutation
-
         putCodec({commit}, data){
-            commit('PUT_DATA', data);
+            commit(PUT_DATA, data);
         }
+        
         /*
         async getAndPopulateData({ commit }){
             //Peço pra api os dados
@@ -74,8 +112,10 @@ const VideoModule = {
             // Atualizo o state com os dados do usuário
             commit(PUT_DATA, newUserStatus)
         }
-        */
+        
     }
 }
 
 export default VideoModule;
+*/
+

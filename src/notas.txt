@@ -1,0 +1,21 @@
+--> Inicio do projeto [18 de Julho] 1m + 3 dias
+
+--> A Implementar 
+6. Hooks de notificações pro usuário [senha incorreta, modificações salvas, etc]
+1. Adicionar animação de espera para tela streamSettings 
+4. Adicionar visualização Grid
+6. Mudar nome de 'output' para transmissão
+5. Barra de salvamiento automatico
+
+--> Fazendo
+2. Add Carousel Cameras, selected.
+3. Melhorar selected topBar
+6. Ajustar novamente a media query topMenu
+5. Melhorar Classes a receber a informação async 
+9. Configurar Store Modules/Api
+
+--> Esperar Api [Pesquisar req]
+6. Pesquisar sobre protocolo R..??
+7. Strimar o video 
+8. Melhorar graficos [conforme api] [Feito]
+2. Icones --> MenuDisplay

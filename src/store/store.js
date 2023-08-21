@@ -1,7 +1,8 @@
 import userModule from '@/store/Modules/UserModule'
 import ToolSelected from '@/store/Modules/ToolSelected'
-
-import VideoModule from '@/store/Modules/VideoModule'
+import VideoModule from './Modules/VideoModule'
+import AudioModule from './Modules/AudioModule'
+import OutputsModule from './Modules/OutputsModule'
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -12,8 +13,9 @@ const store = new Vuex.Store({
     modules: {
         tool: ToolSelected,
         user: userModule,
-
-        video: VideoModule
+        video: VideoModule,
+        audio: AudioModule,
+        output: OutputsModule
     }
 }) 
 

@@ -1,6 +1,6 @@
 export default class Video{
     constructor(){
-        this.Resolution = 0,
+        this.Resolution = '',
         this.Codec = 0,
         this.FramRate= 0,
         this.BitRate = 0,

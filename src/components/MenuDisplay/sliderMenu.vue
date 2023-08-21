@@ -1,6 +1,6 @@
 <template>
     <CarouselDisplay >
-        <rl-carousel-slide v-for="tool in Tools.tools" :key="tool.id" class="itemToRender-carousel">
+        <rl-carousel-slide v-for="tool in toolToRender.tools" :key="tool.id" class="itemToRender-carousel">
             <div class="graphics-section" >
                 <h1 class="name-tool">{{ $t(tool.name) }}</h1>
                 <div class="row-separator"></div>
@@ -43,18 +43,14 @@
 
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
 
-    import VideoTools from '@/class/Video/VideoTools'
     import store from '@/store/store'
 
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
-        data: () => {
-            return{
-                Tools : new VideoTools()
-            }
-        },
-
+    
+        props: ['toolToRender'],
+    
         methods:{
             sendData(data){
                 let info = ''

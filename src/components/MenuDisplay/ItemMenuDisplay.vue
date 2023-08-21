@@ -116,8 +116,8 @@
     border: 1px solid;
     border-top-color: var(--color1);
     border-bottom-color: var(--color1);
-    border-left-color: var(--color3);
-    border-right-color: var(--color3);
+    border-left-color: var(--color1);
+    border-right-color: var(--color1);
     background-color: var(--color1);
     border-radius: 7px;
     padding: 8px;

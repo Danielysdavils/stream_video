@@ -95,7 +95,7 @@
         methods: {
             setItemClicked(element, id){
                 this.itemClick = element;
-
+                
                 store.dispatch('setIdSlide', id);
                 
                 this.openAside();

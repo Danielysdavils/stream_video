@@ -588,5 +588,7 @@
     "logout": "Deslogar",
     "DevelopBy": "Desenvolvido por",
     "enterName": "Escreva seu nome",
-    "enterPassword": "Escreva sua senha"
+    "enterPassword": "Escreva sua senha",
+
+    "resolution": "Resolução"
 }

@@ -1,5 +1,6 @@
 <template>
-    <rl-carousel v-model="slide" 
+    <rl-carousel 
+        v-model="slide" 
         :vertical="setCarousel">
 
         <div slot-scope="{wrapperStyles}" class="w-full overflow-hidden">
@@ -7,6 +8,7 @@
                 <slot></slot>
             </div>
         </div>
+
   </rl-carousel>
 </template>
 
@@ -15,7 +17,6 @@
     import store from '@/store/store'
 
     export default{
-
         data: () => {
             return{
                 windowWidth: window.innerWidth

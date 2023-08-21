@@ -584,6 +584,8 @@
     "logout": "Logout",
     "DevelopBy": "Develop by",
     "enterPassword": "Enter your password",
-    "enterName":"Enter your name"
+    "enterName":"Enter your name",
+
+    "resolution": "Resolution"
 }
 

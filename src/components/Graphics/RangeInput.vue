@@ -1,13 +1,12 @@
 <template>
     <div class="conteiner-graphics">
-        <div class="row-separator"></div>
-
         <div class="graphics-component">
             <label for="range-2" class="text-graphic">Select a value: </label>
+            
             <div class="graphic-item">
-                <b-form-input id="range-2" v-model="this.valueDisplay" type="range" min="0" max="10" step="1"></b-form-input>
+                <b-form-input id="range-2" v-model="valueDisplay" type="range" :min="minValue" :max="maxValue" step="1"></b-form-input>
                 <div class="mt-2">
-                    <h2 class="value-graphics">{{ this.valueDisplay }}</h2>
+                    <div class="conteinerValue"><h2 class="value-graphics">{{ this.valueDisplay }}</h2></div>
                 </div>
             </div>
         </div>
@@ -15,76 +14,32 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-
-//Metodo quando a data do servidor mude e quando a data do user mude 
-// Desacoplar metodos de chamada de Store do componente??
 
 export default{
-    props: ['value', 'name'],
-
+    props: ['value', 'minValue', 'maxValue' ],
+    
     data: () => {
         return{
-           valueDisplay: ref(0)
+            valueDisplay: 0
         }
     },
 
     watch:{
-        valueDisplay(valueDisplay){
-            console.log('fui mudado');
-            console.log(valueDisplay);
+        value(newValue, oldValue){
+            this.valueDisplay = oldValue
+        },
 
-            this.sendData(valueDisplay); 
+        valueDisplay(newValue){
+            this.sendData(newValue); 
         }
     },
 
     methods:{
         sendData(data){
-
-            console.log(data);
-            //this.$emit('dataGraphic', {name: this.name, data: data});
+            this.$emit('dataGraphic', {name: this.name, data: data});
         }
     }
-}
-
-/*  
-    import { mapActions } from 'vuex'
-
-    watch: {
-        valueInterface(newValue){
-            this.updateChange(newValue)
-        },
-
-        getData(newValue){
-            //Atualizo o grafico conforme os dados do servidor
-            this.valueInterface = newValue
-        }
-    },
-
-    methods:{
-        ...mapActions({
-            sendData : 'store/putData',
-            getData : 'store/getAndPopulateData'
-        }),
-
-        //Mando e atualizo
-        async updateChange(data){
-            await this.sendData(data).then(
-                response => console.log(response), 
-                err => console.log(err)
-            )
-        },
-        
-        //recebo e atualizo
-        async getData(){
-            await this.getData().then(    
-                response => this.$set(this.valueInterface, 'valueServer', response), 
-                err => console.log('warning! ' + err)
-            )
-        }
-    }
-*/
-
+}   
 </script>
 
 <style scoped lang="scss">
@@ -97,32 +52,66 @@ export default{
         padding: 20px;
         font-size: 12px;
     }
-
-    .row-separator{
-        width: 50%;
-        height: 0.5px;
-        background-color: var( --color4Gradiente);
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
-
-    input[type="range"]{
-        width: 90%;
-        -webkit-appearance: none;
-                appearance: none;
     
-        background-color: var(--color3Gradiente);
-        border: 1px solid;
-        border-color: var(--color4);
-        border-radius: 10px;
+    /*********** Baseline, reset styles ***********/
+    input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 25rem;
     }
 
-    input[type="range"]::-ms-thumb{
-        background-color: var(--color2);
+    /* Removes default focus */
+    input[type="range"]:focus {
+    outline: none;
     }
 
-    label{
-        margin-bottom: 5px;
+    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+    /* slider track */
+    input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--color4);
+    box-shadow: 1px 1px 2px var(--color3);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -4px; /* Centers thumb on the track */
+    background-color: var(--color3);
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    }
+
+    input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid var(--color3);
+    outline-offset: 0.125rem;
+    }
+
+    /*********** Firefox styles ***********/
+    /* slider track */
+    input[type="range"]::-moz-range-track {
+    background-color: var(--color4);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-moz-range-thumb {
+    background-color: var(--color3);
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    }
+
+    input[type="range"]:focus::-moz-range-thumb{
+    outline: 3px solid var(--color3);
+    outline-offset: 0.125rem;
     }
 
     .graphics-component{
@@ -135,7 +124,6 @@ export default{
         display: flex;
         align-items: center;
         width: 100%;
-
         background-color: var(--color3Gradiente);
         border-radius: 40px;
         padding: 5px;
@@ -144,6 +132,7 @@ export default{
     .text-graphic{
         font-family: var(--fontLabel);
         font-size: 15px;
+        padding: 10px;
     }
 
     .mt-2{
@@ -151,13 +140,18 @@ export default{
         align-items: center;
         justify-content: center;
 
-        width: 15%;
+        width: 20%;
         margin-top: 0px !important;
     }
 
-    .value-graphics{
-        width: 100%;
-        background-color: var(--color4Gradiente);
+    .conteinerValue{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 90%;
+
+        background-color: var(--color1Gradiente);
         color: var(--color4);
         border-radius: 50%;
 
@@ -165,11 +159,9 @@ export default{
         margin-top: 0px !important;
         margin-left: 6px;
         margin-right: 6px;
+    }
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+    .value-graphics{
         font-size: 20px;
         font-family: var(--fontLabel);
     }
