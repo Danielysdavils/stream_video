@@ -25,30 +25,25 @@ html, body{
     --FontTittle: 'Poiret One', cursive;
     --FontNavBar: 'Rajdhani', sans-serif;
     --FontOther: 'Sawarabi Gothic', sans-serif;
+}
 
+*{
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--color1) var(--color2Gradiente) !important;
+}
 
-    /* SCROLLBAR */
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px !important;
+  width: 10px !important;
+}
+*::-webkit-scrollbar-track {
+  background-color: var(--color1) !important;
+}
 
-    /* Firefox */
-* {
-    scrollbar-width: thin !important;
-    scrollbar-color: #2c313a #0F1B2E !important;
-  }
-  
-  /* Chrome, Edge and Safari */
-  *::-webkit-scrollbar {
-    height: 10px !important;
-    width: 10px !important;
-  }
-  *::-webkit-scrollbar-track {
-    border-radius: 6px !important;
-    background-color: #0F1B2E !important;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    border-radius: 3px !important;
-    background-color: #2c313a !important;
-  }
+*::-webkit-scrollbar-thumb {
+  border-radius: 3px !important;
+  background-color: var(--color2) !important;
 }
 
 #app{

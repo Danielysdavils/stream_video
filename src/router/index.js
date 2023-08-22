@@ -27,11 +27,19 @@ const routes = [
       },
       {
         path: 'audio',
-        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue')
+        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAudio/SettingsAudio.vue')
+      },
+      {
+        path: 'streaming',
+        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsStreaming/SettingsStreaming.vue')
+      },
+      {
+        path: 'input',
+        component: () => import('../views/StreamSettings/MenuStreamSettings/settingsInput/SettingsInput.vue')
       },
       {
         path: 'output',
-        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue')
+        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsOutput/SettingsOutput.vue')
       }
     ]
   }

@@ -93,8 +93,7 @@
     .conteiner-options-render{
         display: flex;
         height: 50%;
-        width: 50%;
-
+        width: 70%;
     }
     
     .conteiner-section-user{

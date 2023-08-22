@@ -33,6 +33,8 @@
     //Clases
     import VideoService from '@/class/Video/VideoService'
     import OutputService from '@/class/Output/OutputService'
+    import StreamingService from '@/class/Streaming/StreamingService'
+    import InputService from '@/class/Input/InputService'
     import AudioService from '@/class/Audio/AudioService'
     import UserService from '@/class/User/UserService'
     
@@ -46,8 +48,10 @@
                 //Configura as ferramentas do menu superior do lado esquerdo
                 dataMenuLeft: [
                     {data: new VideoService(), section: 'streamconfig' , id: 1, tools: null}, 
-                    {data: new OutputService(), section: 'streamconfig', id: 2, tools: null}, 
-                    {data: new AudioService(), section: 'streamconfig', id: 3, tools: null}
+                    {data: new AudioService(), section: 'streamconfig', id: 2, tools: null},
+                    {data: new StreamingService(), section: 'streamconfig', id: 3, tools: null},
+                    {data: new OutputService(), section: 'streamconfig', id: 4, tools: null},
+                    {data: new InputService(), section: 'streamconfig', id: 5, tools: null},
                 ],
 
                 //Configura as ferramentas do superior menu do lado direito
@@ -70,7 +74,8 @@
 
         methods: {
             //Envia a opção q foi clicada
-            set(s){        
+            set(s){     
+             
                 this.dataSelected = s
             },
             //Muda o comprimento do video strimando 

@@ -25,7 +25,6 @@
 
         <AsideMenuDisplay 
             :sectionSelected="optionSelected" 
-            :dataSelected="itemClicked" 
             :isExpandedAside="isExpandedAside" />
     </div>
 </template>
@@ -35,10 +34,13 @@
     import AsideMenuDisplay from '@/components/MenuDisplay/AsideMenuDisplay.vue'
     import LogoMTW from '../Logo/LogoMTW.vue'
 
-    //CLASS
+    //Import das opções do top menu [ferramentas de configurações]
     import VideoTools from '@/class/Video/VideoTools'
     import AudioTools from '@/class/Audio/AudioTools'
     import OutputTools from '@/class/Output/OutputTools'
+    import InputTools from '@/class/Input/InputTools'
+    import StreamingTools from '@/class/Streaming/StreamingTools'
+    //
     
     import store from '@/store/store'
 
@@ -48,7 +50,9 @@
                 tools : {
                     videoTools: new VideoTools(),
                     audioTools: new AudioTools(),
-                    outputTools: new OutputTools()
+                    outputTools: new OutputTools(),
+                    inputTools: new InputTools(),
+                    streamingTools: new StreamingTools()
                 },
 
                 itemClick : '',
@@ -66,6 +70,8 @@
 
         computed: {
             setToolsToRender(){
+                
+                console.log(this.optionSelected);
                 let data = []
                 switch(this.optionSelected){
                     case 'Video' : 
@@ -74,9 +80,14 @@
                     case 'Audio':
                         data = this.tools.audioTools.tools;
                         break;
+                    case 'streaming':
+                        data = this.tools.streaming.tools;
+                        break; 
                     case 'Output':
                         data = this.tools.outputTools.tools;
                         break;
+                    case 'Input':
+                        data = this.tools.inputTools.tools;
                 }
                 return data;
             },
@@ -137,10 +148,10 @@
     height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .container-item-display{

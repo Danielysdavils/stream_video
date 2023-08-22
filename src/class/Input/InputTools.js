@@ -1,21 +1,18 @@
-export default class OutputTools{
+export default class InputTools{
     tools = [
         {
             id: 0,
-            name: 'output1',
+            name: 'option1',
             options: {
                 button: { 
-                    status: false,
+                    status: null,
 
                     sections: null},
 
                 range: {
-                    status: true, 
+                    status: null, 
 
-                    sections: [
-                        {id: 1, minValue: 0, maxValue: 100},
-                        {id:2, minValue: 0, maxValue: 100}
-                    ]},
+                    sections: null},
     
                 text: {
                     status: false, 
@@ -27,7 +24,7 @@ export default class OutputTools{
         },
         {
             id: 1,
-            name: 'output2',
+            name: 'option2',
             options: {
                 button: { 
                     status: false, 

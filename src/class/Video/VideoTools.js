@@ -17,7 +17,8 @@ export default class VideoTools{
                     status: true, 
 
                     sections: [
-                        {id:1, minValue: 0, maxValue: 100}
+                        {id:1, minValue: 0, maxValue: 100},
+                        {id:1, minValue: 0, maxValue: 200}
                     ]},
     
                 text: {

@@ -6,6 +6,10 @@
 4. Adicionar visualização Grid
 6. Mudar nome de 'output' para transmissão
 5. Barra de salvamiento automatico
+6. Pesquisar sobre protocolo R..??
+7. Strimar o video 
+8. Melhorar graficos [conforme api] [Feito]
+2. Icones --> MenuDisplay
 
 --> Fazendo
 2. Add Carousel Cameras, selected.
@@ -14,8 +18,5 @@
 5. Melhorar Classes a receber a informação async 
 9. Configurar Store Modules/Api
 
---> Esperar Api [Pesquisar req]
-6. Pesquisar sobre protocolo R..??
-7. Strimar o video 
-8. Melhorar graficos [conforme api] [Feito]
-2. Icones --> MenuDisplay
+
+

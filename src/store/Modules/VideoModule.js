@@ -9,23 +9,23 @@ const videoModule = {
     },
 
     getters: {
-        getResolution: (state) => {
+        resolution: (state) => {
             return state.videoData.Resolution;
         },
 
-        getCodec : (state) => {
+        codec : (state) => {
             return state.videoData.Codec;
         },
 
-        getFramRate: (state) => {
+        framRate: (state) => {
             return state.videoData.FramRate;
         },
 
-        getBitRate: (state) => {
+        bitRate: (state) => {
             return state.videoData.BitRate;
         },
 
-        getQuantizer: (state) => {
+        quantizer: (state) => {
             return state.videoData.Quantizer;
         },
     },

@@ -1,8 +1,8 @@
-export default class OutputTools{
+export default class StreamingTools{
     tools = [
         {
             id: 0,
-            name: 'output1',
+            name: 's1',
             options: {
                 button: { 
                     status: false,
@@ -13,7 +13,7 @@ export default class OutputTools{
                     status: true, 
 
                     sections: [
-                        {id: 1, minValue: 0, maxValue: 100},
+                        {id:1, minValue: 0, maxValue: 100},
                         {id:2, minValue: 0, maxValue: 100}
                     ]},
     
@@ -27,7 +27,7 @@ export default class OutputTools{
         },
         {
             id: 1,
-            name: 'output2',
+            name: 'streaming2',
             options: {
                 button: { 
                     status: false, 

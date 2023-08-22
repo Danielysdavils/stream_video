@@ -1,23 +1,39 @@
 <template>
     <aside :class="[isExpandedAside && 'is-expanded']">
-        <SettingsAlarmVue :itemSelected="dataSelected" v-if="sectionSelected == 'Output'" />
-        <SettingSaving :itemSelected="dataSelected" v-if="sectionSelected == 'Audio'" />
-        <SettingsVideo :itemSelected="dataSelected" v-if="sectionSelected == 'Video'" />
+        <SettingsAudio 
+            v-if="sectionSelected == 'Audio'" />
+
+         <SettingStreaming 
+            v-if="sectionSelected == 'Streaming'" />
+        
+        <SettingsVideo 
+            v-if="sectionSelected == 'Video'" />
+
+        <SetingsInput 
+            v-if="sectionSelected == 'Input'" />
+
+        <SettingsOutput
+            v-if="sectionSelected == 'Output'" />
+
     </aside>
 </template>
 
 <script>
-    import SettingsAlarmVue from '@/views/StreamSettings/MenuStreamSettings/SettingsAlarm/SettingsAlarm.vue'
-    import SettingSaving from  '@/views/StreamSettings/MenuStreamSettings/SettingsSaving/SettingsSaving.vue'
-    import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue' 
+    import SettingsAudio from '@/views/StreamSettings/MenuStreamSettings/SettingsAudio/SettingsAudio.vue'
+    import SettingStreaming from  '@/views/StreamSettings/MenuStreamSettings/SettingsStreaming/SettingsStreaming.vue'
+    import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue'
+    import SetingsInput from '@/views/StreamSettings/MenuStreamSettings/settingsInput/SettingsInput.vue'
+    import SettingsOutput from '@/views/StreamSettings/MenuStreamSettings/SettingsOutput/SettingsOutput.vue' 
 
     export default{
-        props: ['dataSelected', 'isExpandedAside', 'sectionSelected'],
+        props: ['isExpandedAside', 'sectionSelected'],
 
         components: {
-            SettingsAlarmVue,
-            SettingSaving,
-            SettingsVideo
+            SettingStreaming,
+            SettingsVideo,
+            SettingsAudio,
+            SetingsInput,
+            SettingsOutput
         }
     }
 </script>

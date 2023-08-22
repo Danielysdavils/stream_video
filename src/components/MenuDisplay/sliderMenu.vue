@@ -2,12 +2,12 @@
     <CarouselDisplay >
         <rl-carousel-slide v-for="tool in toolToRender.tools" :key="tool.id" class="itemToRender-carousel">
             <div class="graphics-section" >
+
                 <h1 class="name-tool">{{ $t(tool.name) }}</h1>
                 <div class="row-separator"></div>
                     
-                <div class="section-graphic" v-if="tool.options.button.status" >
-                    <div v-for="item in tool.options.button.sections" :key="item.id"> 
-                        
+                <div class="graphic-button" v-if="tool.options.button.status" >
+                    <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
                         <SelectedButton 
                             :inputs="item.name"
                             :value="sendData(tool.name)"
@@ -15,20 +15,20 @@
                     </div>
                 </div>
 
-                <div class="section-graphic" v-if="tool.options.range.status" >
-                 
-                    <RangeInput
-                        v-for="item in tool.options.range.sections" :key="item.id"
+                <div class="graphic-range" v-if="tool.options.range.status" > 
+                    <div class="graphic-range" v-for="item in tool.options.range.sections" :key="item.id">
+                        <RangeInput
                         :value="sendData(tool.name)"
                         @dataGraphic="getRange"/>
+                    </div>                
                 </div>
 
-                <div class="section-graphic" v-if="tool.options.text.status" >
-                    
-                    <TextInput 
-                        v-for="item in tool.options.text.sections" :key="item.id"
+                <div class="graphic-text" v-if="tool.options.text.status" >
+                    <div class="graphic-text" v-for="item in tool.options.text.sections" :key="item.id">
+                        <TextInput 
                         :value="sendData(tool.name)"
                         @dataInput="getInput" />
+                    </div>
                 </div>
             </div>
         </rl-carousel-slide>
@@ -37,9 +37,9 @@
 
 <script>
     //Graphics inputs
-    import RangeInput from '../../../../components/Graphics/RangeInput.vue';
-    import SelectedButton from '../../../../components/Graphics/SelectedButton.vue';
-    import TextInput from '@/components/shared/Input/TextInput.vue';
+    import RangeInput from '@/components/Graphics/RangeInput.vue';
+    import SelectedButton from '@/components/Graphics/SelectedButton.vue';
+    import TextInput from '@/components/Graphics/TextInput.vue';
 
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
 
@@ -48,37 +48,25 @@
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
-    
         props: ['toolToRender'],
     
+        data:() => {
+            return{
+                data: []
+            }
+        },
+
         methods:{
-            sendData(data){
-                let info = ''
-                switch(data){
+            sendData(data){  
+                this.data = this.toolToRender.tools.forEach(tool => {
+                    tool.name == data ? store.getters[data] == data ? store.getters[data] : null : null  
+                })
 
-                    case 'codec':
-                        info = store.getters.getCodec
-                        break;
-                    case 'resolution':
-                        info = store.getters.resolution
-                        break;
+                console.log(this.data);
+            }
 
-                    case 'framRate':
-                        info = store.getters.framRate
-                        break;
-
-                    case 'bitRate':
-                        info = store.getters.BitRate
-                        break;
-
-                    case 'quantizer':
-                        info = store.getters.quantizer
-                        break;
-                }
-
-                return info;
-            },
-
+            /*
+            ,
             getRange(data){  
                 switch (data.name) {
                     case 'codec':
@@ -135,6 +123,7 @@
                         break;
                 }
             }
+            */
         },
 
         components: {
@@ -191,11 +180,20 @@
         margin-bottom: 50px;
     }
 
-    .section-graphic{
+    .graphic-range{
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        flex-direction: column;
+    }
+
+    .graphic-button{
+        display: flex;
+        align-items: center;
+    }
+
+    .graphic-text{
+        width: 100%;
     }
 
 </style>
