@@ -5,14 +5,20 @@ export default class InputTools{
             name: 'option1',
             options: {
                 button: { 
-                    status: null,
+                    status: true,
 
-                    sections: null},
+                    sections: [
+                        {id:1, name: 'op1'},
+                        {id:2, name: 'op2'},
+                        {id:3, name: 'op3'}
+                    ]},
 
                 range: {
-                    status: null, 
+                    status: true, 
 
-                    sections: null},
+                    sections: [
+                        {id: 1, minValue:0, maxValue: 100}
+                    ]},
     
                 text: {
                     status: false, 

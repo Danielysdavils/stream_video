@@ -80,8 +80,8 @@
                     case 'Audio':
                         data = this.tools.audioTools.tools;
                         break;
-                    case 'streaming':
-                        data = this.tools.streaming.tools;
+                    case 'Streaming':
+                        data = this.tools.streamingTools.tools;
                         break; 
                     case 'Output':
                         data = this.tools.outputTools.tools;

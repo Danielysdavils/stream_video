@@ -1,22 +1,44 @@
---> Inicio do projeto [18 de Julho] 1m + 3 dias
+Inicio do projeto [18 de Julho] 1m + 3 dias
 
---> A Implementar 
-6. Hooks de notificações pro usuário [senha incorreta, modificações salvas, etc]
-1. Adicionar animação de espera para tela streamSettings 
-4. Adicionar visualização Grid
-6. Mudar nome de 'output' para transmissão
-5. Barra de salvamiento automatico
+--> A Implementar [Ordem Prioridade]
+
+1. Hooks de notificações pro usuário [senha incorreta e modificações salvas, etc]
+2. Adicionar animações [salvando modificações e acessando a streamConfig] 
+3. Mudar icones no MenuDisplay
+4. Ajustar mediaQuery
+5. Terminar Idiomas
 6. Pesquisar sobre protocolo R..??
 7. Strimar o video 
-8. Melhorar graficos [conforme api] [Feito]
-2. Icones --> MenuDisplay
+8. Add Carousel Cameras, selected.
+9. Melhorar selected topBar
 
---> Fazendo
-2. Add Carousel Cameras, selected.
-3. Melhorar selected topBar
-6. Ajustar novamente a media query topMenu
-5. Melhorar Classes a receber a informação async 
-9. Configurar Store Modules/Api
+[Extra] Adicionar visualização Grid
+
+--> Fazendo <--
+. Melhorar Classes a receber informação async 
+. Configurar Store Modules/Api
+. Mostrar dados Api
+. Enviar dados User
+
+--->> Importante! <<---
+ 
+[Seções a segregar]
+//Audio
+//10k - 200k
+//sample rate
+//channel 1 ou 2
+//BitRate 44,1kHz 48kHz 96KhZ 192Khz
+
+//Video
+//Quantizer 0 -30
+//codec mpeg4, libx264, libx265
+//framrate 10 - 50
+// bitrate 500k - 2M
+// preset fast, veryfast,  ultrafast
+// video filter [resolution] 480px, 720px 1080px
+
+//input fixos
+//output fixos
 
 
 

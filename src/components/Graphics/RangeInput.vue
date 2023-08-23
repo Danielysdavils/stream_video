@@ -24,13 +24,17 @@ export default{
         }
     },
 
-    watch:{
-        value(newValue, oldValue){
-            this.valueDisplay = oldValue
-        },
+    mounted(){
+        this.valueDisplay = this.value
+    },
 
-        valueDisplay(newValue){
-            this.sendData(newValue); 
+    watch:{
+        value(newValue){
+            this.valueDisplay = newValue
+        },
+        
+        valueDisplay(newValue, oldValue){
+            this.sendData(oldValue); 
         }
     },
 

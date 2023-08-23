@@ -27,7 +27,7 @@ export default class StreamingTools{
         },
         {
             id: 1,
-            name: 'streaming2',
+            name: 's2',
             options: {
                 button: { 
                     status: false, 

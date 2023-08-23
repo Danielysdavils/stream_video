@@ -9,8 +9,9 @@
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
                         <SelectedButton 
+                            v-on:click="setButtonClicked(item.name)"
                             :inputs="item.name"
-                            :value="sendData(tool.name)"
+                            :value="buttonData"
                             @buttonSelected="getButton"/>    
                     </div>
                 </div>
@@ -18,7 +19,7 @@
                 <div class="graphic-range" v-if="tool.options.range.status" > 
                     <div class="graphic-range" v-for="item in tool.options.range.sections" :key="item.id">
                         <RangeInput
-                        :value="sendData(tool.name)"
+                        :value="setRangeDataValueInput(item.id, tool.name)"
                         @dataGraphic="getRange"/>
                     </div>                
                 </div>
@@ -26,8 +27,8 @@
                 <div class="graphic-text" v-if="tool.options.text.status" >
                     <div class="graphic-text" v-for="item in tool.options.text.sections" :key="item.id">
                         <TextInput 
-                        :value="sendData(tool.name)"
-                        @dataInput="getInput" />
+                        :value="setRangeDataValueInput(item.id, tool.name)"
+                        @dataInput="getText" />
                     </div>
                 </div>
             </div>
@@ -52,78 +53,87 @@
     
         data:() => {
             return{
-                data: []
+                rangeData: [],
+                buttonData: [],
+                textData: []
             }
         },
 
+        /*
+            //Resolution
+            input1 --> range: 0, 
+            input2 --> framRate: 0
+
+            item.forEach(section => {
+                        if(section.id == idInput) 
+                            data = section.value
+                    })
+
+            //[Segregado] --> videoTools
+            pegar infos de rangeData --> mandar para cada input
+        */
+
         methods:{
-            sendData(data){  
-                this.data = this.toolToRender.tools.forEach(tool => {
-                    tool.name == data ? store.getters[data] == data ? store.getters[data] : null : null  
+            setRangeDataValueInput(idInput, nameOfSection){
+                let data = 0;
+               
+                console.log(idInput);
+                console.log(nameOfSection);
+
+                this.rangeData.forEach((item) => {
+                    console.log(item);    
+                });
+                return data;
+            },
+
+            async sendRange(){
+                await this.toolToRender.tools.forEach(tool => {
+                    this.rangeData.push({[tool.name] : store.getters[tool.name]});
+                });
+            },
+
+            async sendButton(){
+                this.buttonData = await this.toolToRender.tools.forEach(tool => {
+                    tool.name == store.getters[tool.name] ? store.getters[tool.name] : ''
                 })
 
-                console.log(this.data);
-            }
-
-            /*
-            ,
-            getRange(data){  
-                switch (data.name) {
-                    case 'codec':
-                        store.dispatch('putCodec', data.data)
-                        break;
-                    case 'resolution':
-                        store.dispatch('putResolution', data.data)
-                        break;
-                    case 'framRate':
-                        store.dispatch('putframRate', data.data)
-                        break;
-                    case 'BitRate':
-                        store.dispatch('putBitRate', data.data)
-                        break;
-                    case 'quantizer':
-                        store.dispatch('putQuantizer', data.data)
-                        break;
-                }    
+                console.log(this.buttonData);
             },
 
-            getButton(data){
-                switch (data.name) {
-                    case 'codec':
+            async sendText(){
+                this.textData = await this.toolToRender.tools.forEach(tool => {
+                    tool.name == store.getters[tool.name] ? store.getters[tool.name] : ''
+                })
 
-                        store.dispatch('putCodec', data.data)
-                        break;
-                    case 'resolution':
-                        break;
-                    case 'framRate':
-                        break;
-                    case 'BitRate':
-                        break;
-                    case 'quantizer':
-                        break;
-                }
+                console.log(this.textData);
             },
 
-            getInput(data){
-                switch (data.name) {
-                    case 'codec':
-                       
-                        break;
-                    case 'resolution':
+            setButtonClicked(buttonClicked){
+                console.log(buttonClicked);
+            }, 
+            
+            async getRange(){
 
-                        break;
-                    case 'framRate':
-                        
-                        break;
-                    case 'BitRate':
-                        
-                        break;
-                    case 'quantizer':
-                        
-                        break;
-                }
-            }
-            */
+            },
+
+            async getButton(){
+
+            },
+
+            async getText(){
+
+            }   
+        },
+
+        async mounted(){
+            //Popula as info em graphics range
+            await this.sendRange()
+
+            //Popula as info em graphis button
+            await this.sendButton();            
+
+            //Popula as info em graphics text
+            await this.sendText();
         },
 
         components: {
@@ -188,6 +198,7 @@
     }
 
     .graphic-button{
+        width: 100%;
         display: flex;
         align-items: center;
     }

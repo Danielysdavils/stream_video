@@ -3,6 +3,24 @@ export default class AudioTools{
         {
             id: 0,
             name: 'Sound',
+            options: {
+                button: { 
+                    status: false,
+
+                    sections: null},
+
+                range: {
+                    status: true, 
+
+                    sections: [
+                        {id: 1, minValue: 0, maxValue: 100},
+                        {id:2, minValue: 0, maxValue: 100}
+                    ]},
+    
+                text: {
+                    status: false, 
+                    sections: null}
+            },
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
@@ -10,6 +28,24 @@ export default class AudioTools{
         {
             id: 1,
             name: 'A',
+            options: {
+                button: { 
+                    status: false,
+
+                    sections: null},
+
+                range: {
+                    status: true, 
+
+                    sections: [
+                        {id: 1, minValue: 0, maxValue: 100},
+                        {id:2, minValue: 0, maxValue: 100}
+                    ]},
+    
+                text: {
+                    status: false, 
+                    sections: null}
+            },
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
@@ -17,6 +53,24 @@ export default class AudioTools{
         {
             id: 2,
             name: 'B',
+            options: {
+                button: { 
+                    status: false,
+
+                    sections: null},
+
+                range: {
+                    status: true, 
+
+                    sections: [
+                        {id: 1, minValue: 0, maxValue: 100},
+                        {id:2, minValue: 0, maxValue: 100}
+                    ]},
+    
+                text: {
+                    status: false, 
+                    sections: null}
+            },
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
@@ -24,6 +78,24 @@ export default class AudioTools{
         {
             id: 3,
             name: 'C',
+            options: {
+                button: { 
+                    status: false,
+
+                    sections: null},
+
+                range: {
+                    status: true, 
+
+                    sections: [
+                        {id: 1, minValue: 0, maxValue: 100},
+                        {id:2, minValue: 0, maxValue: 100}
+                    ]},
+    
+                text: {
+                    status: false, 
+                    sections: null}
+            },
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
