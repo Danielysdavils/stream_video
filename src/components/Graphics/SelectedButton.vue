@@ -37,7 +37,8 @@ export default{
         //resolution.status ? true : this.buttonClick
 
         getDataClicked(newData){
-            this.buttonClicked = newData.forEach(resolution => console.log(resolution));
+            //this.buttonClicked = newData.forEach(resolution => console.log(resolution));
+            console.log(newData);
         }
     },
 

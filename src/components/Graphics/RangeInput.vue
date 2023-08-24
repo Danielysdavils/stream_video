@@ -5,6 +5,7 @@
             
             <div class="graphic-item">
                 <b-form-input id="range-2" v-model="valueDisplay" type="range" :min="minValue" :max="maxValue" step="1"></b-form-input>
+            
                 <div class="mt-2">
                     <div class="conteinerValue"><h2 class="value-graphics">{{ this.valueDisplay }}</h2></div>
                 </div>

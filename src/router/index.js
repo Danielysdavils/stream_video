@@ -30,10 +30,6 @@ const routes = [
         component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsAudio/SettingsAudio.vue')
       },
       {
-        path: 'streaming',
-        component: () => import('../views/StreamSettings/MenuStreamSettings/SettingsStreaming/SettingsStreaming.vue')
-      },
-      {
         path: 'input',
         component: () => import('../views/StreamSettings/MenuStreamSettings/settingsInput/SettingsInput.vue')
       },

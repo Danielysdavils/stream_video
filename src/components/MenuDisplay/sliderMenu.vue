@@ -19,7 +19,7 @@
                 <div class="graphic-range" v-if="tool.options.range.status" > 
                     <div class="graphic-range" v-for="item in tool.options.range.sections" :key="item.id">
                         <RangeInput
-                        :value="setRangeDataValueInput(item.id, tool.name)"
+                        :value="setRangeDataValueInput(tool.name)"
                         @dataGraphic="getRange"/>
                     </div>                
                 </div>
@@ -64,54 +64,56 @@
             input1 --> range: 0, 
             input2 --> framRate: 0
 
-            item.forEach(section => {
-                        if(section.id == idInput) 
-                            data = section.value
-                    })
-
-            //[Segregado] --> videoTools
-            pegar infos de rangeData --> mandar para cada input
+            rangeData = [
+                item0 {resolution: {id: 0, name: 'scale', value: '1080'}},
+                item1 {codec: {id: 0, name: "codec", value: 'libx264'}},
+                item2 {
+                    frameRate: {
+                        id: 0, 
+                        name: "framerate", 
+                        value:'50'
+                    }
+                }
+            ]
         */
-
         methods:{
-            setRangeDataValueInput(idInput, nameOfSection){
-                let data = 0;
-               
-                console.log(idInput);
-                console.log(nameOfSection);
-
-                this.rangeData.forEach((item) => {
-                    console.log(item);    
-                });
-                return data;
+            //Trata e distribui a informação dos array para cada graphic input
+            setRangeDataValueInput(nameOfSection){
+                this.rangeData.forEach(item => {
+                    console.log(item);
+                    console.log(Number(item[nameOfSection].value));
+                    return Number(item[nameOfSection].value);
+                })
             },
-
+            //Mandando inclusive quien no es range!!
+            //Popula os Arrays com os dados dos inputs atuais do store 
             async sendRange(){
+                //Separar y mandar solo range!!
+
                 await this.toolToRender.tools.forEach(tool => {
-                    this.rangeData.push({[tool.name] : store.getters[tool.name]});
+                    if(tool.options.range.status)
+                        this.rangeData.push({[tool.name] : store.getters[tool.name]});
                 });
             },
 
             async sendButton(){
-                this.buttonData = await this.toolToRender.tools.forEach(tool => {
-                    tool.name == store.getters[tool.name] ? store.getters[tool.name] : ''
+                await this.toolToRender.tools.forEach(tool => {
+                    this.buttonData.push({[tool.name] : store.getters[tool.name]})
                 })
-
-                console.log(this.buttonData);
+                
             },
 
             async sendText(){
-                this.textData = await this.toolToRender.tools.forEach(tool => {
-                    tool.name == store.getters[tool.name] ? store.getters[tool.name] : ''
+                await this.toolToRender.tools.forEach(tool => {
+                    this.buttonData.push({[tool.name] : store.getters[tool.name]})
                 })
-
-                console.log(this.textData);
             },
 
             setButtonClicked(buttonClicked){
                 console.log(buttonClicked);
             }, 
-            
+
+            //Envia pra api as alterações do usuário
             async getRange(){
 
             },
@@ -126,16 +128,23 @@
         },
 
         async mounted(){
-            //Popula as info em graphics range
-            await this.sendRange()
+            //Popula as info em graphics range antes de ser renderizado o componente
 
-            //Popula as info em graphis button
-            await this.sendButton();            
+            await this.toolToRender.tools
+                .forEach(element => {
+                    if(element.options['button'].status){
+                        this.sendRange();
+                    } 
 
-            //Popula as info em graphics text
-            await this.sendText();
+                    if(element.options['range'].status){
+                        this.sendButton();
+                    }
+                        
+                    if(element.options['text'].status){
+                        this.sendText();
+                    }
+            })
         },
-
         components: {
             RangeInput,
             SelectedButton,

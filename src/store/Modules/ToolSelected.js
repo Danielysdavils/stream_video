@@ -1,5 +1,4 @@
-import {GET_DATA} from '@/store/Mutations/mutations-type'
-
+//CARROUSEL
 const ToolSelected = {
     namespace: true,
 
@@ -14,14 +13,14 @@ const ToolSelected = {
     },
 
     mutations: {
-        [GET_DATA](state, id){
+        getToolsSelected(state, id){
             state.id = id
         }
     },
 
     actions:{
         setIdSlide({commit}, id){
-            commit(GET_DATA, id)
+            commit('getToolsSelected', id)
         }
     }
 

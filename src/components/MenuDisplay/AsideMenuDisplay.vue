@@ -2,9 +2,6 @@
     <aside :class="[isExpandedAside && 'is-expanded']">
         <SettingsAudio 
             v-if="sectionSelected == 'Audio'" />
-
-         <SettingStreaming 
-            v-if="sectionSelected == 'Streaming'" />
         
         <SettingsVideo 
             v-if="sectionSelected == 'Video'" />
@@ -20,7 +17,6 @@
 
 <script>
     import SettingsAudio from '@/views/StreamSettings/MenuStreamSettings/SettingsAudio/SettingsAudio.vue'
-    import SettingStreaming from  '@/views/StreamSettings/MenuStreamSettings/SettingsStreaming/SettingsStreaming.vue'
     import SettingsVideo from '@/views/StreamSettings/MenuStreamSettings/SettingsVideo/SettingsVideo.vue'
     import SetingsInput from '@/views/StreamSettings/MenuStreamSettings/settingsInput/SettingsInput.vue'
     import SettingsOutput from '@/views/StreamSettings/MenuStreamSettings/SettingsOutput/SettingsOutput.vue' 
@@ -29,7 +25,6 @@
         props: ['isExpandedAside', 'sectionSelected'],
 
         components: {
-            SettingStreaming,
             SettingsVideo,
             SettingsAudio,
             SetingsInput,

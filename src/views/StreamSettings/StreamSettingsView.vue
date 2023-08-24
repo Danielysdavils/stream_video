@@ -33,7 +33,6 @@
     //Clases
     import VideoService from '@/class/Video/VideoService'
     import OutputService from '@/class/Output/OutputService'
-    import StreamingService from '@/class/Streaming/StreamingService'
     import InputService from '@/class/Input/InputService'
     import AudioService from '@/class/Audio/AudioService'
     import UserService from '@/class/User/UserService'
@@ -49,7 +48,6 @@
                 dataMenuLeft: [
                     {data: new VideoService(), section: 'streamconfig' , id: 1, tools: null}, 
                     {data: new AudioService(), section: 'streamconfig', id: 2, tools: null},
-                    {data: new StreamingService(), section: 'streamconfig', id: 3, tools: null},
                     {data: new OutputService(), section: 'streamconfig', id: 4, tools: null},
                     {data: new InputService(), section: 'streamconfig', id: 5, tools: null},
                 ],

@@ -1,5 +1,4 @@
 import User from "@/class/User/User"
-import { ADD_DATA } from "@/store/Mutations/mutations-type";
 
 const userModule = {
     namespace: true,
@@ -15,7 +14,7 @@ const userModule = {
     },
 
     mutations:{
-        [ADD_DATA](state, data){
+        addDataUser(state, data){
             state.user.name = data.name;
             state.user.password = data.password;
         }
@@ -23,7 +22,7 @@ const userModule = {
 
     actions: {
         saveUser({commit}, data){
-            commit(ADD_DATA, data);
+            commit('addDataUser', data);
         }
     }
 }

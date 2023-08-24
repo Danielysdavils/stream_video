@@ -1,3 +1,4 @@
+//Classe que popula as configurações das ferramentas disponíveis
 export default class VideoTools{
     tools = [
         {
@@ -51,7 +52,7 @@ export default class VideoTools{
         },
         {
             id: 2,
-            name: 'framRate',
+            name: 'framerate',
             options: {
                 button: { 
                     status: false, 
@@ -73,7 +74,7 @@ export default class VideoTools{
         },
         {
             id: 3,
-            name: 'bitRate',
+            name: 'bitrate',
             options: {
                 button: { 
                     status: false, 

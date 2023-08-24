@@ -39,7 +39,7 @@
     import AudioTools from '@/class/Audio/AudioTools'
     import OutputTools from '@/class/Output/OutputTools'
     import InputTools from '@/class/Input/InputTools'
-    import StreamingTools from '@/class/Streaming/StreamingTools'
+   
     //
     
     import store from '@/store/store'
@@ -51,8 +51,7 @@
                     videoTools: new VideoTools(),
                     audioTools: new AudioTools(),
                     outputTools: new OutputTools(),
-                    inputTools: new InputTools(),
-                    streamingTools: new StreamingTools()
+                    inputTools: new InputTools()
                 },
 
                 itemClick : '',
@@ -80,9 +79,6 @@
                     case 'Audio':
                         data = this.tools.audioTools.tools;
                         break;
-                    case 'Streaming':
-                        data = this.tools.streamingTools.tools;
-                        break; 
                     case 'Output':
                         data = this.tools.outputTools.tools;
                         break;

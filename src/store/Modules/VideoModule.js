@@ -1,5 +1,5 @@
 import Video from "@/class/Video/Video"
-import { PUT_DATA } from "@/store/Mutations/mutations-type";
+import {getDataVideo} from '@/api/crudApi'
 
 const videoModule = {
     namespace: true,
@@ -9,113 +9,55 @@ const videoModule = {
     },
 
     getters: {
+        //teste do preenchimento dos dados
+        dataVideo: (state)=> {
+            return state.videoData
+        },
+
         resolution: (state) => {
-            return state.videoData.Resolution;
+            return state.videoData.ComplexData.resolution;
         },
 
         codec : (state) => {
-            return state.videoData.Codec;
+            return state.videoData.Data.codec;
         },
 
-        framRate: (state) => {
-            return state.videoData.FramRate;
+        framerate: (state) => {
+            return state.videoData.Data.framerate;
         },
 
-        bitRate: (state) => {
-            return state.videoData.BitRate;
+        bitrate: (state) => {
+            return state.videoData.Data.bitrate;
         },
 
         quantizer: (state) => {
-            return state.videoData.Quantizer;
+            return state.videoData.Data.quantizer;
         },
+
+        preset : (state) => {
+            return state.videoData.Data.preset;
+        }
     },
 
     mutations:{
-        [PUT_DATA](state, data){
-            state.videoData.Codec = data;
+        addDataVideoModule(state, data){
+            data.elements.forEach((element, index) => {
+                state.videoData.Data[element.name] = {id: index, name: element.name, value: element.value};
+            })
+
+            data.complexElements.forEach((element, index) => {
+                element.elements.forEach(element => {
+                    state.videoData.ComplexData.resolution = {id: index, name: element.name, value: element.value.split(':')[1]}
+                })
+            })
         }
     },
 
     actions: {
-        putCodec({commit}, data){
-            commit(PUT_DATA, data);
-        },
-
-        putResolution({commit}, data){
-            commit(PUT_DATA, data);
-        },
-
-        putFramRate({commit}, data){
-            commit(PUT_DATA, data);
-        },
-
-        putBitRate({commit}, data){
-            commit(PUT_DATA, data);
-        },
-
-        putQuantizer({commit}, data){
-            commit(PUT_DATA, data);
-        },
+        async getVideoData({commit}){
+            commit('addDataVideoModule', await getDataVideo());
+        }
     }
 }
-
 export default videoModule;
-
-/*import Video from '@/class/Video/Video'
-import { PUT_DATA } from '@/store/Mutations/mutations-type'
-//import { getData } from '@/api/crudApi'
-
-const VideoModule = {
-    namespaced: true,
-
-    state: {
-        videoData : new Video()     
-    },
-
-    getters: {
-        getCodec: (state) => {
-            return state.videoData.Codec;
-        }
-    },
-
-    mutations: {
-        [PUT_DATA](state, newState){
-            state.videoData.Codec = newState;
-        }
-    },
-
-    actions: {
-        putCodec({commit}, data){
-            commit(PUT_DATA, data);
-        }
-        
-        /*
-        async getAndPopulateData({ commit }){
-            //Peço pra api os dados
-            const data = await getData();
-            const newState = data.video;
-
-                // ... Tratamento da info
-
-            // Mando pro mutations os dados recebidos da api
-            commit(PUT_DATA, newState)
-        },
-
-        //Recebo as alterações do user
-        async putData({ commit, newUserStatus }){
-
-            const data = newUserStatus //tratamento dos dados
-            
-            //mando pra api atualizar
-            await queryData(data);
-
-            // Atualizo o state com os dados do usuário
-            commit(PUT_DATA, newUserStatus)
-        }
-        
-    }
-}
-
-export default VideoModule;
-*/
 
