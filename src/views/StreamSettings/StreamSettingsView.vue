@@ -40,6 +40,8 @@
     //Tools
     import UserTools from '@/class/User/UserTools'
 
+    import store from '@/store/store'
+
     export default{
         data: () => {
             return {
@@ -62,12 +64,11 @@
                 heightToStream: '80%'
             }
         },
-        components: {
-            MenuDisplay,
-            MenuVideoScrollBar,
-            StreamSection,
-            TopMenu,
-            navBar
+
+        //Popula os dados do store Video, Audio, Input, Output
+        async beforeMount(){
+            await store.dispatch('getVideoData');
+            console.log(store.getters.dataVideo);
         },
 
         methods: {
@@ -80,6 +81,14 @@
             setHeightScreen(isActive){
                 this.heightToStream = isActive ? '60%' : '80%'
             }
+        },
+
+        components: {
+            MenuDisplay,
+            MenuVideoScrollBar,
+            StreamSection,
+            TopMenu,
+            navBar
         }
     }
 </script>

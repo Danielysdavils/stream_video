@@ -5,13 +5,13 @@
 
                 <h1 class="name-tool">{{ $t(tool.name) }}</h1>
                 <div class="row-separator"></div>
-                    
+                
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
-                        <SelectedButton 
+                        <selected-button 
                             v-on:click="setButtonClicked(item.name)"
                             :inputs="item.name"
-                            :value="buttonData"
+                            :value="modelDataButton"
                             @buttonSelected="getButton"/>    
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="graphic-range" v-if="tool.options.range.status" > 
                     <div class="graphic-range" v-for="item in tool.options.range.sections" :key="item.id">
                         <RangeInput
-                        :value="setRangeDataValueInput(tool.name)"
+                        :value="modelDataRange"
                         @dataGraphic="getRange"/>
                     </div>                
                 </div>
@@ -41,17 +41,20 @@
     import RangeInput from '@/components/Graphics/RangeInput.vue';
     import SelectedButton from '@/components/Graphics/SelectedButton.vue';
     import TextInput from '@/components/Graphics/TextInput.vue';
-
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
-
     import store from '@/store/store'
-
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
+        beforeMount(){
+            this.sendRange();
+            this.sendButton();
+            this.sendText();
+        },
+
         props: ['toolToRender'],
-    
-        data:() => {
+        
+        data: () => {
             return{
                 rangeData: [],
                 buttonData: [],
@@ -59,53 +62,67 @@
             }
         },
 
-        /*
-            //Resolution
-            input1 --> range: 0, 
-            input2 --> framRate: 0
+        computed:{
+            getSectionActive(){
+                return store.getters.getSlide;
+            },
 
-            rangeData = [
-                item0 {resolution: {id: 0, name: 'scale', value: '1080'}},
-                item1 {codec: {id: 0, name: "codec", value: 'libx264'}},
-                item2 {
-                    frameRate: {
-                        id: 0, 
-                        name: "framerate", 
-                        value:'50'
-                    }
-                }
-            ]
-        */
+            modelDataRange(){
+                return this.setRangeDataValueInput();
+            },
+
+            modelDataButton(){
+                return this.setButtonDataValueInput();
+            }
+        },
+
         methods:{
             //Trata e distribui a informação dos array para cada graphic input
-            setRangeDataValueInput(nameOfSection){
+            setRangeDataValueInput(){
+                let data = 0; 
                 this.rangeData.forEach(item => {
-                    console.log(item);
-                    console.log(Number(item[nameOfSection].value));
-                    return Number(item[nameOfSection].value);
-                })
+                    if(item.name == this.getSectionActive)
+                        data = Number(item.value.replace(/[^0-9]/g,''));
+                });
+                return data;
             },
-            //Mandando inclusive quien no es range!!
+
+            setButtonDataValueInput(){
+                let data = ''
+                this.buttonData.forEach(item => {
+                    if(item.name == this.getSectionActive)
+                        data = item.value
+                })
+                return data;
+            },
+
+            setTextDataValueInput(){
+                console.log();
+            },
+
             //Popula os Arrays com os dados dos inputs atuais do store 
             async sendRange(){
-                //Separar y mandar solo range!!
-
-                await this.toolToRender.tools.forEach(tool => {
-                    if(tool.options.range.status)
-                        this.rangeData.push({[tool.name] : store.getters[tool.name]});
+                this.toolToRender.tools.forEach(tool => {
+                    if(tool.options.range.status){
+                        this.rangeData.push(store.getters[tool.name]);
+                    }
                 });
             },
 
             async sendButton(){
                 await this.toolToRender.tools.forEach(tool => {
-                    this.buttonData.push({[tool.name] : store.getters[tool.name]})
+                    if(tool.options.button.status)
+                        this.buttonData.push(store.getters[tool.name]);
+
+                    console.log(this.buttonData);
                 })
                 
             },
 
             async sendText(){
                 await this.toolToRender.tools.forEach(tool => {
-                    this.buttonData.push({[tool.name] : store.getters[tool.name]})
+                    if(tool.options.text.status)
+                        this.buttonData.push(store.getters[tool.name])
                 })
             },
 
@@ -125,25 +142,6 @@
             async getText(){
 
             }   
-        },
-
-        async mounted(){
-            //Popula as info em graphics range antes de ser renderizado o componente
-
-            await this.toolToRender.tools
-                .forEach(element => {
-                    if(element.options['button'].status){
-                        this.sendRange();
-                    } 
-
-                    if(element.options['range'].status){
-                        this.sendButton();
-                    }
-                        
-                    if(element.options['text'].status){
-                        this.sendText();
-                    }
-            })
         },
         components: {
             RangeInput,

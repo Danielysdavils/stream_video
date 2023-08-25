@@ -103,8 +103,8 @@
             setItemClicked(element, id){
                 this.itemClick = element;
                 
-                store.dispatch('setIdSlide', id);
-                
+                store.dispatch('setSlide', {valueId: id, valueElement: element});
+
                 this.openAside();
             },
 

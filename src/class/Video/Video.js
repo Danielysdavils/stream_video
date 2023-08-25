@@ -5,8 +5,7 @@ export default class Video{
             framerate : [],
             bitrate : [],
             tune : [],
-            preset : [],
-            quantizer : []
+            preset : []
         }
 
         this.ComplexData = {

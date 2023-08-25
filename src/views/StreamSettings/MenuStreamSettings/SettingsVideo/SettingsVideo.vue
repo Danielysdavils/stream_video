@@ -7,7 +7,6 @@
 <script>
     import VideoTools from '@/class/Video/VideoTools'
     import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue';
-    import store from '@/store/store'
 
     export default{
         data: () => {
@@ -15,12 +14,6 @@
                 videoData: new VideoTools()
             }
         },
-
-        async mounted(){
-            await store.dispatch('getVideoData');
-            console.log(store.getters.dataVideo);
-        },
-
         components:{
             SliderMenu
         }

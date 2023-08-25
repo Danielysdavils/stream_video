@@ -2,7 +2,6 @@
     <div class="conteiner-graphics">
         <div class="graphics-component">
             <label for="range-2" class="text-graphic">Select a value: </label>
-            
             <div class="graphic-item">
                 <b-form-input id="range-2" v-model="valueDisplay" type="range" :min="minValue" :max="maxValue" step="1"></b-form-input>
             

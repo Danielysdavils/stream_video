@@ -9,9 +9,9 @@
 <script>
 
 export default{
-    //Inputs --> Qtd de botões a criar
+    //Inputs --> botão a criar
     //Value --> botão clicado [api]
-    
+    //Mudar a função do butão pra fora do componetne
     props:['inputs', 'value'],
 
     data: () => {
@@ -23,22 +23,24 @@ export default{
 
     watch: {
         value(newData){
+            console.log(newData);
             this.getDataClicked(newData)
         }
     },
 
     methods:{
+
+        //Envia a opção clicada pelo usuário
         dataSelected(data){
             this.buttonClicked = true;
-            
             this.$emit('buttonSelected', data);
         },
 
-        //resolution.status ? true : this.buttonClick
-
         getDataClicked(newData){
-            //this.buttonClicked = newData.forEach(resolution => console.log(resolution));
-            console.log(newData);
+            if(newData == this.inputs || this.buttonClicked != ''){
+                this.buttonClicked = true;
+            }
+            this.buttonClick = newData;
         }
     },
 

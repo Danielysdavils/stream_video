@@ -96,28 +96,6 @@ export default class VideoTools{
         },
         {
             id: 4,
-            name: 'quantizer',
-            options: {
-                button: { 
-                    status: false, 
-                    sections: null},
-
-                range: {
-                    status: true, 
-                    sections: [
-                        {id: 1, minValue: 0, maxValue: 30}
-                    ]},
-                    
-                text: {
-                    status: false, 
-                    sections: null}
-            },
-            style : {
-                icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
-            }
-        },
-        {
-            id: 5,
             name: 'preset',
             options: {
                 button: { 

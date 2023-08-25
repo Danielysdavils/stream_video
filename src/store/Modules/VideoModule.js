@@ -10,7 +10,7 @@ const videoModule = {
 
     getters: {
         //teste do preenchimento dos dados
-        dataVideo: (state)=> {
+        dataVideo: (state) => {
             return state.videoData
         },
 
@@ -30,10 +30,6 @@ const videoModule = {
             return state.videoData.Data.bitrate;
         },
 
-        quantizer: (state) => {
-            return state.videoData.Data.quantizer;
-        },
-
         preset : (state) => {
             return state.videoData.Data.preset;
         }
@@ -47,7 +43,7 @@ const videoModule = {
 
             data.complexElements.forEach((element, index) => {
                 element.elements.forEach(element => {
-                    state.videoData.ComplexData.resolution = {id: index, name: element.name, value: element.value.split(':')[1]}
+                    state.videoData.ComplexData.resolution = {id: index, name: 'resolution', value: element.value.split(':')[1]}
                 })
             })
         }
