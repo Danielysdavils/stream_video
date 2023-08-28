@@ -5,9 +5,11 @@ export const getDataVideo = async () => {
         let data = {}
         await Vue.axios
             .get('http://172.16.2.197:5005/api/video')
-            .then(response => {
-                data = response.data;
-            })
+            .then(
+                (response) => 
+                    {data = response.data}, 
+                () => { throw new Error('erro ao popular video!')}
+            )
             return data;
     }catch(erro){
         console.log(erro);

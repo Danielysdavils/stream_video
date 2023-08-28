@@ -39,7 +39,6 @@
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
     import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
-    import store from '@/store/store'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     
 
@@ -55,6 +54,7 @@
 
     //Classe para enviar as configurações da linguagem 
     import Lenguages from '@/class/Lenguages/Lenguages'
+    import store from '@/store/store'
 
     export default {
         data: () => {
@@ -77,7 +77,7 @@
 
                 heightToStream: '80%',
 
-                nameUser : store.getters.user
+                nameUser : store.getters['user/user']
             }
         },
         

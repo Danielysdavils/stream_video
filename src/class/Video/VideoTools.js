@@ -8,9 +8,9 @@ export default class VideoTools{
                 button: { 
                     status: true,
                     sections: [
-                        {id:1, name: '144px'}, 
-                        {id: 2, name: '720px'},
-                        {id: 3, name: '1080px'}
+                        {id:1, name: '144', status: false}, 
+                        {id: 2, name: '720', status: false},
+                        {id: 3, name: '1080', status: false}
                     ]},
 
                 range: {
@@ -32,9 +32,9 @@ export default class VideoTools{
                 button: { 
                     status: true, 
                     sections: [
-                        {id:1, name: 'mpeg4'}, 
-                        {id: 2, name: 'libx264'},
-                        {id: 3, name: 'libx265'}
+                        {id:1, name: 'mpeg4', status: false}, 
+                        {id: 2, name: 'libx264', status: false},
+                        {id: 3, name: 'libx265', status: false}
                     ]},
 
                 range: {
@@ -101,9 +101,9 @@ export default class VideoTools{
                 button: { 
                     status: true, 
                     sections: [
-                        {id:1, value: 'fast'},
-                        {id:2, value: 'veryfast'},
-                        {id:3, value: 'ultrafast'}
+                        {id:1, name: 'fast'},
+                        {id:2, name: 'veryfast'},
+                        {id:3, name: 'ultrafast'}
                     ]},
 
                 range: {

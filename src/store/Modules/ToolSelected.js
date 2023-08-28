@@ -1,7 +1,7 @@
 //CARROUSEL
 
 const ToolSelected = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         valueId : 0,

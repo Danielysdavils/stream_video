@@ -2,17 +2,19 @@
     <CarouselDisplay >
         <rl-carousel-slide v-for="tool in toolToRender.tools" :key="tool.id" class="itemToRender-carousel">
             <div class="graphics-section" >
-
                 <h1 class="name-tool">{{ $t(tool.name) }}</h1>
                 <div class="row-separator"></div>
                 
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
+                        <div class="graphic-button" v-on:click="setItemClicked(item.name)">
                         <selected-button 
-                            v-on:click="setButtonClicked(item.name)"
                             :inputs="item.name"
-                            :value="modelDataButton"
-                            @buttonSelected="getButton"/>    
+                            :isActive="modelDataButton == item.name && buttonClicked == '' ? true : false"
+                            :setIsActive="setIsActive" 
+                                                 
+                            @buttonSelected="getButton"/>
+                        </div>
                     </div>
                 </div>
 
@@ -27,7 +29,7 @@
                 <div class="graphic-text" v-if="tool.options.text.status" >
                     <div class="graphic-text" v-for="item in tool.options.text.sections" :key="item.id">
                         <TextInput 
-                        :value="setRangeDataValueInput(item.id, tool.name)"
+                        :value="modelDataText"
                         @dataInput="getText" />
                     </div>
                 </div>
@@ -58,7 +60,10 @@
             return{
                 rangeData: [],
                 buttonData: [],
-                textData: []
+                textData: [],
+
+                buttonClicked : '',
+                setIsActive: false
             }
         },
 
@@ -73,6 +78,10 @@
 
             modelDataButton(){
                 return this.setButtonDataValueInput();
+            },
+
+            modelDataText(){
+                return this.setTextDataValueInput();
             }
         },
 
@@ -88,7 +97,9 @@
             },
 
             setButtonDataValueInput(){
-                let data = ''
+                let data = '';
+              
+                console.log(this.buttonData);
                 this.buttonData.forEach(item => {
                     if(item.name == this.getSectionActive)
                         data = item.value
@@ -97,7 +108,12 @@
             },
 
             setTextDataValueInput(){
-                console.log();
+                let data = '';
+                this.textData.forEach(item => {
+                    if(item.name == this.getSectionActive)
+                        data = item.value; 
+                })
+                return data;
             },
 
             //Popula os Arrays com os dados dos inputs atuais do store 
@@ -113,8 +129,6 @@
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.button.status)
                         this.buttonData.push(store.getters[tool.name]);
-
-                    console.log(this.buttonData);
                 })
                 
             },
@@ -122,27 +136,39 @@
             async sendText(){
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.text.status)
-                        this.buttonData.push(store.getters[tool.name])
+                        this.textData.push(store.getters[tool.name])
                 })
             },
-
-            setButtonClicked(buttonClicked){
-                console.log(buttonClicked);
-            }, 
 
             //Envia pra api as alterações do usuário
             async getRange(){
 
             },
 
-            async getButton(){
+            async getText(){
 
             },
 
-            async getText(){
+            //Manda o nome do bottão clicado
+            async getButton(data){
+                console.log(data);
+            },
 
-            }   
+            //Seta as configurações do button.
+            setItemClicked(data){
+                this.buttonClicked = data;
+            }
         },
+
+        watch:{
+            buttonClicked(newValue, oldValue){
+                console.log(newValue);
+                console.log(oldValue);
+
+                this.setIsActive = newValue != oldValue ? true : false                
+            }
+        },
+
         components: {
             RangeInput,
             SelectedButton,
@@ -205,8 +231,9 @@
     }
 
     .graphic-button{
-        width: 100%;
+        width: 90%;
         display: flex;
+        flex-direction: column;
         align-items: center;
     }
 

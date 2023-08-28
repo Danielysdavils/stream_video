@@ -37,11 +37,10 @@
     import AudioService from '@/class/Audio/AudioService'
     import UserService from '@/class/User/UserService'
     
-    //Tools
-    import UserTools from '@/class/User/UserTools'
-
     import store from '@/store/store'
 
+    //Tools
+    import UserTools from '@/class/User/UserTools'
     export default{
         data: () => {
             return {
@@ -67,14 +66,14 @@
 
         //Popula os dados do store Video, Audio, Input, Output
         async beforeMount(){
-            await store.dispatch('getVideoData');
-            console.log(store.getters.dataVideo);
+            await store.dispatch('video/getVideoData');
+            console.log(this.$store);
+            await store.dispatch('audio/getAudioData');
         },
 
         methods: {
             //Envia a opção q foi clicada
             set(s){     
-             
                 this.dataSelected = s
             },
             //Muda o comprimento do video strimando 

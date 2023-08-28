@@ -1,5 +1,10 @@
 export default class Audio{
     constructor(){
-        this.sound = 0
+        this.Data = {
+            codec: [],
+            bitrate: [],
+            channels: [],
+            sample: []  
+        }
     }
 } 

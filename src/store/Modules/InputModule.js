@@ -2,7 +2,7 @@ import { getDataInput } from '@/api/crudApi';
 import Input from '@/class/Input/Input'
 
 const inputModule = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         inputData : new Input() 

@@ -2,7 +2,7 @@ import { getDataOutput } from '@/api/crudApi';
 import Output from '@/class/Output/Output'
 
 const outputsModule = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         outputData : new Output() 

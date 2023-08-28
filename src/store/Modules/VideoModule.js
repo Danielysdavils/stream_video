@@ -2,7 +2,7 @@ import Video from "@/class/Video/Video"
 import {getDataVideo} from '@/api/crudApi'
 
 const videoModule = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         videoData : new Video() 

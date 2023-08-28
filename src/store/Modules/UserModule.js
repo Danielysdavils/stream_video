@@ -1,7 +1,7 @@
 import User from "@/class/User/User"
 
 const userModule = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         user : new User() 

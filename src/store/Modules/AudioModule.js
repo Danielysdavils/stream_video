@@ -2,20 +2,32 @@ import { getDataAudio } from '@/api/crudApi';
 import Audio from '@/class/Audio/Audio'
 
 const audioModule = {
-    namespace: true,
+    namespaced: true,
 
     state: {
         audioData : new Audio() 
     },
 
     getters: {
-        
+        codec: (state) => {
+            return state.audioData.codec
+        },
+        bitrate: (state) => {
+            return state.audioData.bitrate;
+        },
+        channels: (state) => {
+            return state.audioData.channels;
+        },
+        sample: (state) => {
+            return state.audioData.sample;
+        }
     },
 
     mutations:{
         addDataAudioModule(state, data){
-            console.log(state);
-            console.log(data);
+            data.elements.forEach((element, index) => {
+                state.audioData.Data[element.name] = {id: index, name: element.name, value: element.value};
+            })
         }
     },
 

@@ -55,6 +55,7 @@ export default{
         color: var(--color4);
         padding: 20px;
         font-size: 12px;
+        font-family: var(--FontOther);
     }
     
     /*********** Baseline, reset styles ***********/
@@ -135,7 +136,7 @@ export default{
 
     .text-graphic{
         font-family: var(--fontLabel);
-        font-size: 15px;
+        font-size: 13px;
         padding: 10px;
     }
 
