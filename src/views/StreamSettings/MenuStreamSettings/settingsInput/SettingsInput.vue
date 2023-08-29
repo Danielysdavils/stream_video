@@ -1,7 +1,7 @@
 <template>
     <div class="cont-SliderMenu">
         <SliderMenu 
-            :toolToRender="inputTools"/>
+            :toolToRender="inputTools" :nameOfSection="this.nameOfSection"/>
     </div>
 </template>
 
@@ -14,7 +14,8 @@
 
         data: () => {
             return{
-                inputTools: new InputTools()
+                inputTools: new InputTools(),
+                nameOfSection: 'input'
             }
         },
 

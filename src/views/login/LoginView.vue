@@ -33,9 +33,9 @@
         },
 
         methods: {
-
             reciveData(d){
-                store.dispatch('saveUser', d)
+                //store.dispatch('video/getVideoData')
+                store.dispatch('user/saveUser', d)
             }
         }
     

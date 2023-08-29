@@ -1,25 +1,23 @@
-Inicio do projeto [18 de Julho] 1m + 3 dias
+Inicio do projeto [18 de Julho] 1m + 2sem
 
 --> A Implementar [Ordem Prioridade]
 
-1. Hooks de notificações pro usuário [senha incorreta e modificações salvas, etc]
-2. Adicionar animações [salvando modificações e acessando a streamConfig] 
 3. Mudar icones no MenuDisplay
 4. Ajustar mediaQuery
 5. Terminar Idiomas
-
 6. Pesquisar sobre protocolo R..??
 7. Strimar o video 
 8. Add Carousel Cameras, selected.
 9. Melhorar selected topBar
-
 [Extra] Adicionar visualização Grid
 
 --> Fazendo <--
-. Melhorar Classes a receber informação async 
-. Configurar Store Modules/Api
-. Mostrar dados Api
+
 . Enviar dados User
+. Hooks de notificações pro usuário 
+[senha incorreta, modificações salvas, erro ao connectar com o servidor
+[extrair dados da api, mandar dados api] ]
+. Adicionar animações [salvando modificações e acessando a streamConfig] 
 
 --->> Importante! <<---
  

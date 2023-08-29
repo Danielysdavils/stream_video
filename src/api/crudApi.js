@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import store from '@/store/store'
 
 export const getDataVideo = async () => {
     try{
@@ -58,3 +59,30 @@ export const getDataOutput = async () => {
     }
 }
 
+export const queryDataVideo = async () => {
+    try{
+        let data = ''
+        await Vue.axios
+            .put('http://172.16.2.197:5005/api/video', store.getters['video/dataVideo'])
+            .then(response => {
+                data = response.data
+            })
+        return data;
+    }catch(erro){
+        console.log(erro);
+    }
+}
+
+export const queryDataAudio = async () => {
+    try{
+        let data = ''
+        await Vue.axios
+            .put('http://172.16.2.197:5005/api/audio', store.getters['audio/dataAudio'])
+            .then(response => {
+                data = response.data
+            })
+        return data;
+    }catch(erro){
+        console.log(erro);
+    }
+}

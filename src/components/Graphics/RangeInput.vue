@@ -16,7 +16,7 @@
 <script>
 
 export default{
-    props: ['value', 'minValue', 'maxValue' ],
+    props: ['value', 'minValue', 'maxValue', 'nameOfSection' ],
     
     data: () => {
         return{
@@ -33,14 +33,14 @@ export default{
             this.valueDisplay = newValue
         },
         
-        valueDisplay(newValue, oldValue){
-            this.sendData(oldValue); 
+        valueDisplay(newValue){
+            this.sendData(newValue); 
         }
     },
 
     methods:{
         sendData(data){
-            this.$emit('dataGraphic', {name: this.name, data: data});
+            this.$emit('dataGraphic', {name: this.nameOfSection, value: data});
         }
     }
 }   

@@ -1,6 +1,6 @@
 <template>
     <div class="cont-SliderMenu">
-        <SliderMenu :toolToRender="videoData" />
+        <SliderMenu :toolToRender="videoData" :nameOfSection="this.nameOfSection" />
     </div>
 </template>
 
@@ -11,7 +11,8 @@
     export default{
         data: () => {
             return{
-                videoData: new VideoTools()
+                videoData: new VideoTools(),
+                nameOfSection: 'video'
             }
         },
         components:{

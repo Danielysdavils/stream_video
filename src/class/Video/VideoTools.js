@@ -101,9 +101,9 @@ export default class VideoTools{
                 button: { 
                     status: true, 
                     sections: [
-                        {id:1, name: 'fast'},
-                        {id:2, name: 'veryfast'},
-                        {id:3, name: 'ultrafast'}
+                        {id:1, name: 'fast', status: false},
+                        {id:2, name: 'veryfast', status: false},
+                        {id:3, name: 'ultrafast', status: false}
                     ]},
 
                 range: {

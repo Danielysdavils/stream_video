@@ -39,7 +39,7 @@
 
         computed:{
             slide(){
-                return store.getters.getId
+                return store.getters['tool/getId']
             },
 
             setCarousel(){

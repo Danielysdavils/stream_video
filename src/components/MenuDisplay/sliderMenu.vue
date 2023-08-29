@@ -7,12 +7,11 @@
                 
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
-                        <div class="graphic-button" v-on:click="setItemClicked(item.name)">
-                        <selected-button 
-                            :inputs="item.name"
-                            :isActive="modelDataButton == item.name && buttonClicked == '' ? true : false"
-                            :setIsActive="setIsActive" 
-                                                 
+                        <div class="graphic-button" v-on:click="setItemClicked()">
+                        <selected-button
+                            :value="modelDataButton"
+                            :inputs="item"
+                            :nameOfSection="tool.name"               
                             @buttonSelected="getButton"/>
                         </div>
                     </div>
@@ -21,6 +20,7 @@
                 <div class="graphic-range" v-if="tool.options.range.status" > 
                     <div class="graphic-range" v-for="item in tool.options.range.sections" :key="item.id">
                         <RangeInput
+                        :nameOfSection="tool.name"
                         :value="modelDataRange"
                         @dataGraphic="getRange"/>
                     </div>                
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+    //modelDataButton --> 1080 == 1080px 
     //Graphics inputs
     import RangeInput from '@/components/Graphics/RangeInput.vue';
     import SelectedButton from '@/components/Graphics/SelectedButton.vue';
@@ -54,14 +55,16 @@
             this.sendText();
         },
 
-        props: ['toolToRender'],
+        props: ['toolToRender', 'nameOfSection'],
         
         data: () => {
             return{
+                //Data com as info da api
                 rangeData: [],
                 buttonData: [],
                 textData: [],
 
+                //Config button
                 buttonClicked : '',
                 setIsActive: false
             }
@@ -69,7 +72,7 @@
 
         computed:{
             getSectionActive(){
-                return store.getters.getSlide;
+                return store.getters['tool/getSlide'];
             },
 
             modelDataRange(){
@@ -86,23 +89,20 @@
         },
 
         methods:{
+            //data = Number(item.value.replace(/[^0-9]/g,''));
             //Trata e distribui a informação dos array para cada graphic input
             setRangeDataValueInput(){
                 let data = 0; 
                 this.rangeData.forEach(item => {
-                    if(item.name == this.getSectionActive)
-                        data = Number(item.value.replace(/[^0-9]/g,''));
+                    if(item.name == this.getSectionActive) data = item.value;
                 });
                 return data;
             },
 
             setButtonDataValueInput(){
                 let data = '';
-              
-                console.log(this.buttonData);
                 this.buttonData.forEach(item => {
-                    if(item.name == this.getSectionActive)
-                        data = item.value
+                    if(item.name == this.getSectionActive) data = {name: item.name, status: true}
                 })
                 return data;
             },
@@ -110,8 +110,7 @@
             setTextDataValueInput(){
                 let data = '';
                 this.textData.forEach(item => {
-                    if(item.name == this.getSectionActive)
-                        data = item.value; 
+                    if(item.name == this.getSectionActive) data = item.value; 
                 })
                 return data;
             },
@@ -120,7 +119,7 @@
             async sendRange(){
                 this.toolToRender.tools.forEach(tool => {
                     if(tool.options.range.status){
-                        this.rangeData.push(store.getters[tool.name]);
+                        this.rangeData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                     }
                 });
             },
@@ -128,7 +127,7 @@
             async sendButton(){
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.button.status)
-                        this.buttonData.push(store.getters[tool.name]);
+                        this.buttonData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                 })
                 
             },
@@ -136,35 +135,34 @@
             async sendText(){
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.text.status)
-                        this.textData.push(store.getters[tool.name])
+                        this.textData.push(store.getters[`${this.nameOfSection}/${tool.name}`])
                 })
             },
 
             //Envia pra api as alterações do usuário
-            async getRange(){
-
+            async getRange(data){
+                //Mando as info
+                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);        
             },
 
-            async getText(){
-
+            async getText(data){
+                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
             },
 
             //Manda o nome do bottão clicado
             async getButton(data){
-                console.log(data);
+                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
             },
 
             //Seta as configurações do button.
             setItemClicked(data){
-                this.buttonClicked = data;
+                const resolution = data.split('px');
+                this.buttonClicked = resolution.length < 2 ? data : resolution[0]; 
             }
         },
 
         watch:{
             buttonClicked(newValue, oldValue){
-                console.log(newValue);
-                console.log(oldValue);
-
                 this.setIsActive = newValue != oldValue ? true : false                
             }
         },

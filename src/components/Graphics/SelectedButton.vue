@@ -1,24 +1,50 @@
 <template>
     <div class="selected-group-button">
         <b-button-group>
-            <b-button class="buttonItem" :style="setButtonSelected">{{ inputs }}</b-button>
+            <b-button class="buttonItem" :style="setButtonSelected" v-on:click="setButtonClicked(inputs)">{{ inputs.name }}</b-button>
         </b-button-group>
     </div>
 </template>
 
 <script>
 export default{
-    props:['inputs', 'isActive', 'setIsActive'],
+    data: () => {
+        return{
+            dataSelected: '',
+            isActiveButton: false
+        }
+    },
+
+    props:['inputs', 'value', 'nameOfSection'],
    
+    onMounted(){
+        if(this.inputs.name == this.value)
+            this.isActiveButton = true;
+    },
+
+    watch: {
+        inputs(newData, oldData){
+            if(newData.name != oldData.name){
+                this.dataSelected = newData;
+            }
+        }
+    },
+
     computed:{
         setButtonSelected(){
             let style = {}
-            this.isActive && !this.setIsActive || !this.isActive && this.setIsActive
-            ? style = 
+            this.isActiveButton || this.inputs.status || this.dataSelected.status ? 
+            style = 
                 {"background-color" : "var(--color4)", "color" : "var(--color1)"}
             : style =
                 {"background-color" : "var(--color1)"} 
             return style;
+        }
+    },
+
+    methods: {
+        setButtonClicked(data){
+            data.status = true;
         }
     }
 }

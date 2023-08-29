@@ -1,7 +1,7 @@
 <template>
     <div class="cont-SliderMenu">
         <SliderMenu 
-            :toolToRender="audioTools"/>
+            :toolToRender="audioTools" :nameOfSection="this.nameOfSection"/>
     </div>
 </template>
 
@@ -10,11 +10,10 @@
     import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue'
 
     export default{
-        props:[],
-
         data: () => {
             return{
-                audioTools: new AudioTools()
+                audioTools: new AudioTools(),
+                nameOfSection: 'audio'
             }
         },
 

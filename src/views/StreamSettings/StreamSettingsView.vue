@@ -59,16 +59,16 @@
                 ],
 
                 dataSelected : '',
-
                 heightToStream: '80%'
             }
         },
 
         //Popula os dados do store Video, Audio, Input, Output
-        async beforeMount(){
+        async beforeMount(){   
             await store.dispatch('video/getVideoData');
-            console.log(this.$store);
             await store.dispatch('audio/getAudioData');
+            await store.dispatch('output/getOutputData');
+            await store.dispatch('input/getInputData');
         },
 
         methods: {
