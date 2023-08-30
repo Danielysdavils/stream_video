@@ -15,7 +15,7 @@ const videoModule = {
         },
 
         resolution: (state) => {
-            return state.videoData.ComplexData.resolution;
+            return state.videoData.Data.resolution;
         },
 
         codec : (state) => {
@@ -37,18 +37,11 @@ const videoModule = {
 
     mutations:{
         addDataVideoModule(state, data){
-            data.elements.forEach((element, index) => {
-                state.videoData.Data[element.name] = {id: index, name: element.name, value: element.value};
-            })
-            
-            data.complexElements.forEach((element, index) => {
-                element.elements.forEach(element => {
-                    state.videoData.ComplexData.resolution = {id: index, name: 'resolution', value: element.value.split(':')[1]}
-                })
+            data.elements.forEach((element) => {
+                state.videoData.Data[element.name] = {name: element.name, value: element.value};
             })
         },
 
-        //alt do user --> {id: 0, name:'codec', value: 'bbc'}
         addDataVideoModuleUser(state, data){
             state.videoData.Data[data.name] = data;
         }
@@ -65,8 +58,7 @@ const videoModule = {
             await commit('addDataVideoModuleUser', data);
 
             // [1.Mandar en query só a data {name: 'codec', value: '75px'} ]
-            // [2. Mandar todo el stado actual de mi store [data :{...objects}]]
-            
+        
             await queryDataVideo();
         }
     }

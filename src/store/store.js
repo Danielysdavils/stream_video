@@ -4,6 +4,7 @@ import VideoModule from './Modules/VideoModule'
 import AudioModule from './Modules/AudioModule'
 import OutputsModule from './Modules/OutputsModule'
 import InputModule from '@/store/Modules/InputModule'
+import connectionToServer from './Modules/ConnectionToServer'
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
         video: VideoModule,
         audio: AudioModule,
         output: OutputsModule,
-        input: InputModule
+        input: InputModule,
+        connection: connectionToServer
     }
 }) 
 

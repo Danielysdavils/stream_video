@@ -1,7 +1,7 @@
 <template>
     <div class="cont-SliderMenu">
         <SliderMenu 
-            :toolToRender="audioTools" :nameOfSection="this.nameOfSection"/>
+            :toolToRender="audioTools" :nameOfSection="nameOfSection"/>
     </div>
 </template>
 

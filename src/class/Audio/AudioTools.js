@@ -52,7 +52,7 @@ export default class AudioTools{
                     status: true,
                     sections: [
                         {id: 0, name: '1'},
-                        {id: 0, name: '2'}
+                        {id: 1, name: '2'}
                     ]},
 
                 range: {

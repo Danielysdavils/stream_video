@@ -55,7 +55,6 @@
 
         computed: {
             validateName(){
-                
                 return this.nameData == '' ? false : true 
             },
 

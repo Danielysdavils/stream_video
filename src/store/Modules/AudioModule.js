@@ -10,16 +10,16 @@ const audioModule = {
 
     getters: {
         codec: (state) => {
-            return state.audioData.codec
+            return state.audioData.Data.codec
         },
         bitrate: (state) => {
-            return state.audioData.bitrate;
+            return state.audioData.Data.bitrate;
         },
         channels: (state) => {
-            return state.audioData.channels;
+            return state.audioData.Data.channels;
         },
         sample: (state) => {
-            return state.audioData.sample;
+            return state.audioData.Data.sample;
         }
     },
 

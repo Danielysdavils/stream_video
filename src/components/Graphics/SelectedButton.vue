@@ -1,52 +1,63 @@
 <template>
     <div class="selected-group-button">
         <b-button-group>
-            <b-button class="buttonItem" :style="setButtonSelected" v-on:click="setButtonClicked(inputs)">{{ inputs.name }}</b-button>
+            <b-button class="buttonItem" :style="setButtonSelected">{{ inputs.name }}</b-button>
         </b-button-group>
     </div>
 </template>
 
 <script>
+
 export default{
+
+    //buttonClicked: valor antigo clicado
+    //ButtonClick: valor atual clicado 
     data: () => {
         return{
-            dataSelected: '',
-            isActiveButton: false
+            buttonClicked : '',
+            buttonClick : ''
         }
     },
-
-    props:['inputs', 'value', 'nameOfSection'],
+    //Inputs: obj com o valor do button a renderizar ex: {name: 1080px, status: false}
+    //ValueOfItem: Valor do button da api
+    //ItemClicked: Valor que vem de slideMenu e representa o valor do button (obj) clicado pelo usuário
+    props: ['inputs', 'valueOfItem', 'itemClicked'],
    
-    onMounted(){
-        if(this.inputs.name == this.value)
-            this.isActiveButton = true;
+    //Antes de renderizar os componentes, popula o button click com o valor da vindo da api
+    mounted(){     
+        this.buttonClick = this.valueOfItem
+        console.log(this.buttonClick);
     },
 
-    watch: {
-        inputs(newData, oldData){
-            if(newData.name != oldData.name){
-                this.dataSelected = newData;
-            }
-        }
-    },
-
+    // Muda o estilo do botão clicado se status do button == true e se buttão clicado igual ao bottão atual renderizado
     computed:{
         setButtonSelected(){
             let style = {}
-            this.isActiveButton || this.inputs.status || this.dataSelected.status ? 
-            style = 
-                {"background-color" : "var(--color4)", "color" : "var(--color1)"}
-            : style =
-                {"background-color" : "var(--color1)"} 
+            this.buttonClick.status && this.buttonClick.name == this.inputs.name 
+                ? style = {"background-color" : "var(--color4)", "color" : "var(--color1)"}
+                : style = {"background-color" : "var(--color1)"} 
             return style;
         }
     },
 
-    methods: {
-        setButtonClicked(data){
-            data.status = true;
+    //Observa as mudanzas da propiedade itemClicked. Se o valor atual clicado é diferente ao valor clicado antigo muda as configurações. Não pode haver mais de um botão ativo! 
+
+    watch:{ 
+        itemClicked(newV, oldV){
+            if(newV.name != oldV.name){
+                this.setItemClicked(newV, oldV);
+            }
         }
-    }
+    },
+
+    //Recebe o valor v1 atual e v2 antigo e muda os estados correspondentes. O atual é ativado e o antigo desativado para que não tenhamos mais de um botão ativo
+    
+    methods:{
+        setItemClicked(v1,v2){
+            this.buttonClick = {name: v1.name, status: true}
+            this.buttonClicked = {name: v2.name, status: false}
+        }
+    },
 }
 </script>
 

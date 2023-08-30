@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 export default{
     props: ['value', 'minValue', 'maxValue', 'nameOfSection' ],
     
@@ -26,6 +25,7 @@ export default{
 
     mounted(){
         this.valueDisplay = this.value
+        console.log(this.valueDisplay);
     },
 
     watch:{

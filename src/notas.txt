@@ -5,6 +5,7 @@ Inicio do projeto [18 de Julho] 1m + 2sem
 3. Mudar icones no MenuDisplay
 4. Ajustar mediaQuery
 5. Terminar Idiomas
+
 6. Pesquisar sobre protocolo R..??
 7. Strimar o video 
 8. Add Carousel Cameras, selected.

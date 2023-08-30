@@ -21,10 +21,6 @@
                     :BoxShadow="'1px 1px 10px var(--color1)'"
                     :Height="this.heightToStream" />
                 
-                <MenuVideoScrollBar 
-                    :colorBackground="'var(--color1Gradiente)'"
-                    @activeDisplay="setHeightScreen" />
-
                 <Particles 
                     :colorCircle="this.colorParticles.colorCircle" 
                     :colorShape="this.colorParticles.colorShape" 
@@ -38,10 +34,8 @@
     import navBar from '@/components/navBar/navBar.vue';
     import Particles from '@/components/Particles/Particles.vue';
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue';
-    import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue';
-    import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
+    import StreamSection from '../StreamSettings/StreamSection/StreamSection.vue'
     
-
     //Classes das configurações visuais dos Icones do menu superior
     import UserService from '@/class/User/UserService'
     import LenguagesService from '@/class/Lenguages/LenguagesService'
@@ -105,8 +99,7 @@
             navBar,
             Particles,
             TopMenu,
-            StreamSection,
-            MenuVideoScrollBar
+            StreamSection
         }
     }
 </script>

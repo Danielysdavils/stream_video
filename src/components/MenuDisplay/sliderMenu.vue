@@ -7,12 +7,12 @@
                 
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
-                        <div class="graphic-button" v-on:click="setItemClicked()">
+                        <div class="graphic-button" v-on:click="setItem(item)">
                         <selected-button
-                            :value="modelDataButton"
                             :inputs="item"
-                            :nameOfSection="tool.name"               
-                            @buttonSelected="getButton"/>
+                            :valueOfItem="modelDataButton"
+                            :itemClicked="itemClicked"
+                        />
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="graphic-text" v-for="item in tool.options.text.sections" :key="item.id">
                         <TextInput 
                         :value="modelDataText"
-                        @dataInput="getText" />
+                        />
                     </div>
                 </div>
             </div>
@@ -39,8 +39,6 @@
 </template>
 
 <script>
-    //modelDataButton --> 1080 == 1080px 
-    //Graphics inputs
     import RangeInput from '@/components/Graphics/RangeInput.vue';
     import SelectedButton from '@/components/Graphics/SelectedButton.vue';
     import TextInput from '@/components/Graphics/TextInput.vue';
@@ -49,12 +47,15 @@
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
+
+        //Antes da inicialização popula os array en data com as informações da api
         beforeMount(){
             this.sendRange();
             this.sendButton();
             this.sendText();
         },
-
+        //ToolToRender 
+        //NameOfSection
         props: ['toolToRender', 'nameOfSection'],
         
         data: () => {
@@ -64,9 +65,7 @@
                 buttonData: [],
                 textData: [],
 
-                //Config button
-                buttonClicked : '',
-                setIsActive: false
+                itemClicked: ''
             }
         },
 
@@ -80,6 +79,7 @@
             },
 
             modelDataButton(){
+                console.log(this.setButtonDataValueInput());
                 return this.setButtonDataValueInput();
             },
 
@@ -89,8 +89,6 @@
         },
 
         methods:{
-            //data = Number(item.value.replace(/[^0-9]/g,''));
-            //Trata e distribui a informação dos array para cada graphic input
             setRangeDataValueInput(){
                 let data = 0; 
                 this.rangeData.forEach(item => {
@@ -98,12 +96,14 @@
                 });
                 return data;
             },
-
+            
             setButtonDataValueInput(){
                 let data = '';
+                console.log(this.buttonData);
                 this.buttonData.forEach(item => {
-                    if(item.name == this.getSectionActive) data = {name: item.name, status: true}
-                })
+                    if(item.name == this.getSectionActive) data = {name: item.value, status: true}
+                });
+                console.log(data);
                 return data;
             },
 
@@ -141,29 +141,25 @@
 
             //Envia pra api as alterações do usuário
             async getRange(data){
-                //Mando as info
-                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);        
+                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);        
             },
 
             async getText(data){
-                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
             },
 
-            //Manda o nome do bottão clicado
             async getButton(data){
-                store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                setTimeout(() => {
+                    store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                }, 1000)
             },
 
-            //Seta as configurações do button.
-            setItemClicked(data){
-                const resolution = data.split('px');
-                this.buttonClicked = resolution.length < 2 ? data : resolution[0]; 
-            }
-        },
+            setItem(item){
+                this.itemClicked = item;
 
-        watch:{
-            buttonClicked(newValue, oldValue){
-                this.setIsActive = newValue != oldValue ? true : false                
+                setTimeout(() => {
+                    this.getButton(item);    
+                }, 1000);
             }
         },
 

@@ -8,8 +8,10 @@ export const getDataVideo = async () => {
             .get('http://172.16.2.197:5005/api/video')
             .then(
                 (response) => 
-                    {data = response.data}, 
-                () => { throw new Error('erro ao popular video!')}
+                    {data = response.data
+                    store.dispatch('connection/setConnectionToServer', true)},
+
+                () => { store.dispatch('connection/setConnectionToServer', false) }
             )
             return data;
     }catch(erro){
@@ -22,9 +24,13 @@ export const getDataAudio = async () => {
         let data = {}
         await Vue.axios
             .get('http://172.16.2.197:5005/api/audio')
-            .then(response => {
-                data = response.data;
-            })
+            .then(
+                (response) => 
+                    {data = response.data
+                    store.dispatch('connection/setConnectionToServer', true)},
+                     
+                () => { store.dispatch('connection/setConnectionToServer', false) }
+            )
         return data;
     }catch (erro){
         console.log(erro);
@@ -36,9 +42,13 @@ export const getDataInput = async () => {
         let data = {}
         await Vue.axios
             .get('http://172.16.2.197:5005/api/input')
-            .then(response => {
-                data = response.data;
-            })
+            .then(
+                (response) => 
+                    {data = response.data
+                    store.dispatch('connection/setConnectionToServer', true)},
+                     
+                () => { store.dispatch('connection/setConnectionToServer', false) }
+            )
         return data;
     }catch (erro){
         console.log(erro);
@@ -50,39 +60,42 @@ export const getDataOutput = async () => {
         let data = {}
         await Vue.axios
             .get('http://172.16.2.197:5005/api/output')
-            .then(response => {
-                data = response.data;
-            })
+            .then(
+                (response) => 
+                    {data = response.data
+                    store.dispatch('connection/setConnectionToServer', true)},
+                     
+                () => { store.dispatch('connection/setConnectionToServer', false)}
+            )
         return data;
     }catch (erro){
+
         console.log(erro);
     }
 }
 
-export const queryDataVideo = async () => {
+export const queryDataVideo = async (data) => {
     try{
-        let data = ''
         await Vue.axios
-            .put('http://172.16.2.197:5005/api/video', store.getters['video/dataVideo'])
-            .then(response => {
-                data = response.data
-            })
-        return data;
+            .put('http://172.16.2.197:5005/api/video', data)
+            .then(response => console.log(response))
+
     }catch(erro){
         console.log(erro);
     }
 }
 
-export const queryDataAudio = async () => {
+export const queryDataAudio = async (data) => {
     try{
-        let data = ''
         await Vue.axios
-            .put('http://172.16.2.197:5005/api/audio', store.getters['audio/dataAudio'])
+            .put('http://172.16.2.197:5005/api/audio', data)
             .then(response => {
-                data = response.data
+                console.log(response);
             })
-        return data;
+
     }catch(erro){
         console.log(erro);
     }
 }
+
+
