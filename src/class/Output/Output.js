@@ -1,5 +1,10 @@
 export default class Output{
     constructor(){
-        this.ip = '' 
+        this.data = {
+            protocol : [],
+            ip: [],
+            port: [],
+            'stream-name': []
+        }
     }
 } 

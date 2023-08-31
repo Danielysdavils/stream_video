@@ -22,6 +22,17 @@ Inicio do projeto [18 de Julho] 1m + 2sem
 
 --->> Importante! <<---
  
+ data = [
+    {
+        name: 'codec',
+        value: 'aac'
+   },
+   {
+    name: 'resolution',
+    value: ''
+   }
+  ]
+
 [Seções a segregar]
 //Audio
 //10k - 200k

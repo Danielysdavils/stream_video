@@ -9,13 +9,33 @@ const outputsModule = {
     },
 
     getters: {
-        
+        protocol: (state) => {
+            return state.outputData.data.protocol;
+        },
+
+        ip: (state) => {
+            return state.outputData.data.ip;
+        },
+
+        port: (state) => {
+            return state.outputData.data.port;
+        },
+
+        'stream-name': (state) => {
+            return state.outputData.data['stream-name'];
+        }
+
     },
 
     mutations:{
-        addDataOutputsModule(state, data){
-            console.log(state);
-            console.log(data);
+        addDataOutsputModule(state, data){
+            data.data.forEach((element) => {
+                console.log(element);
+                state.outputData.data[element.name] = {
+                    name: element.name, 
+                    value: element.value
+                }
+            })
         }
     },
 

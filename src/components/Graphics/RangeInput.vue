@@ -25,12 +25,12 @@ export default{
 
     mounted(){
         this.valueDisplay = this.value
-        console.log(this.valueDisplay);
     },
 
     watch:{
         value(newValue){
             this.valueDisplay = newValue
+            console.log(this.valueDisplay);
         },
         
         valueDisplay(newValue){
@@ -40,6 +40,7 @@ export default{
 
     methods:{
         sendData(data){
+            console.log(data);
             this.$emit('dataGraphic', {name: this.nameOfSection, value: data});
         }
     }

@@ -2,24 +2,21 @@ export default class OutputTools{
     tools = [
         {
             id: 0,
-            name: 'output1',
+            name: 'protocol',
             options: {
                 button: { 
                     status: false,
-
                     sections: null},
 
                 range: {
                     status: true, 
-
-                    sections: [
-                        {id: 1, minValue: 0, maxValue: 100},
-                        {id:2, minValue: 0, maxValue: 100}
-                    ]},
+                    sections: null},
     
                 text: {
-                    status: false, 
-                    sections: null}
+                    status: true, 
+                    sections: [
+                        {id:0, value: ''}
+                    ]}
             },
             style: {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
@@ -27,7 +24,7 @@ export default class OutputTools{
         },
         {
             id: 1,
-            name: 'output2',
+            name: 'ip',
             options: {
                 button: { 
                     status: false, 
@@ -38,8 +35,56 @@ export default class OutputTools{
                     sections: null},
                     
                 text: {
+                    status: true, 
+                    sections: [
+                        {id: 0, value: ''}
+                    ]}
+            },
+
+            style : {
+                icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
+            }
+        },
+        {
+            id: 2,
+            name: 'port',
+            options: {
+                button: { 
                     status: false, 
-                    sections: null}
+                    sections: null},
+
+                range: {
+                    status: false, 
+                    sections: null},
+                    
+                text: {
+                    status: true, 
+                    sections: [
+                        {id: 0, value: ''}
+                    ]}
+            },
+
+            style : {
+                icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
+            }
+        },
+        {
+            id: 3,
+            name: 'stream-name',
+            options: {
+                button: { 
+                    status: false, 
+                    sections: null},
+
+                range: {
+                    status: false, 
+                    sections: null},
+                    
+                text: {
+                    status: true, 
+                    sections: [
+                        {id: 0, value: ''}
+                    ]}
             },
 
             style : {

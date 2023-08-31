@@ -117,6 +117,30 @@ export default class VideoTools{
             style : {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
             }
+        },
+        {
+            id: 5,
+            name: 'tune',
+            options: {
+                button: { 
+                    status: true, 
+                    sections: [
+                        {id:1, name: 'zerolatency', status: false},
+                        {id:2, name: 'fff', status: false},
+                        {id:3, name: 'gg', status: false}
+                    ]},
+
+                range: {
+                    status: false, 
+                    sections: null},
+                    
+                text: {
+                    status: false, 
+                    sections: null}
+            },
+            style : {
+                icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
+            }
         }
     ]    
 }

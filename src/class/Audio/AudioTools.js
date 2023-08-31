@@ -15,7 +15,7 @@ export default class AudioTools{
                 text: {
                     status: true, 
                     sections: [
-                        {id: 1, value: 'aac'}
+                        {id: 1, value: ''}
                     ]}
             },
             style : {
@@ -70,7 +70,7 @@ export default class AudioTools{
         },
         {
             id: 3,
-            name: 'sample',
+            name: 'sample-rate',
             options: {
                 button: { 
                     status: true,

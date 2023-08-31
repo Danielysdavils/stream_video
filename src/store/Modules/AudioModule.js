@@ -10,23 +10,23 @@ const audioModule = {
 
     getters: {
         codec: (state) => {
-            return state.audioData.Data.codec
+            return state.audioData.data.codec
         },
         bitrate: (state) => {
-            return state.audioData.Data.bitrate;
+            return state.audioData.data.bitrate;
         },
         channels: (state) => {
-            return state.audioData.Data.channels;
+            return state.audioData.data.channels;
         },
-        sample: (state) => {
-            return state.audioData.Data.sample;
+        'sample-rate': (state) => {
+            return state.audioData.data['sample-rate'];
         }
     },
 
     mutations:{
         addDataAudioModule(state, data){
-            data.elements.forEach((element, index) => {
-                state.audioData.Data[element.name] = {id: index, name: element.name, value: element.value};
+            data.data.forEach((element) => {
+                state.audioData.data[element.name] = {name: element.name, value: element.value};
             })
         }
     },

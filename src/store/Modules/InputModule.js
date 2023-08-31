@@ -9,13 +9,23 @@ const inputModule = {
     },
 
     getters: {
-        
+        'audio-source': (state) => {
+            return state.inputData.data['audio-source'];
+        },
+
+        'video-source' : (state) => {
+            return state.inputData.data['video-source'];
+        }
     },
 
     mutations:{
         addDataInputModule(state, data){
-            console.log(state);
-            console.log(data);
+            data.data.forEach((element) => {
+                state.inputData.data[element.name] = {
+                    name: element.name,
+                    value: element.value
+                };
+            })
         }
     },
 

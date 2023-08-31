@@ -47,7 +47,6 @@
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
-
         //Antes da inicialização popula os array en data com as informações da api
         beforeMount(){
             this.sendRange();
@@ -92,16 +91,17 @@
             setRangeDataValueInput(){
                 let data = 0; 
                 this.rangeData.forEach(item => {
-                    if(item.name == this.getSectionActive) data = item.value;
+                    if(item.name == this.getSectionActive) 
+                        data = item.value;
                 });
                 return data;
             },
             
             setButtonDataValueInput(){
                 let data = '';
-                console.log(this.buttonData);
                 this.buttonData.forEach(item => {
-                    if(item.name == this.getSectionActive) data = {name: item.value, status: true}
+                    if(item.name == this.getSectionActive) 
+                        data = {name: item.value, status: true}
                 });
                 console.log(data);
                 return data;
@@ -110,7 +110,8 @@
             setTextDataValueInput(){
                 let data = '';
                 this.textData.forEach(item => {
-                    if(item.name == this.getSectionActive) data = item.value; 
+                    if(item.name == this.getSectionActive) 
+                        data = item.value; 
                 })
                 return data;
             },
@@ -120,6 +121,7 @@
                 this.toolToRender.tools.forEach(tool => {
                     if(tool.options.range.status){
                         this.rangeData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
+                        
                     }
                 });
             },
@@ -129,10 +131,10 @@
                     if(tool.options.button.status)
                         this.buttonData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                 })
-                
             },
 
             async sendText(){
+                console.log(store.getters);
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.text.status)
                         this.textData.push(store.getters[`${this.nameOfSection}/${tool.name}`])
@@ -140,7 +142,9 @@
             },
 
             //Envia pra api as alterações do usuário
+            //{name: range, value: 30}
             async getRange(data){
+                console.log(data);
                 await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);        
             },
 

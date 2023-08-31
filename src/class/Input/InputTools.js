@@ -2,27 +2,22 @@ export default class InputTools{
     tools = [
         {
             id: 0,
-            name: 'option1',
+            name: 'audio-source',
             options: {
                 button: { 
-                    status: true,
-
-                    sections: [
-                        {id:1, name: 'op1'},
-                        {id:2, name: 'op2'},
-                        {id:3, name: 'op3'}
-                    ]},
+                    status: false,
+                    sections: null},
 
                 range: {
-                    status: true, 
+                    status: false, 
 
-                    sections: [
-                        {id: 1, minValue:0, maxValue: 100}
-                    ]},
+                    sections: null},
     
                 text: {
-                    status: false, 
-                    sections: null}
+                    status: true, 
+                    sections: [
+                        {id: 0, value: ''}
+                    ]}
             },
             style: {
                 icone: {white: require('@/assets/icones-tool/teste1-white.png'), yellow: require('@/assets/icones-tool/teste1-yellow.png')}
@@ -30,7 +25,7 @@ export default class InputTools{
         },
         {
             id: 1,
-            name: 'option2',
+            name: 'video-source',
             options: {
                 button: { 
                     status: false, 
@@ -41,8 +36,10 @@ export default class InputTools{
                     sections: null},
                     
                 text: {
-                    status: false, 
-                    sections: null}
+                    status: true, 
+                    sections: [
+                        {id: 0, value: ''}
+                    ]}
             },
 
             style : {

@@ -1,6 +1,7 @@
 <template>
     <div class="containerDisplay">
         <navBar />
+
         <div class="displayView">
             <MenuDisplay :optionSelected="dataSelected" />
            
@@ -24,6 +25,18 @@
 </template>
 
 <script>
+/*
+     <div v-if="erroActive">
+            <div class="contaier-erro">
+                <div class="erro-items">
+                    <h1 class="item-erro-style">Erro ao conectar com o servidor</h1>
+                    <h1 class="item-erro-replay">Tente novamente</h1>
+
+                    <img src="../../assets/server.png" alt="" />
+                </div>
+            </div>
+        </div>
+*/
     import MenuDisplay from '@/components/MenuDisplay/MenuDisplay.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
@@ -59,7 +72,7 @@
                 ],
 
                 dataSelected : '',
-                heightToStream: '80%'
+                heightToStream: '80%',
             }
         },
 
@@ -117,6 +130,27 @@
         display: flex;
         flex-direction: column;
     }
+
+    .contaier-erro{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .erro-items{
+        width: 100%;
+        height: 90%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: var(--FontOther);
+    }
+
 
     @media(min-width: 0px) and (max-width: 800px){
         .displayView{

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store/store'
 
 Vue.use(VueRouter)
 
@@ -20,8 +19,7 @@ const routes = [
   {
     path: '/streamconfig',
     name: 'streamconfig',
-    component: store.getters['connected/getConnectedToServer'] ? () => import('@/views/StreamSettings/StreamSettingsView.vue')  : () => import('@/views/StreamSettings/ErroConnection.vue'),
-
+    component: () => import('@/views/StreamSettings/StreamSettingsView.vue'),  
     children : [
       {
         path: 'video',

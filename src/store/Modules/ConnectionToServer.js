@@ -18,7 +18,7 @@ const connectionToServer = {
     },
 
     actions: {
-        async setConnectionToServer({commit}, data){
+        setConnectionToServer({commit}, data){
             commit('setConnectionToServer', data);
         }
     }

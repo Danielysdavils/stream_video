@@ -15,35 +15,39 @@ const videoModule = {
         },
 
         resolution: (state) => {
-            return state.videoData.Data.resolution;
+            return state.videoData.data.resolution;
         },
 
         codec : (state) => {
-            return state.videoData.Data.codec;
+            return state.videoData.data.codec;
         },
 
         framerate: (state) => {
-            return state.videoData.Data.framerate;
+            return state.videoData.data.framerate;
         },
 
         bitrate: (state) => {
-            return state.videoData.Data.bitrate;
+            return state.videoData.data.bitrate;
         },
 
         preset : (state) => {
-            return state.videoData.Data.preset;
+            return state.videoData.data.preset;
+        },
+
+        tune: (state) => {
+            return state.videoData.data.tune;
         }
     },
 
     mutations:{
         addDataVideoModule(state, data){
-            data.elements.forEach((element) => {
-                state.videoData.Data[element.name] = {name: element.name, value: element.value};
+            data.data.forEach((element) => {
+                state.videoData.data[element.name] = {name: element.name, value: element.value};
             })
         },
 
         addDataVideoModuleUser(state, data){
-            state.videoData.Data[data.name] = data;
+            state.videoData.data[data.name] = {name: data.name, value: data.value}
         }
     },
 
@@ -55,10 +59,10 @@ const videoModule = {
 
         //Muda o estado conforme as alterações do usuário
         async sendDataUser({commit}, data){
+            //data -> {name: 'bitrate', value: 30}
+            
             await commit('addDataVideoModuleUser', data);
 
-            // [1.Mandar en query só a data {name: 'codec', value: '75px'} ]
-        
             await queryDataVideo();
         }
     }

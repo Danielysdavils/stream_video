@@ -9,7 +9,7 @@
 <script>
 
 export default{
-
+    props: ['inputs', 'valueOfItem', 'itemClicked'],
     //buttonClicked: valor antigo clicado
     //ButtonClick: valor atual clicado 
     data: () => {
@@ -21,15 +21,9 @@ export default{
     //Inputs: obj com o valor do button a renderizar ex: {name: 1080px, status: false}
     //ValueOfItem: Valor do button da api
     //ItemClicked: Valor que vem de slideMenu e representa o valor do button (obj) clicado pelo usuário
-    props: ['inputs', 'valueOfItem', 'itemClicked'],
-   
-    //Antes de renderizar os componentes, popula o button click com o valor da vindo da api
-    mounted(){     
-        this.buttonClick = this.valueOfItem
-        console.log(this.buttonClick);
-    },
 
-    // Muda o estilo do botão clicado se status do button == true e se buttão clicado igual ao bottão atual renderizado
+    // Mda o estilo do botão clicado se status do button == true e se buttão clicado igual ao bottão atual renderizado
+
     computed:{
         setButtonSelected(){
             let style = {}
@@ -43,13 +37,17 @@ export default{
     //Observa as mudanzas da propiedade itemClicked. Se o valor atual clicado é diferente ao valor clicado antigo muda as configurações. Não pode haver mais de um botão ativo! 
 
     watch:{ 
+        valueOfItem(newV){
+            let sample = newV.name.split(':')
+            this.buttonClick = sample.length > 1 ? {name: sample[1], status: true} : newV
+        },
+
         itemClicked(newV, oldV){
             if(newV.name != oldV.name){
                 this.setItemClicked(newV, oldV);
             }
         }
     },
-
     //Recebe o valor v1 atual e v2 antigo e muda os estados correspondentes. O atual é ativado e o antigo desativado para que não tenhamos mais de um botão ativo
     
     methods:{

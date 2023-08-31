@@ -1,5 +1,8 @@
 export default class Output{
     constructor(){
-        this.ipp = '' 
+        this.data = {
+            'audio-source' : [],
+            'video-source': []
+        } 
     }
 } 

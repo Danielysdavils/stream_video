@@ -1,6 +1,6 @@
 export default class Video{
     constructor(){    
-        this.Data = {
+        this.data = {
             resolution : [],
             codec : [],
             framerate : [],
