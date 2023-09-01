@@ -38,13 +38,17 @@ export default{
 
     watch:{ 
         valueOfItem(newV){
+            console.log(newV); // button2
             let sample = newV.name.split(':')
             this.buttonClick = sample.length > 1 ? {name: sample[1], status: true} : newV
         },
 
         itemClicked(newV, oldV){
+            console.log(newV);
+            console.log(oldV);
             if(newV.name != oldV.name){
                 this.setItemClicked(newV, oldV);
+                console.log('entreiii');
             }
         }
     },
@@ -52,6 +56,8 @@ export default{
     
     methods:{
         setItemClicked(v1,v2){
+            console.log(v1);
+            console.log(v2);
             this.buttonClick = {name: v1.name, status: true}
             this.buttonClicked = {name: v2.name, status: false}
         }

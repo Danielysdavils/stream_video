@@ -22,26 +22,25 @@ export default{
             valueDisplay: 0
         }
     },
-
+    
     mounted(){
-        this.valueDisplay = this.value
+        this.valueDisplay = this.value == this.nameOfSection ? this.value : 0
     },
-
+    
     watch:{
         value(newValue){
-            this.valueDisplay = newValue
-            console.log(this.valueDisplay);
+            this.valueDisplay = newValue == this.nameOfSection ? this.value : 0
         },
         
         valueDisplay(newValue){
-            this.sendData(newValue); 
+            newValue == this.nameOfSection ? this.sendData(newValue) : 0 
         }
     },
 
     methods:{
         sendData(data){
-            console.log(data);
-            this.$emit('dataGraphic', {name: this.nameOfSection, value: data});
+            let value = this.nameOfSection == 'bitrate' ? `${data}` : data;
+            this.$emit('dataGraphic', {name: this.nameOfSection, value: value});
         }
     }
 }   

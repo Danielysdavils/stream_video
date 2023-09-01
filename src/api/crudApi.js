@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import store from '@/store/store'
 
+const url = 'http://172.16.2.148:5005'
+
 export const getDataVideo = async () => {
     try{
         let data = {}
         await Vue.axios
-            .get('http://172.16.2.148:5005/api/video')
+            .get(`${url}/api/video`)
             .then(
                 (response) => 
                 {   data = response.data
@@ -27,7 +29,7 @@ export const getDataAudio = async () => {
     try{
         let data = {}
         await Vue.axios
-            .get('http://172.16.2.148:5005/api/audio')
+            .get(`${url}/api/audio`)
             .then(
                 (response) => 
                     {data = response.data
@@ -45,7 +47,7 @@ export const getDataInput = async () => {
     try{
         let data = {}
         await Vue.axios
-            .get('http://172.16.2.148:5005/api/input')
+            .get(`${url}/api/input`)
             .then(
                 (response) => 
                     {data = response.data
@@ -63,7 +65,7 @@ export const getDataOutput = async () => {
     try{
         let data = {}
         await Vue.axios
-            .get('http://172.16.2.148:5005/api/output')
+            .get(`${url}/api/output`)
             .then(
                 (response) => 
                     {data = response.data
@@ -80,10 +82,17 @@ export const getDataOutput = async () => {
 
 export const queryDataVideo = async (data) => {
     try{
+        const params = new URLSearchParams();
+        params.append('name', data.name);
+        params.append('value', data.value);
+        let dataQuery = '';
+        
         await Vue.axios
-            .put('http://172.16.2.148:5005/api/video', data.name, data.value)
-            .then(response => console.log(response))
-
+            .put(`${url}/api/video?${params}`)
+            .then(response => {
+                dataQuery = response.status
+            })
+        return dataQuery;
     }catch(erro){
         console.log(erro);
     }
@@ -91,12 +100,17 @@ export const queryDataVideo = async (data) => {
 
 export const queryDataAudio = async (data) => {
     try{
-        await Vue.axios
-            .put('http://172.16.2.148:5005/api/audio', data.name , data.value)
-            .then(response => {
-                console.log(response);
-            })
+        const params = new URLSearchParams();
+        params.append('name', data.name);
+        params.append('value', data.value);
+        let dataQuery = '';
 
+        await Vue.axios
+            .put(`${url}/api/audio?${params}`)
+            .then(response => {
+                dataQuery = response.status;
+            })
+        return dataQuery; 
     }catch(erro){
         console.log(erro);
     }

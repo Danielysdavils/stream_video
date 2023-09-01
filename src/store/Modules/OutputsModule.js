@@ -30,7 +30,6 @@ const outputsModule = {
     mutations:{
         addDataOutsputModule(state, data){
             data.data.forEach((element) => {
-                console.log(element);
                 state.outputData.data[element.name] = {
                     name: element.name, 
                     value: element.value

@@ -1,5 +1,6 @@
-import { getDataAudio } from '@/api/crudApi';
+import { getDataAudio, queryDataAudio } from '@/api/crudApi';
 import Audio from '@/class/Audio/Audio'
+
 
 const audioModule = {
     namespaced: true,
@@ -9,6 +10,11 @@ const audioModule = {
     },
 
     getters: {
+
+        data: (state) => {
+            return state.audioData;
+        },
+
         codec: (state) => {
             return state.audioData.data.codec
         },
@@ -28,12 +34,28 @@ const audioModule = {
             data.data.forEach((element) => {
                 state.audioData.data[element.name] = {name: element.name, value: element.value};
             })
+        },
+
+        addDataVideoModule(state, data){
+            state.audioData.data[data.name] = {name: data.name, value: data.value};
         }
     },
 
     actions: {
         async getAudioData({commit}){
             commit('addDataAudioModule', await getDataAudio());
+        },
+
+        async sendDataUser({commit}, data){
+            const dataInfo = await queryDataAudio(data);
+            console.log(dataInfo);
+            
+            if(dataInfo == 200){
+                await commit('addDataVideoModule', data);
+                console.log('Alterações salvas!');
+            }else{
+                console.log('Alterações não salvas!');
+            }
         }
     }
 }

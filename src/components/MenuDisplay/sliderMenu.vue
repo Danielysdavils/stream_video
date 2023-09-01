@@ -7,7 +7,7 @@
                 
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
-                        <div class="graphic-button" v-on:click="setItem(item)">
+                        <div class="graphic-button" v-on:click="setItem(item, tool.name)">
                         <selected-button
                             :inputs="item"
                             :valueOfItem="modelDataButton"
@@ -39,6 +39,12 @@
 </template>
 
 <script>
+
+    //Valores segregados por tipo de dados
+    //1. Buttons -> string
+    //2. Ranges -> int
+    //3. Text -> string
+
     import RangeInput from '@/components/Graphics/RangeInput.vue';
     import SelectedButton from '@/components/Graphics/SelectedButton.vue';
     import TextInput from '@/components/Graphics/TextInput.vue';
@@ -47,14 +53,18 @@
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
 
     export default{
-        //Antes da inicialização popula os array en data com as informações da api
+
+        //Antes da inicialização popula os array en data:() com as informações da api
+        // Importante que já estejam disponíveis as propiedades do componente para conseguir utilizá-las.
         beforeMount(){
             this.sendRange();
             this.sendButton();
             this.sendText();
         },
-        //ToolToRender 
-        //NameOfSection
+
+        //ToolToRender --> Clase [video || audio || input || output] das ferramentas a renderizar 
+        //NameOfSection --> Nome da clase [video, audio, input, output]
+
         props: ['toolToRender', 'nameOfSection'],
         
         data: () => {
@@ -64,30 +74,36 @@
                 buttonData: [],
                 textData: [],
 
+                //Guardo a informação do último botão clicado
                 itemClicked: ''
             }
         },
 
         computed:{
+
+            //Retorna um inteiro que representa a seção do menuDisplay ativa no momento. 
             getSectionActive(){
                 return store.getters['tool/getSlide'];
             },
 
+            //ModelFuntions: 
+            //Mostra nos graficos os valores da api
             modelDataRange(){
                 return this.setRangeDataValueInput();
             },
-
+            
             modelDataButton(){
-                console.log(this.setButtonDataValueInput());
                 return this.setButtonDataValueInput();
             },
-
+            
             modelDataText(){
                 return this.setTextDataValueInput();
             }
         },
 
         methods:{
+            //SetFunctions
+            //Percorro os array com as informações da api e retorno o valor correspondente a cada grafico. 
             setRangeDataValueInput(){
                 let data = 0; 
                 this.rangeData.forEach(item => {
@@ -96,17 +112,14 @@
                 });
                 return data;
             },
-            
             setButtonDataValueInput(){
                 let data = '';
                 this.buttonData.forEach(item => {
                     if(item.name == this.getSectionActive) 
                         data = {name: item.value, status: true}
                 });
-                console.log(data);
                 return data;
             },
-
             setTextDataValueInput(){
                 let data = '';
                 this.textData.forEach(item => {
@@ -116,53 +129,53 @@
                 return data;
             },
 
+            //Async SendFunctions
             //Popula os Arrays com os dados dos inputs atuais do store 
             async sendRange(){
                 this.toolToRender.tools.forEach(tool => {
                     if(tool.options.range.status){
                         this.rangeData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
-                        
                     }
                 });
             },
-
             async sendButton(){
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.button.status)
                         this.buttonData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                 })
             },
-
             async sendText(){
-                console.log(store.getters);
                 await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.text.status)
                         this.textData.push(store.getters[`${this.nameOfSection}/${tool.name}`])
                 })
             },
 
-            //Envia pra api as alterações do usuário
-            //{name: range, value: 30}
+            //Async getFunctions 
+            //Envia pra api as alterações do usuário e modifica o estado do store
+            //this.sendRange() -> repopula os dados dos array com os dados atuais da api
+
             async getRange(data){
-                console.log(data);
-                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);        
+                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                this.sendRange();
             },
 
             async getText(data){
                 await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                this.sendText();
             },
 
             async getButton(data){
-                setTimeout(() => {
-                    store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
-                }, 1000)
+                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+                this.sendButton();
             },
 
-            setItem(item){
+            //Configuração do button clicado. 
+            setItem(item, nameOfSection){
                 this.itemClicked = item;
-
                 setTimeout(() => {
-                    this.getButton(item);    
+                    let info = nameOfSection == 'resolution' ? `-2:${item.name}` : item.name;
+                    this.getButton({name: nameOfSection, value: info});    
                 }, 1000);
             }
         },
