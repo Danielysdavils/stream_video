@@ -11,16 +11,31 @@ export const getDataVideo = async () => {
             .then(
                 (response) => 
                 {   data = response.data
-                    store.dispatch('connection/setConnectionToServer', true)
+                    store.dispatch('connection/setConnectionToServer', {
+                        'isConnected' : {
+                            status: true
+                        },
+                        'dontConnected' : {
+                            status: false
+                        }
+                    })
                 },
 
                 () => 
                 { 
-                    store.dispatch('connection/setConnectionToServer', false) 
+                    store.dispatch('connection/setConnectionToServer', {
+                        'isConnected' : {
+                            status: false
+                        },
+                        'dontConnected' : {
+                            status: true
+                        }
+                    }) 
                 }
             )
             return data;
     }catch(erro){
+
         console.log(erro);
     }
 }
@@ -33,9 +48,23 @@ export const getDataAudio = async () => {
             .then(
                 (response) => 
                     {data = response.data
-                    store.dispatch('connection/setConnectionToServer', true)},
+                    store.dispatch('connection/setConnectionToServer', {
+                        'isConnected' : {
+                            status: true
+                        },
+                        'dontConnected' : {
+                            status: false
+                        }
+                    })},
                      
-                () => { store.dispatch('connection/setConnectionToServer', false) }
+                () => { store.dispatch('connection/setConnectionToServer', {
+                    'isConnected' : {
+                        status: false
+                    },
+                    'dontConnected' : {
+                        status: true
+                    }
+                }) }
             )
         return data;
     }catch (erro){
@@ -51,9 +80,23 @@ export const getDataInput = async () => {
             .then(
                 (response) => 
                     {data = response.data
-                    store.dispatch('connection/setConnectionToServer', true)},
+                    store.dispatch('connection/setConnectionToServer', {
+                        'isConnected' : {
+                            status: true
+                        },
+                        'dontConnected' : {
+                            status: false
+                        }
+                    })},
                      
-                () => { store.dispatch('connection/setConnectionToServer', false) }
+                () => { store.dispatch('connection/setConnectionToServer', {
+                    'isConnected' : {
+                        status: false
+                    },
+                    'dontConnected' : {
+                        status: true
+                    }
+                }) }
             )
         return data;
     }catch (erro){
@@ -69,13 +112,26 @@ export const getDataOutput = async () => {
             .then(
                 (response) => 
                     {data = response.data
-                    store.dispatch('connection/setConnectionToServer', true)},
+                    store.dispatch('connection/setConnectionToServer', {
+                        'isConnected' : {
+                            status: true
+                        },
+                        'dontConnected' : {
+                            status: false
+                        }
+                    })},
                      
-                () => { store.dispatch('connection/setConnectionToServer', false)}
+                () => { store.dispatch('connection/setConnectionToServer', {
+                    'isConnected' : {
+                        status: false
+                    },
+                    'dontConnected' : {
+                        status: true
+                    }
+                })}
             )
         return data;
     }catch (erro){
-
         console.log(erro);
     }
 }

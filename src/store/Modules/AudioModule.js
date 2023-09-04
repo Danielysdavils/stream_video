@@ -36,14 +36,20 @@ const audioModule = {
             })
         },
 
-        addDataVideoModule(state, data){
+        addDataAudioModuleUser(state, data){
             state.audioData.data[data.name] = {name: data.name, value: data.value};
         }
     },
 
     actions: {
         async getAudioData({commit}){
-            commit('addDataAudioModule', await getDataAudio());
+            try{
+                commit('addDataAudioModule', await getDataAudio());    
+            }catch(err){
+
+                return err;
+            }
+            
         },
 
         async sendDataUser({commit}, data){
@@ -51,7 +57,7 @@ const audioModule = {
             console.log(dataInfo);
             
             if(dataInfo == 200){
-                await commit('addDataVideoModule', data);
+                await commit('addDataAudioModuleUser', data);
                 console.log('Alterações salvas!');
             }else{
                 console.log('Alterações não salvas!');

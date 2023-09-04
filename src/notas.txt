@@ -15,11 +15,8 @@ Inicio do projeto [18 de Julho] 1m + 2sem
 --> Fazendo <--
 
 . Hooks de notificações pro usuário 
-[senha incorreta, modificações salvas, erro ao connectar com o servidor
-[extrair dados da api, mandar dados api] ]
-. Adicionar animações [salvando modificações e acessando a streamConfig] 
-
---->> Importante! <<---
+[senha incorreta, modificações salvas, extrair dados da api, mandar dados api] 
+. Bug mandar datos dos ranges
  
 
 

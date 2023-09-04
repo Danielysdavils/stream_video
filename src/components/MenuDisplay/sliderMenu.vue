@@ -35,8 +35,16 @@
                 </div>
             </div>
 
-            <div class="animation-cont">
-                <LoaderCircles />
+            <div v-if="isLoanding" class="animation-cont">
+                <div v-if="isLoanding"><LoaderCircles /></div>
+
+                <div v-if="getIsSavingData">
+                    <h1>Foi salvo!</h1>
+                </div>
+
+                <div v-if="!getIsSavingData">
+                    <h1>Não foi salvo!</h1>
+                </div>
             </div>
         </rl-carousel-slide>
     </CarouselDisplay>
@@ -80,11 +88,17 @@
                 textData: [],
 
                 //Guardo a informação do último botão clicado
-                itemClicked: ''
+                itemClicked: '',
+
+                isLoanding: ''
             }
         },
 
         computed:{
+
+            getIsSavingData(){
+                return store.getters['connections/getStatusOfData']['save'].status;
+            },
 
             //Retorna um inteiro que representa a seção do menuDisplay ativa no momento. 
             getSectionActive(){
@@ -94,6 +108,7 @@
             //ModelFuntions: 
             //Mostra nos graficos os valores da api
             modelDataRange(){
+                console.log(this.setRangeDataValueInput());
                 return this.setRangeDataValueInput();
             },
             
@@ -115,8 +130,10 @@
                     if(item.name == this.getSectionActive) 
                         data = item.value;
                 });
+                console.log(data);
                 return data;
             },
+
             setButtonDataValueInput(){
                 let data = '';
                 this.buttonData.forEach(item => {
@@ -137,11 +154,12 @@
             //Async SendFunctions
             //Popula os Arrays com os dados dos inputs atuais do store 
             async sendRange(){
-                this.toolToRender.tools.forEach(tool => {
+                await this.toolToRender.tools.forEach(tool => {
                     if(tool.options.range.status){
                         this.rangeData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                     }
                 });
+                console.log(this.rangeData);
             },
             async sendButton(){
                 await this.toolToRender.tools.forEach(tool => {
@@ -161,8 +179,27 @@
             //this.sendRange() -> repopula os dados dos array com os dados atuais da api
 
             async getRange(data){
-                await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
-                this.sendRange();
+                //Mando info do user
+                //Adicionar Animações para representar os estados da info
+
+                this.isLoanding = true;
+
+                const response = await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
+
+                if(response != 200){
+                    this.isLoanding = false;
+                    store.dispatch('connection/setStatusOfData', {
+                        name: 'dontSave',
+                        status: true
+                    })
+                    
+                }else{
+                    this.isLoanding = false;
+                    store.dispatch('connection/setStatusOfData', {
+                        name: 'save',
+                        status: true
+                    })
+                }
             },
 
             async getText(data){
@@ -222,7 +259,7 @@
         align-items: center;
         
         padding: 20px;
-        margin-top: 30px;
+        margin-top: 100px;
         margin-bottom: 280px;
     }
 

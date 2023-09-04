@@ -24,22 +24,23 @@ export default{
     },
     
     mounted(){
-        this.valueDisplay = this.value == this.nameOfSection ? this.value : 0
+        this.valueDisplay = this.value;
     },
     
     watch:{
         value(newValue){
-            this.valueDisplay = newValue == this.nameOfSection ? this.value : 0
+            this.valueDisplay = newValue
         },
         
         valueDisplay(newValue){
-            newValue == this.nameOfSection ? this.sendData(newValue) : 0 
+            this.sendData(newValue)
         }
     },
 
     methods:{
         sendData(data){
             let value = this.nameOfSection == 'bitrate' ? `${data}` : data;
+            console.log({name: this.nameOfSection, value: value});
             this.$emit('dataGraphic', {name: this.nameOfSection, value: value});
         }
     }

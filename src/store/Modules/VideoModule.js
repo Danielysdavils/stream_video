@@ -1,6 +1,6 @@
 import Video from "@/class/Video/Video"
 import {getDataVideo, queryDataVideo} from '@/api/crudApi'
-import store from "../store"
+//import store from "../store"
 
 const videoModule = {
     namespaced: true,
@@ -55,22 +55,20 @@ const videoModule = {
     actions: {
         //Muda o estado conforme os dados vindos da api
         async getVideoData({commit}){
-            commit('addDataVideoModule', await getDataVideo());
+            try{
+                commit('addDataVideoModule', await getDataVideo()); 
+            }catch(err){
+                return err;
+            } 
         },
 
         //Muda o estado conforme as alterações do usuário
         async sendDataUser({commit}, data){
             const dataInfo = await queryDataVideo(data);
-            console.log(dataInfo);
             if(dataInfo == 200){
-                await commit('addDataVideoModuleUser', data);
-                console.log('Alterações salvas!');
-                console.log(store.getters['video/codec']);
-
-            }else{
-                console.log('Alteraçõe não salvas!');
-                throw new Error('Não foi possível salvar suas alterações. Tente novamente')
+                await commit('addDataVideoModuleUser', data);   
             }
+            return dataInfo;
         }
     }
 }

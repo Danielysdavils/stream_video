@@ -2,7 +2,17 @@
     <div class="containerDisplay">
         <navBar />
 
-        <div class="displayView">
+        <div v-if="getIsLoanding" class="Section-erro">
+            <div class="item-erro-style"><LoaderBlocks/></div>
+            <h1 class="item-erro-style">Loanding...</h1>
+        </div>
+
+        <div v-if="getIsDisconnected" class="Section-erro">
+            <h1 class="item-erro-style">Erro ao conectar com o servidor</h1>
+            <h1 class="item-erro-replay">Tente novamente</h1>
+        </div>
+
+        <div v-if="getIsConnected" class="displayView">
             <MenuDisplay :optionSelected="dataSelected" />
            
             <div class="displaySettings">
@@ -25,25 +35,14 @@
 </template>
 
 <script>
-/*
-     <div v-if="erroActive">
-            <div class="contaier-erro">
-                <div class="erro-items">
-                    <h1 class="item-erro-style">Erro ao conectar com o servidor</h1>
-                    <h1 class="item-erro-replay">Tente novamente</h1>
-
-                    <img src="../../assets/server.png" alt="" />
-                </div>
-            </div>
-        </div>
-*/
     import MenuDisplay from '@/components/MenuDisplay/MenuDisplay.vue'
+    import LoaderBlocks from '@/components/Animations/Loader/LoaderBlocks.vue'
     import MenuVideoScrollBar from '@/views/StreamSettings/MenuVideoScrollBar/MenuVideoScrollBar.vue'
     import StreamSection from '@/views/StreamSettings/StreamSection/StreamSection.vue'
     import TopMenu from '@/components/MenuDisplay/TopMenu.vue'
     import navBar from '@/components/navBar/navBar.vue'
 
-    //Clases
+    //Modulos das ferramentas
     import VideoService from '@/class/Video/VideoService'
     import OutputService from '@/class/Output/OutputService'
     import InputService from '@/class/Input/InputService'
@@ -73,6 +72,10 @@
 
                 dataSelected : '',
                 heightToStream: '80%',
+                
+                //Seta as animações do começo
+                isLoanding: true,
+                isConnected: false
             }
         },
 
@@ -84,6 +87,21 @@
             await store.dispatch('input/getInputData');
         },
 
+        computed: {
+            getIsConnected(){
+                return !this.isLoanding ? this.isConnected['isConnected'].status : this.setIsLoanding();
+            },
+
+            getIsDisconnected(){
+                return !this.isLoanding ? this.isConnected['dontConnected'].status : this.setIsLoanding();
+            },
+
+            getIsLoanding(){
+                this.setIsLoanding();
+                return this.isLoanding;
+            }
+        },
+
         methods: {
             //Envia a opção q foi clicada
             set(s){     
@@ -92,6 +110,14 @@
             //Muda o comprimento do video strimando 
             setHeightScreen(isActive){
                 this.heightToStream = isActive ? '60%' : '80%'
+            },
+
+            setIsLoanding(){
+                this.isConnected = store.getters['connection/getConnectedToServer']
+
+                setTimeout(() => {
+                    this.isLoanding = false;
+                }, 3000)
             }
         },
 
@@ -100,7 +126,8 @@
             MenuVideoScrollBar,
             StreamSection,
             TopMenu,
-            navBar
+            navBar,
+            LoaderBlocks
         }
     }
 </script>
@@ -131,26 +158,28 @@
         flex-direction: column;
     }
 
-    .contaier-erro{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .erro-items{
+    .Section-erro{
         width: 100%;
         height: 90%;
-        flex-direction: column;
+        background-color: var(--color1);
+        color: var(--color4);
+
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
 
-        font-family: var(--FontOther);
+        font-family: var(--FontLabel);
+        font-size: 10px;
     }
 
+    .item-erro-style{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+    }
 
     @media(min-width: 0px) and (max-width: 800px){
         .displayView{

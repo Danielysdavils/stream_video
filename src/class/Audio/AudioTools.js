@@ -56,7 +56,7 @@ export default class AudioTools{
                     ]},
 
                 range: {
-                    status: true, 
+                    status: false, 
 
                     sections: null},
     
@@ -82,7 +82,7 @@ export default class AudioTools{
                     ]},
 
                 range: {
-                    status: true, 
+                    status: false, 
                     sections: null},
     
                 text: {
