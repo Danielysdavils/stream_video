@@ -7,7 +7,7 @@
 
 <script>
     import AudioTools from '@/class/Audio/AudioTools.js'
-    import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue'
+    import SliderMenu from '@/components/MenuDisplay/sliderMenu.vue'
 
     export default{
         data: () => {

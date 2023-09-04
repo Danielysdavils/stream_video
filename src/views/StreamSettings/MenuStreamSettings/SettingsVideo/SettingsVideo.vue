@@ -6,7 +6,7 @@
 
 <script>
     import VideoTools from '@/class/Video/VideoTools'
-    import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue';
+    import SliderMenu from '@/components/MenuDisplay/sliderMenu.vue';
 
     export default{
         data: () => {

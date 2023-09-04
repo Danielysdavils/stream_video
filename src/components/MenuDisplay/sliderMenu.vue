@@ -34,6 +34,10 @@
                     </div>
                 </div>
             </div>
+
+            <div class="animation-cont">
+                <LoaderCircles />
+            </div>
         </rl-carousel-slide>
     </CarouselDisplay>
 </template>
@@ -51,6 +55,7 @@
     import CarouselDisplay from '@/components/Carousel/CarouselDisplay.vue'
     import store from '@/store/store'
     import {RlCarouselSlide} from 'vue-renderless-carousel' 
+    import LoaderCircles from '@/components/Animations/Loader/LoaderCircles.vue'
 
     export default{
 
@@ -185,7 +190,8 @@
             SelectedButton,
             CarouselDisplay,
             RlCarouselSlide,
-            TextInput
+            TextInput,
+            LoaderCircles
         }
     }
 </script>
@@ -208,6 +214,8 @@
     }
 
     .graphics-section{
+        height: 90%;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -252,4 +260,12 @@
         width: 100%;
     }
 
+    .animation-cont{
+        width: 100%;
+        height: 10%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 </style>

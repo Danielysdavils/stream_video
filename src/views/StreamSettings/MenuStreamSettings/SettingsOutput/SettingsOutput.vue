@@ -7,7 +7,7 @@
 
 <script>
     import OutputTools from '@/class/Output/OutputTools.js'
-    import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue'
+    import SliderMenu from '@/components/MenuDisplay/sliderMenu.vue'
 
     export default{
         props:[],

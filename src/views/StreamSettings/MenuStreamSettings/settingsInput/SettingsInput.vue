@@ -7,7 +7,7 @@
 
 <script>
     import InputTools from '@/class/Input/InputTools.js'
-    import SliderMenu from '@/components/MenuDisplay/SliderMenu.vue'
+    import SliderMenu from '@/components/MenuDisplay/sliderMenu.vue'
 
     export default{
         props:[],
