@@ -6,7 +6,10 @@
                 <b-form-input id="range-2" v-model="valueDisplay" type="range" :min="minValue" :max="maxValue" step="1"></b-form-input>
             
                 <div class="mt-2">
-                    <div class="conteinerValue"><h2 class="value-graphics">{{ this.valueDisplay }}</h2></div>
+                    <div class="conteinerValue">
+                        <h2 class="value-graphics">{{ this.valueDisplay }}</h2>
+                        <h2 v-if="nameOfSection == 'bitrate'" class="value-graphics">k</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,7 +22,7 @@ export default{
     
     data: () => {
         return{
-            valueDisplay: 0
+            valueDisplay: 10
         }
     },
     
@@ -39,8 +42,7 @@ export default{
 
     methods:{
         sendData(data){
-            let value = this.nameOfSection == 'bitrate' ? `${data}` : data;
-            console.log({name: this.nameOfSection, value: value});
+            let value = this.nameOfSection == 'bitrate' ? `${data}` : `${data}`;
             this.$emit('dataGraphic', {name: this.nameOfSection, value: value});
         }
     }

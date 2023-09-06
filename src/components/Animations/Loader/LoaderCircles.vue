@@ -31,7 +31,7 @@
 
 <style>
     .animation-item-circle{
-        width: 30%;
-        height: 100%;
+        width: 60px;
+        height: 70px;
     }
 </style>

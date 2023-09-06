@@ -10,7 +10,8 @@ export const getDataVideo = async () => {
             .get(`${url}/api/video`)
             .then(
                 (response) => 
-                {   data = response.data
+                {   
+                    data = response.data
                     store.dispatch('connection/setConnectionToServer', {
                         'isConnected' : {
                             status: true

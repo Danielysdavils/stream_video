@@ -1,7 +1,10 @@
 <template>
     <div class="selected-group-button">
         <b-button-group>
-            <b-button class="buttonItem" :style="setButtonSelected">{{ inputs.name }}</b-button>
+            <b-button class="buttonItem" :style="setButtonSelected">
+                <h2 class="buttonItem">{{ inputs.name }}</h2>
+                <h2 class="buttonItem" v-if="nameOfSection == 'resolution'">px</h2>
+            </b-button>
         </b-button-group>
     </div>
 </template>
@@ -9,7 +12,7 @@
 <script>
 
 export default{
-    props: ['inputs', 'valueOfItem', 'itemClicked'],
+    props: ['inputs', 'valueOfItem', 'itemClicked', 'nameOfSection'],
     //buttonClicked: valor antigo clicado
     //ButtonClick: valor atual clicado 
     data: () => {
@@ -38,17 +41,13 @@ export default{
 
     watch:{ 
         valueOfItem(newV){
-            console.log(newV); // button2
             let sample = newV.name.split(':')
             this.buttonClick = sample.length > 1 ? {name: sample[1], status: true} : newV
         },
 
         itemClicked(newV, oldV){
-            console.log(newV);
-            console.log(oldV);
             if(newV.name != oldV.name){
                 this.setItemClicked(newV, oldV);
-                console.log('entreiii');
             }
         }
     },
@@ -56,8 +55,6 @@ export default{
     
     methods:{
         setItemClicked(v1,v2){
-            console.log(v1);
-            console.log(v2);
             this.buttonClick = {name: v1.name, status: true}
             this.buttonClicked = {name: v2.name, status: false}
         }
@@ -77,8 +74,13 @@ export default{
 .btn, .btn-secondary,.btn-group{
     border: none;
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonItem{
+    font-size: 20px;
     font-family: var(--FontOther);
     font-weight: 200;
 }
-
 </style>

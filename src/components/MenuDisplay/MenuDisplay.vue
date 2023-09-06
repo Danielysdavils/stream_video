@@ -40,8 +40,6 @@
     import OutputTools from '@/class/Output/OutputTools'
     import InputTools from '@/class/Input/InputTools'
    
-    //
-    
     import store from '@/store/store'
 
     export default{
@@ -69,8 +67,6 @@
 
         computed: {
             setToolsToRender(){
-                
-                console.log(this.optionSelected);
                 let data = []
                 switch(this.optionSelected){
                     case 'Video' : 
@@ -115,7 +111,6 @@
             }
         }
     }
-
 </script>
 
 <style>
