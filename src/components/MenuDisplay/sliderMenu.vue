@@ -4,7 +4,7 @@
             <div class="graphics-section" >
                 <h1 class="name-tool">{{ $t(tool.name) }}</h1>
                 <div class="row-separator"></div>
-                
+
                 <div class="graphic-button" v-if="tool.options.button.status" >
                     <div class="graphic-button" v-for="item in tool.options.button.sections" :key="item.id"> 
                         <div class="graphic-button" v-on:click="setItem(item, tool.name)">
@@ -38,19 +38,19 @@
                 <div class="animation-cont">
                     <div v-if="setIsLoanding" class="cont-text">
                         <LoaderCircles />
-                        <h1 class="txt-loanding">Salvando alterações...</h1>
+                        <h1 class="txt-loanding">{{ $t('saving') }}</h1>
                     </div>
 
                     <div v-if="!setIsLoanding && setSaved" class="cont-text">
                         <div class="cont-text-animation">
-                            <h1 class="txt-loanding">Alterações Salvas!</h1>
+                            <h1 class="txt-loanding">{{ $t('savingCorrect') }}</h1>
                             <img class="img-loading" src="../../assets/icones-tool/verifica.png" alt="">
                         </div>
                     </div>
 
                     <div v-if="!setSaved && !setIsLoanding" class="cont-text">
                         <div class="cont-text-loanding-err">
-                            <h1 class="txt-loanding">As alterações não foram salvas!</h1>
+                            <h1 class="txt-loanding">{{ $t('savingErro') }}</h1>
                             <img class="img-loading" src="../../assets/icones-tool/error.png" alt="">
                         </div>
                     </div>
@@ -85,10 +85,8 @@
 
         //ToolToRender --> Clase [video || audio || input || output] das ferramentas a renderizar 
         //NameOfSection --> Nome da clase [video, audio, input, output]
-        //SectionActive --> Seção ativa do menuSlide selecionada pelo usuário
-        //SectionDefault --> Seção default a mostrar quando nenhuma opção seja clicada
 
-        props: ['toolToRender', 'nameOfSection', 'SectionActive', 'SectionDefault'],
+        props: ['toolToRender', 'nameOfSection'],
         
         data: () => {
             return{
@@ -110,21 +108,17 @@
                     //isLoanding :bool [estado da animação]
                     //isSave: :bool [informação foi salva]
                 isLoanding: false,
-                isSave: false,
-
-                //Seção ativa no momento
-                sectionActive : ''
+                isSave: false
             }
         },
 
-        watch:{
-            //Muda reactivamente a seção ativa no momento
-            SectionActive(newV, oldV){
-                this.sectionActive = oldV == '' ? this.SectionDefault : newV
-            }
-        },
+        computed:{
+            // Retorna a seção ativa no momento
+            getSectionActive(){
+                console.log(store.getters['tool/getSlide']);
+                return store.getters['tool/getSlide'];
+            },     
 
-        computed:{        
             //ModelFuntions [modelDataRange(),  modelDataButton(), modelDataText()] 
             //Mostra nos compoentes de graficos os valores da api
             modelDataRange(){
@@ -136,6 +130,7 @@
             },
             
             modelDataButton(){
+                console.log(this.setButtonDataValueInput())
                 return this.setButtonDataValueInput();
             },
             
@@ -160,7 +155,8 @@
             setRangeDataValueInput(){
                 let data = 0; 
                 this.rangeData.forEach(item => {
-                    if(item.name == this.SectionActive) 
+               
+                    if(item.name == this.getSectionActive) 
                         data = item.value;
                 });
                 return data;
@@ -168,15 +164,18 @@
             setButtonDataValueInput(){
                 let data = '';
                 this.buttonData.forEach(item => {
-                    if(item.name == this.SectionActive) 
+               
+                    if(item.name == this.getSectionActive) 
                         data = {name: item.value, status: true}
                 });
+                console.log(data);
                 return data;
             },
             setTextDataValueInput(){
                 let data = '';
                 this.textData.forEach(item => {
-                    if(item.name == this.SectionActive) 
+                 
+                    if(item.name == this.getSectionActive) 
                         data = item.value; 
                 })
                 return data;
@@ -196,6 +195,8 @@
                     if(tool.options.button.status)
                         this.buttonData.push(store.getters[`${this.nameOfSection}/${tool.name}`]);
                 })
+
+                console.log(this.buttonData);
             },
             async sendText(){
                 await this.toolToRender.tools.forEach(tool => {
@@ -208,7 +209,7 @@
             //Envia pra api as alterações do usuário e altera o estatus da animação de loanding conforme o resultado da query
 
             async getRange(data){
-                if(this.SectionActive == data.name){
+                if(this.getSectionActive == data.name){
                     this.isLoanding = true;
                     this.dataSave =  await store.dispatch(`${this.nameOfSection}/sendDataUser`, data);
                     if(this.dataSave != 200){
@@ -322,11 +323,12 @@
         
         padding: 20px;
         margin-top: 70px;
-        margin-bottom: 280px;
+        margin-bottom: 210px;
     }
 
     .name-tool{
         font-family: var(--fontOther);
+        text-align: center;
     }
 
     .itemToRender-carousel{
@@ -399,4 +401,6 @@
         height: 20px;
         margin-left: 5px;
     }
+
+    
 </style>

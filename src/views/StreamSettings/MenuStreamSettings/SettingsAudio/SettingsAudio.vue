@@ -2,17 +2,14 @@
     <div class="cont-SliderMenu">
         <SliderMenu 
             :toolToRender="audioTools" 
-            :nameOfSection="nameOfSection"
-            :SectionActive="getSectionActive"
-            :SectionDefault="'codec'"/>
+            :nameOfSection="nameOfSection"/>
     </div>
 </template>
 
 <script>
     import AudioTools from '@/class/Audio/AudioTools.js'
     import SliderMenu from '@/components/MenuDisplay/sliderMenu.vue'
-    import store from '@/store/store'
-
+    
     export default{
         data: () => {
             return{
@@ -20,13 +17,7 @@
                 nameOfSection: 'audio'
             }
         },
-        
-        computed: {
-            getSectionActive(){
-                return store.getters['tool/getSlide'];
-            }
-        },
-
+    
         components:{
             SliderMenu
         }

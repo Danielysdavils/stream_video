@@ -83,7 +83,6 @@
                 }
                 return data;
             },
-            
             reajustConteiner(){
                 if(this.isExpandedAside) return {"--WidthConteiner" : "50%"}    
                 else return {"--WidthConteiner" : "10%"}
@@ -108,6 +107,34 @@
                 this.isExpandedAside = this.itemClicked != this.itemClick || this.itemClicked == ''  ? true : !this.isExpandedAside;
 
                 this.itemClicked = this.itemClick; 
+            }
+        },
+
+        watch:{
+
+            // Deixa setado um valor ativo default no menu
+            optionSelected(newV, oldV){
+                let data = '';
+
+                if(newV != oldV && this.isExpandedAside){
+                    switch(newV){
+                        case 'Video' : 
+                            data = 'codec';
+                            break;
+                        case 'Audio':
+                            data = 'codec';
+                            break;
+                        case 'Output':
+                            data = 'protocol';
+                            break;
+                        case 'Input':
+                            data = 'audio-source';
+                            break;
+                    }
+
+                    this.itemClick = data;
+                    store.dispatch('tool/setSlide', {valueId: 0, valueElement: data});
+                }
             }
         }
     }

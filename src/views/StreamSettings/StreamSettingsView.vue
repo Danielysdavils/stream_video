@@ -3,18 +3,22 @@
         <navBar />
 
         <div v-if="getIsLoanding" class="Section-erro">
-            <div class="item-erro-style"><LoaderBlocks/></div>
-            <h1 class="item-erro-style">Loanding...</h1>
+            <div class="section-cont">
+                <div class="item-erro-style"><LoaderBlocks/></div>
+                <h1 class="item-erro-style">{{ $t('loanding') }}</h1>
+            </div>
         </div>
 
         <div v-if="getIsDisconnected" class="Section-erro">
-            <h1 class="item-erro-style">Erro ao conectar com o servidor</h1>
-            <h1 class="item-erro-replay">Tente novamente</h1>
+            <div class="section-cont">
+                <h1 class="item-erro-style">{{ $t('serverErro') }}</h1>
+                <h1 class="item-erro-style">{{ $t('tryAgain') }}</h1>
+                <img class="item-img-erro" src="../../assets/icones-tool/errorServer.png" alt="">
+            </div>
         </div>
 
         <div v-if="getIsConnected" class="displayView">
             <MenuDisplay :optionSelected="dataSelected" />
-           
             <div class="displaySettings">
                 <TopMenu  
                     @itemClicadoWithoutDropDown ="set" 
@@ -73,6 +77,7 @@
                 dataSelected : '',
                 heightToStream: '80%',
                 
+              
                 //Seta as animações do começo
                 isLoanding: true,
                 isConnected: false
@@ -88,6 +93,7 @@
         },
 
         computed: {
+            
             getIsConnected(){
                 return !this.isLoanding ? this.isConnected['isConnected'].status : this.setIsLoanding();
             },
@@ -100,6 +106,7 @@
                 this.setIsLoanding();
                 return this.isLoanding;
             }
+            
         },
 
         methods: {
@@ -117,8 +124,9 @@
 
                 setTimeout(() => {
                     this.isLoanding = false;
-                }, 3000)
+                }, 2000)
             }
+            
         },
 
         components: {
@@ -138,7 +146,7 @@
         width: 100%;
         height: 100%;
         flex-direction: column;
-
+        
         background-image: url(../../assets/fondo9.png);
         background-size: cover;
         background-position: center;
@@ -158,7 +166,7 @@
         flex-direction: column;
     }
 
-    .Section-erro{
+    .Section-erro, .section-cont{
         width: 100%;
         height: 90%;
         background-color: var(--color1);
@@ -173,12 +181,20 @@
         font-size: 10px;
     }
 
+    .section-cont{
+        background-color: var(--color2Gradiente);
+    }
+
     .item-erro-style{
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 15px;
+    }
+
+    .item-img-erro{
+        margin-top: 15px;
     }
 
     @media(min-width: 0px) and (max-width: 800px){
@@ -197,5 +213,6 @@
             display: none;
             height: 0%;
         }
+       
     }
 </style>

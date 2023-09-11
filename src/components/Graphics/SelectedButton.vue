@@ -2,7 +2,7 @@
     <div class="selected-group-button">
         <b-button-group>
             <b-button class="buttonItem" :style="setButtonSelected">
-                <h2 class="buttonItem">{{ inputs.name }}</h2>
+                <h2 class="buttonItem">{{ $t(inputs.name) }}</h2>
                 <h2 class="buttonItem" v-if="nameOfSection == 'resolution'">px</h2>
             </b-button>
         </b-button-group>

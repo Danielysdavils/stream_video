@@ -5,11 +5,9 @@
         </div>
     </div>
 </template>
-
 <script>
     export default{
         props: ['BorderColor', 'BoxShadow', 'Height'],
-
         computed:{
             setBorderColor(){
                 return {
@@ -22,7 +20,6 @@
             }
         }
     }
-
 </script>
 
 <style>

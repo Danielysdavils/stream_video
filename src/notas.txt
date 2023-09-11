@@ -3,20 +3,20 @@ Inicio do projeto [18 de Julho] 1m + 2sem
 --> A Implementar [Ordem Prioridade]
 
 1. Ajustar mediaQuery
-2. Melhorar selected topBar
-[Extra] Adicionar visualização Grid
+2. Melhorar selected topBar 
+3. Mudar icones no MenuDisplay
+4. Notificações pro usuário [senha incorreta]
 
 --> Fazendo <--
 
-. Notificações pro usuário [senha incorreta]
-. Terminar Idiomas
-. Mudar icones no MenuDisplay 
+. Ajustar notificação [mensagem de erro]
 
 --- [Extra] ---
 
 6. Pesquisar sobre protocolo R..??
 7. Strimar o video 
-8. Add Carousel Cameras, selected.
+8. Add Carousel Cameras, selected
+9. Adicionar visualização Grid
  
 
 

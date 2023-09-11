@@ -590,5 +590,26 @@
     "enterName": "Escreva seu nome",
     "enterPassword": "Escreva sua senha",
 
-    "resolution": "Resolução"
+    "resolution": "Resolução",
+    "codec": "Codec",
+    "framerate": "Framerate",
+    "tune": "Tune",
+    "bitrate": "Bitrate",
+    "preset": "Preset",
+    "channels": "Canais",
+    "sample-rate": "Taxa de Amostragem",
+    "audio-source": "Fonte de Áudio",
+    "video-source": "Fonte de Video",
+    "protocol": "Protocolo",
+    "port": "Porta",
+    "stream-name": "Nome da transmissão",
+    "loanding": "Carregando...",
+    "savingErro": "Error ao salvar suas alterações!",
+    "savingCorrect": "Suas alterações foram salvas!",
+    "saving": "Salvando suas alterações...",
+    "fast": "Rápido",
+    "veryfast": "Muito Rápido",
+    "ultrafast" : "Ultra Rápido",
+    "serverErro": "Erro ao estabelecer conexão com o servidor.",
+    "tryAgain": "Por favor, tente novamente."  
 }
